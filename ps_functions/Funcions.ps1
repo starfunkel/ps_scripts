@@ -19,6 +19,7 @@ function history    { get-history -Count 20 }
 
 function imp        { Import-Module $args[0] }
 function touch      { New-Item $args[0] }
+function aterm      { Start-Process wt.exe -Verb runAs }
 
 ### Custom functions
 function pong       { Test-Connection $args[0] | Format-Table -Autosize } 
@@ -49,6 +50,10 @@ function rel        {
         }
     }
 }
+
+### Get Windows ACL Information
+
+
 
 function gacl ( $folder ) { # https://exchangepedia.com/2017/11/get-file-or-folder-permissions-using-powershell.html
     (get-acl $folder).access | Select-Object `
