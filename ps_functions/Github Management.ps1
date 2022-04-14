@@ -1,19 +1,24 @@
 ### Github Management
 
-function gitc       {
+function git-auto       {
                         param([string]$message = "auto commit - nothing to special")
 
                         git add .
                         git commit -m $message
                         git push
+                        Remove-Variable -Name message
 }
 
-function gitp       {
-                        $p = (pwd).path
+function git-ps       {
+                        $current_path = (pwd).path
                         Set-Location $PSHOME
-
                         git add .\profile.ps1
                         git commit -m "Profile Updated"
                         git push
-                        Set-Location $p
+                        Set-Location C:\support\code\POSH
+                        git add .
+                        git commit -m "Functions and Definitions Update"
+                        git push
+                        Set-Location $current_path
+                        Remove-Variable $current_path
 }
