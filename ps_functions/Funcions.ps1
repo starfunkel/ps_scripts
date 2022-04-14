@@ -51,12 +51,10 @@ function rel        {
     }
 }
 
-### Get Windows ACL Information
+### Get Windows ACL Information  https://exchangepedia.com/2017/11/get-file-or-folder-permissions-using-powershell.html
 
-
-
-function gacl ( $folder ) { # https://exchangepedia.com/2017/11/get-file-or-folder-permissions-using-powershell.html
-    (get-acl $folder).access | Select-Object `
+function gacl       ( $folder ) { 
+        (get-acl $folder).access | Select-Object `
           @{Label="Identity";Expression={$_.IdentityReference}}, `
           @{Label="Right";Expression={$_.FileSystemRights}}, `
           @{Label="Access";Expression={$_.AccessControlType}}, `

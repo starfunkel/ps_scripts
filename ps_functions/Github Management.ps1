@@ -10,7 +10,7 @@ function git-auto       {
                         Remove-Variable -Name message
 }
 
-function git-ps       {
+function git-ps       { ### $PSHOME only Admin can do that
                         
                         $current_path = (pwd).path
                         Set-Location $PSHOME

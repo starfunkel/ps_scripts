@@ -1,6 +1,6 @@
 ### Directory Jumpers
 
-function runners       { Set-Location C:\support\runners }
+function runners    { Set-Location C:\support\runners }
 function sup        { Set-Location c:\support\ }
 function sysint     { set-Location C:\support\Sysinternals }
 function gith       { Set-Location C:\support\code\_git-repos }
