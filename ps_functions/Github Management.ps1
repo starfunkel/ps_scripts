@@ -1,6 +1,7 @@
 ### Github Management
 
 function git-auto       {
+                        
                         param([string]$message = "auto commit - nothing to special")
 
                         git add .
@@ -10,7 +11,15 @@ function git-auto       {
 }
 
 function git-ps       {
-                        Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+                        
+    if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator"))  
+    {  
+    $arguments = "& '" +$myinvocation.mycommand.definition + "'"
+    Start-Process powershell -Verb runAs -ArgumentList $arguments
+    Break
+    }
+
+
                         $current_path = (pwd).path
                         Set-Location $PSHOME
                         git add .\profile.ps1
