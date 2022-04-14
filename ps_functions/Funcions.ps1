@@ -14,7 +14,12 @@ function man        { get-help $args[0] -Full | out-host -paging }
 function cat        { get-content $args[0] }
 function less       { get-content $args[0] | out-host -paging }
 function find       { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
-function uname      { $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'; Get-CimInstance Win32_OperatingSystem | Select-Object $Properties | Format-Table -AutoSize }
+
+function uname      { $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'; Get-CimInstance Win32_OperatingSystem | 
+                        Select-Object $Properties |
+                         Format-Table -AutoSize 
+                    }
+                    
 function history    { get-history -Count 20 }
 
 function imp        { Import-Module $args[0] }
