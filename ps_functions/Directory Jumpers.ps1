@@ -9,7 +9,9 @@ function HKCU:      { Set-Location HKCU: }
 function Env:       { Set-Location Env: }
 function C:         { Set-Location C:\ }
 function ~          { Set-Location $env:UserProfile }
-function posh       { Set-Location C:\support\code\POSH\ }
+function posh       { Set-Location C:\support\code\_git-repos\POSH }
+function scrpts     { Set-Location C:\support\code\_git-repos\POSH\ps-scripts }
+
 
 ### Directoriey movement
 function cd..       { Set-Location .. }

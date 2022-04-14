@@ -15,10 +15,10 @@ function git-ps       {
                         git add .\profile.ps1
                         git commit -m "Profile Updated"
                         git push
-                        Set-Location C:\support\code\POSH
+                        Set-Location C:\support\code\_git-repos\POSH
                         git add .
                         git commit -m "Functions and Definitions Update"
                         git push
                         Set-Location $current_path
-                        Remove-Variable $current_path
+                        Remove-Variable -Name current_path
 }
