@@ -31,17 +31,17 @@ function pong       { Test-Connection $args[0] | Format-Table -Autosize }
 
 function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
                         Invoke-WebRequest "ifconfig.me/ip").Content;
-                        $localIpAddress=((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
+                        $localIpAddress = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
                         Write-host ""
                         Write-Output "External IP:"; 
-                        $env:externalip; 
+                        $env:externalip;
                         Write-host ""
                         Write-Host "Internal IP:"
                         $localIpAddress
                         Write-host ""
 }
 
-### Reload profile https://itenium.be/blog/dev-setup/powershell-profiles/
+### Reload profile https: //itenium.be/blog/dev-setup/powershell-profiles/
 function rel        {
     @(
         $Profile.AllUsersAllHosts,
@@ -56,7 +56,7 @@ function rel        {
     }
 }
 
-### Get Windows ACL Information  https://exchangepedia.com/2017/11/get-file-or-folder-permissions-using-powershell.html
+### Get Windows ACL Information  https: //exchangepedia.com/2017/11/get-file-or-folder-permissions-using-powershell.html
 
 function gacl       ( $folder ) { 
         (get-acl $folder).access | Select-Object `
