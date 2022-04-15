@@ -47,7 +47,7 @@ function adc        ( $computer ){ # Get Ad Computer Info
 
 # Azure AD + M365
 
-function force-azure-sync   {
+function push-azure-sync   {
     Connect-AzureAD
     Import-Module ADSync
     Get-ADSyncScheduler

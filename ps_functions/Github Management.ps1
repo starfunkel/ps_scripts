@@ -1,6 +1,6 @@
 ### Github Management
 
-function git-auto       {
+function ga         {
                         
                         param([string]$message = "auto commit - nothing to special")
 
