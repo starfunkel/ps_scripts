@@ -132,9 +132,3 @@ Function New-PinnedItem # https://stackoverflow.com/questions/59778951/pin-progr
     [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject([System.__ComObject]$shell)
     [void][System.Runtime.InteropServices.Marshal]::ReleaseComObject([System.__ComObject]$obj)
 }
-
-New-PinnedItem -Path "C:\Windows\explorer.exe"
-New-PinnedItem -Path "C:\Program Files (x86)\Microsoft Office\Office16\WINWORD.EXE"
-New-PinnedItem -Path "C:\Program Files (x86)\Microsoft Office\Office16\EXCEL.EXE"
-New-PinnedItem -Path "C:\Program Files (x86)\Microsoft Office\Office16\POWERPNT.EXE"
-New-PinnedItem -Path "C:\Program Files (x86)\Microsoft Office\Office16\OUTLOOK.EXE"

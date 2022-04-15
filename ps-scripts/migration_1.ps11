@@ -1,62 +1,8 @@
-#  +++++++++++++++++++++++++++ $$$$$$   /$$$$$$  /$$$$$$$ ++++++++++++++++++++++++++
-#  ++++++++++++++++++++++++++/$$__  $$ /$$__  $$| $$__  $$++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++| $$  \ $$| $$  \ $$| $$  \ $$++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++| $$$$$$$$| $$$$$$$$| $$$$$$$ ++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++| $$__  $$| $$__  $$| $$__  $$++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++| $$  | $$| $$  | $$| $$  \ $$++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++| $$  | $$| $$  | $$| $$$$$$$/++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++|__/  |__/|__/  |__/|_______/+++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#  ++++++++                                                                 ++++++++   
-#  +++++++            Export / Import Script für WX-VM Generation            +++++++
-#  ++++++                         by Christian Rathnau                        ++++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++                        Stand 11/2020                                  +++++
-#  +++++                        Version 1.0                                    +++++
-#  +++++                                                                       +++++
-#  +++++    Das Script                                                         +++++
-#  +++++              Export Userdaten von Programmen                          +++++
-#  +++++                                                                       +++++
-#  +++++              Outlook Connector                                        +++++
-#  +++++              Mdaemon Messanger (nur Backup, Restore-> migration_2.ps1 +++++
-#  +++++              Google Chrome                                            +++++
-#  +++++              Internet Explorer                                        +++++
-#  +++++              Edge                                                     +++++
-#  +++++              Firefox                                                  +++++
-#  +++++              Wallpaper Backup                                         +++++
-#  +++++              Zippt den Backup     Ordner                              +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++              Import Userdaten auf neuer Maschine                      +++++
-#  +++++                                                                       +++++
-#  ++++++                                                                     ++++++
-#  +++++++                                                                   +++++++
-#  ++++++++                                                                 ++++++++   
-#  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#  +++++    Changelog:                                                         +++++
-#  +++++                                                                       +++++
-#  +++++     Version 1.1                                                       +++++
-#  +++++                                                                       +++++
-#  +++++       - added Windows Explorer View Modifications                     +++++
-#  +++++       - Dropped Outlook Profile Copy Support                          +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++                                                                       +++++
-#  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-#  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    #  +++++ MStore
-    # Computer\HKEY_CURRENT_USER\SOFTWARE\Policies\deepinvent
 
 
-#  +++++ params 
+### params 
 
-#  +++++ Funktionen
+### Funktionen
 
 Function New-PinnedItem # https://stackoverflow.com/questions/59778951/pin-program-with-parameters-to-taskbar-using-ps-in-windows-10
  { 
@@ -199,14 +145,14 @@ Function Set-WallPaper($Value)
     rundll32.exe user32.dll, UpdatePerUserSystemParameters
  }
 
-#  +++++ Globale Variablen
+### Globale Variablen
 
 # [string[]] $supd = "C:\support"
 [string[]] $extd = "C:\support\1_backup\export"
 [string[]] $impd = "C:\Support\1_import\"
 [string[]] $appd = "C:\Users\${env:UserName}\AppData\Roaming"
 
-#  +++++ Code
+### Code
 
 Write-Host "#######################################################################################"
 Write-Host "#####                                                                             #####"
@@ -222,122 +168,64 @@ Write-Host "#                                                                   
 Write-Host "# Type 1 for Export                                                                   #"
 Write-Host "# Type 2 for Import                                                                   #"
 Write-Host "#                                                                                     #"
-Write-Host "#                                                                                     #"
-Write-Host "#                                                                                     #"
 Write-Host "#######################################################################################"
 Write-Host "#                                                                                     #"
 $migrate = Read-Host "# Select Option"
 Write-Host "#                                                                                     #"
 
 
-#  +++++ Export / Backup (auf alter Maschine)
+### Export / Backup (auf alter Maschine)
 
 if ($migrate -eq "1"){
-    Write-Host "#######################################################################################"
-    Write-Host "#                                                                                     #"
-    Write-Host "# Migration it is!                                                                    #" -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "# Starting in 5 seconds                                                               #"
-    Start-Sleep 5
-
-    #  +++++ Backup folder creation
-    Write-Host "#                                                                                     #"
-    Write-Host "# Creating Backuo folder                                                              #"
-    Write-Host "#                                                                                     #"
     Set-Location "C:\Support"
     New-Item -Path "c:\support" -Name "1_Backup" -ItemType Directory | Out-Null
-    Write-Host ""
     New-Item -Path "C:\support\1_Backup\" -Name "export" -ItemType Directory | Out-Null
-    Write-Host ""
-    Write-Host "# backup Directory is created                                                         #" -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "#######################################################################################"
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Outlook Connector
-    Write-Host "# MD Connector Backup                                                                 #"
+    ### Outlook Connector
     Copy-Item -Path "${appd}\Alt-N\" -Destination "$extd\MD_Connector\Alt-N\" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Mdaemon Messanger
-    Write-Host "# MD Messanger Backup                                                                 #"
+    ### Mdaemon Messanger
     Copy-Item -Path "C:\Program Files (x86)\MDaemon Technologies\ComAgent" -Destination "$extd\MD_Messanger\" -Recurse -Force -ErrorAction SilentlyContinue
     Copy-Item -Path "${appd}\Microsoft\Windows\Start Menu\Programs\Startup\MDaemon Instant Messenger.lnk" -Destination "$extd\" -Recurse -Force
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Google Chrome
-    Write-Host "# Google Chrome Profile Backup                                                        #"
+    ### Google Chrome
     Copy-Item -Path "$env:LOCALAPPDATA\google\chrome\user data\default" -Destination "$extd\Chrome\" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Internet Explorer
-    Write-Host "# Internet Explorer Bookmarks Backup                                                  #"
+    ### Internet Explorer
     Set-Location $env:USERPROFILE
     Set-Location .\Favorites
     Copy-Item -Path ./ -Destination "$extd\IE_Favs\" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  ++++++ Firefox
-    Write-Host "# Firefox Profile Backup                                                              #"
+    ###+ Firefox
     Copy-Item -Path "${appd}\Mozilla\Firefox\" -Destination "$extd\Mozilla\Firefox\" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Wallpaper
+    ### Wallpaper
     Set-Location HKCU:
     $wallp = (Get-ItemProperty -Path ".\Control Panel\Desktop\" -Name "wallpaper").wallpaper
 
         # Check if Value [wallpaper] is empty, if not copy file from value wallpaper location to $extd
         if ($wallp -eq ""){
-            Write-Host "# No Wallpaper found! Skipping Step!                                                  #"
-            Write-Host "#                                                                                     #"
         }
         else {
-            Write-Host "# Wallaper Backup                                                                     #"
             Set-Location C:\
             Copy-Item -Path "$wallp" -Destination "$extd\wallpaper.jpg" -Recurse -Force -ErrorAction SilentlyContinue
-            Write-Host "#                                                                                     #"
-            Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-            Write-Host "#                                                                                     #"
-            }
-            Write-Host "#                                                                                     #"
 
-    Write-Host "# Compressing Backup Archive                                                          #"
-    #  +++++ Zipping
+            }
+
+    ### Zipping
     $compress = @{  
         Path = "$extd\*"
         CompressionLevel = "Fastest"
         DestinationPath = "C:\Support\1_backup\Backup.zip"
     }
     Compress-Archive @compress
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "# Backup fnished! Backup Archive Location:                                            #"  
-    Write-Host "#                                          C:\Support\Backup.zip                      #"
-    Write-Host "#                                                                                     #"
-    Write-Host "# Please copy the Archive to the destination Host and run this Script again!          #" -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "#######################################################################################"
     Set-Location "C:\Support"
 }
 
 # ++++++ Import (auf neuer Maschine)
 
 if ($migrate -eq "2"){
-    Write-Host "#######################################################################################"
-    Write-Host "#                                                                                     #"
-    Write-Host "# Migration it is!                                                                    #"
-    Write-Host "#                                                                                     #"
+
     Write-Host "# Starting in 5 seconds                                                               #"
     Start-Sleep 5
 
@@ -347,88 +235,45 @@ if ($migrate -eq "2"){
     New-PinnedItem -Path "C:\Program Files (x86)\Microsoft Office\Office16\POWERPNT.EXE"
     New-PinnedItem -Path "C:\Program Files (x86)\Microsoft Office\Office16\OUTLOOK.EXE"
 
-    #  +++++ Backup folder creation
-    Write-Host "#                                                                                     #"
-    Write-Host "# Creating Import folder                                                              #"
-    Write-Host "#                                                                                     #"
+    ### Backup folder creation
     Set-Location "C:\Support"
     New-Item -Path "c:\support" -Name "1_import" -ItemType Directory
-    Write-Host ""
-    Write-Host "# Import Directory is created                                                         #" -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "# Expanding Archive.... This could take a little while.                               #" -ForegroundColor Yellow
 
-    #  +++++ Expanding Archive
-
+    ### Expanding Archive
     $archd = "C:\Support\1_import"
     Expand-Archive -LiteralPath "c:\support\Backup.zip" -DestinationPath $archd -Force
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #" -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "#######################################################################################"
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Outlook Connector
-    Write-Host "# MD Connector Import                                                                 #"
+    ### Outlook Connector
     Copy-Item -Path "$impd\MD_Connector\ALT-N" -Recurse -Force -Destination "${appd}\" -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Google Chrome
-    Write-Host "# Google Chrome Profile Import                                                        #"
+    ### Google Chrome
     # New-Item -Path "$env:LOCALAPPDATA\google\chrome\user data\" -Name "default" -ItemType Directory
     Copy-Item -Path "$impd\Chrome\" -Destination  "$env:LOCALAPPDATA\google\chrome\user data\default" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ internet Explorer
-    Write-Host "# Internet Explorer Bookmarks Import                                                  #"
+    ### internet Explorer
     Copy-Item -Path "$impd\IE_Favs\*" -Destination "$env:USERPROFILE\Favorites\" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  ++++++ Firefox
-    Write-Host "# Firefox Profile Backup                                                              #"
+    ###+ Firefox
     # Remove-Item "${appd}\Mozilla\Firefox" -Force -recurse | Out-Null
     Copy-Item -Path "$impd\Mozilla\Firefox\" -Destination  "${appd}\Mozilla\" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  +++++ Wallpaper
-    Write-Host "# Wallpaper Import (Save Location c:\users\xx\Pictures\wallaper.jpg)                  #"
+    ### Wallpaper
     # $wallp = (Test-Path $impd\wallpaper.jpg)
     Copy-Item $impd\wallpaper.jpg -Destination "$env:USERPROFILE\Pictures\wallpaper.jpg"  -ErrorAction SilentlyContinue
     Set-WallPaper "$env:USERPROFILE\Pictures\wallpaper.jpg" 
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  ++++++ MD Messenger
 
-    Write-Host "# MD Messenger Post configurution                                                      #"
+    ###+ MD Messenger
+
     New-Item -Path "$appd\Microsoft\Windows\Start Menu\Programs\"  -Name "Startup" -ItemType Directory
     Copy-Item -Path "$impd\MDaemon Instant Messenger.lnk" -Destination "$appd\Microsoft\Windows\Start Menu\Programs\Startup" -Recurse -Force -ErrorAction SilentlyContinue
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
 
-    #  ++++++ Windows Explorer View Properties  https://stackoverflow.com/questions/4491999/configure-windows-explorer-folder-options-through-powershell
-
-    Write-Host "#                                                                                     #"
-    Write-Host "# Setting Explorer View Settings                                                      #"
+    ###+ Windows Explorer View Properties  https://stackoverflow.com/questions/4491999/configure-windows-explorer-folder-options-through-powershell
     $key = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
     Set-ItemProperty $key Hidden 1
     Set-ItemProperty $key HideFileExt 0
     Set-ItemProperty $key ShowSuperHidden 1
     Stop-Process -processname explorer  
-    Write-Host "#                                                                                     #"
-    Write-Host "# Done!                                                                               #"  -ForegroundColor Green
-    Write-Host "#                                                                                     #"
-    Write-Host "# Elevating to admin for helper Script migration_2.ps1                                #"
 
     Start-Sleep 1
     & $PSScriptRoot\migration_2.ps1

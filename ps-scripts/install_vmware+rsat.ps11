@@ -69,7 +69,6 @@ if(get-Module -ListAvailable  -name vmware*){    # Checks if PowerCli Module is 
 
 # RSAT Module availabilty check - Brauchen wir noch nicht
 
-
 if(
     Get-WindowsCapability -online |
     where-object Name -Match "RSAT")    # Checks if RSAT Modules are installed

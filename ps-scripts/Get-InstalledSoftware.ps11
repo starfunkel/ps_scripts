@@ -65,7 +65,9 @@ function Get-InstalledSoftware
 
 		[System.Management.Automation.ScriptBlock]$ScriptBlock = {
 			# Location where all entrys for installed software should be stored
-			return Get-ChildItem -Path  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | Get-ItemProperty | Select-Object -Property DisplayName, Publisher, UninstallString, InstallLocation, InstallDate
+			return Get-ChildItem -Path  "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" |
+			 Get-ItemProperty |
+			 Select-Object -Property DisplayName, Publisher, UninstallString, InstallLocation, InstallDate
 		}
 	}
 

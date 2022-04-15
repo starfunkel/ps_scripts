@@ -1,22 +1,22 @@
-#  +++++ Reaktiviert den Thumbnail Cache und das Anzeigen von Thumbs im Windows Explorer
-#  +++++ (c) cra
-#  +++++ Leider 2 Hardcoded Sachen drin
-#  +++++
-#  +++++	1. env:Path muss c:\support\enable-thumbs sein (deswegen muss der Ordner da auch hinkopiert werden)
-#  +++++	2. lgpo.exe /t braucht den Pfad für die Regsitry .txt auch als vollen Pfad 
-#  +++++
-#  +++++	Trotzdem spassig :-)
+#   Reaktiviert den Thumbnail Cache und das Anzeigen von Thumbs im Windows Explorer
+#   (c) cra
+#   Leider 2 Hardcoded Sachen drin
+#  
+#  	1. env:Path muss c:\support\enable-thumbs sein (deswegen muss der Ordner da auch hinkopiert werden)
+#  	2. lgpo.exe /t braucht den Pfad für die Regsitry .txt auch als vollen Pfad 
+#  
+#  	Trotzdem spassig :-)
 
 
 
-#  +++++ Parameter 
+#   Parameter 
 param([switch]$Elevated)
 function Test-Admin # https://superuser.com/questions/108207/how-to-run-a-powershell-script-as-administrator
  {
   $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
   $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 } 
-#  ++++++ Funktionen
+#   Funktionen
 
 function Write-ProgressHelper { # https://adamtheautomator.com/write-progress/
 	param (
@@ -27,9 +27,7 @@ function Write-ProgressHelper { # https://adamtheautomator.com/write-progress/
 	Write-Progress -Activity "Enable Thumbs Preview" -Status $Message -PercentComplete (($StepNumber / $steps) * 100)
 }
 
-
-
-#  ++++++ Variablen
+#   Variablen
 
 $User = New-Object System.Security.Principal.NTAccount($env:UserName)
 $sid = $User.Translate([System.Security.Principal.SecurityIdentifier]).value
@@ -37,7 +35,7 @@ $sid = $User.Translate([System.Security.Principal.SecurityIdentifier]).value
 $script:steps = ([System.Management.Automation.PsParser]::Tokenize((gc "$PSScriptRoot\$($MyInvocation.MyCommand.Name)"), [ref]$null) | where { $_.Type -eq "Command" -and $_.Content -eq "Write-ProgressHelper" }).Count
 $stepCounter = 0
 
-#  ++++++ Code
+###+ Code
 if ((Test-Admin) -eq $false)  {
     if ($elevated) 
     {
@@ -50,25 +48,16 @@ if ((Test-Admin) -eq $false)  {
 exit
 }
 
-#  +++++ Code
-#  +++++ Setting env
-Clear-Host
-Write-Host "AAB 2021 (c) cra"
-Write-Host ""
-Write-Host ""
-Write-Host ""
-Write-Host ""
-Write-Host ""
-Write-Host ""
-Write-Host ":-)"
+### Code
+### Setting env
 Write-ProgressHelper -Message 'Erstelle PATH Variable' -StepNumber ($stepCounter++) 
 $env:Path=$env:Path + ';C:\support\enable-thumbs'
 Write-ProgressHelper -Message 'Erstelle HKEY_USERS Hive' -StepNumber ($stepCounter++) 
-#  +++++ Erstelle PSDrives
+### Erstelle PSDrives
 New-PSDrive HKU Registry HKEY_USERS | Out-Null
 Write-ProgressHelper -Message 'Erstelle HKEY_CLASSES_ROOT Hive' -StepNumber ($stepCounter++)
 New-PSDrive HKCR Registry HKEY_CLASSES_ROOT | Out-Null
-#  +++++ und ab geht der Spass
+### und ab geht der Spass
 Write-ProgressHelper -Message 'Loesche Key 1' -StepNumber ($stepCounter++)
 Set-Location HKU:\${sid}\Software\Microsoft\Windows\
 Remove-ItemProperty -Path "DWM" -Name "AlwaysHibernateThumbnails" -ErrorAction SilentlyContinue | Out-Null
@@ -184,7 +173,6 @@ Write-ProgressHelper -Message 'Schreibe Keys' -StepNumber ($stepCounter++)
 Set-ItemProperty -Path "HKCR:\PhotoViewer.FileAssoc.Gif" -Name "FriendlyTypeName" -Type expandstring -Value "@%ProgramFiles%\Windows Photo Viewer\PhotoViewer.dll,-3057" | Out-Null
 Write-ProgressHelper -Message 'Schreibe Keys' -StepNumber ($stepCounter++)
 New-Item -Path "HKCR:\PhotoViewer.FileAssoc.Gif\DefaultIcon" -Force | Out-Null
-Write-Host "Hooray! Half way through!!!"
 Write-ProgressHelper -Message 'Schreibe Keys' -StepNumber ($stepCounter++)
 Set-ItemProperty -Path "HKCR:\PhotoViewer.FileAssoc.Gif\DefaultIcon" -Name "(Default)" -Type string -Value "%SystemRoot%\\System32\\imageres.dll,-83" | Out-Null
 Write-ProgressHelper -Message 'Schreibe Keys' -StepNumber ($stepCounter++)
@@ -276,12 +264,12 @@ Write-ProgressHelper -Message 'Schreibe Keys' -StepNumber ($stepCounter++)
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" -Name ".tif" -Type string -Value "PhotoViewer.FileAssoc.Tiff" | Out-Null
 Write-ProgressHelper -Message 'Schreibe Keys' -StepNumber ($stepCounter++)
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations" -Name ".tiff" -Type string -Value "PhotoViewer.FileAssoc.Tiff" | Out-Null
-Write-ProgressHelper -Message 'Beende explorer.exe' -StepNumber ($stepCounter++)
-#  +++++ LGPO.exe call
+Write-ProgressHelper -Message 'Exiting explorer.exe' -StepNumber ($stepCounter++)
+### LGPO.exe call
 & lgpo.exe /t C:\support\enable-thumbs/mlgpo.txt
 & lgpo.exe /t C:\support\enable-thumbs/ulgpo.txt
 Write-Host
-Write-ProgressHelper -Message 'Beende explorer.exe' -StepNumber ($stepCounter++)
+Write-ProgressHelper -Message 'Exiting explorer.exe' -StepNumber ($stepCounter++)
 Stop-Process -ProcessName explorer -Force 
 Clear-Host
 

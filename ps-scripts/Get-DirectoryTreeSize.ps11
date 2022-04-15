@@ -53,17 +53,13 @@ param(
         Mandatory = $true
     )]
     [string]  $Path,
- 
- 
- 
+  
     [Parameter(
         Mandatory = $false,
         ParameterSetName = "ShowRecursive"
     )]
     [switch]  $Recurse,
- 
- 
- 
+  
     [Parameter(
         Mandatory = $false,
         ParameterSetName = "ShowTopFolderAllItemsAndAllFolders"
