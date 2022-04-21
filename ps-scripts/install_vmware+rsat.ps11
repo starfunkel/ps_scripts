@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:ps-scripts/install_vmware+rsat.ps11
 #requires -version 5.1
 
@@ -153,6 +154,8 @@ if(
 =======
 =======
 >>>>>>> 39cf522 (Functions and Definitions Update)
+=======
+>>>>>>> 28cf6d4 (Functions and Definitions Update)
 #requires -version 5.1
 
 <#
@@ -234,10 +237,13 @@ else{
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a6d7ba278becbe9869efeefe706139cbc9a8892a:ps-scripts/install_vmware+rsat.ps11
 <<<<<<< HEAD:ps-scripts/install_vmware+rsat.ps11
 >>>>>>> ff6eaca (Functions and Definitions Update):ps-scripts/essentials.ps1
 =======
+=======
+>>>>>>> 28cf6d4 (Functions and Definitions Update)
 =======
 #requires -version 5.1
 
@@ -319,7 +325,11 @@ else{
     Add-WindowsCapability -Online
 }
 
+<<<<<<< HEAD
 >>>>>>> refs/remotes/origin/main:ps-scripts/install_vmware+rsat.ps11
 >>>>>>> 917294a (Functions and Definitions Update):ps-scripts/essentials.ps1
 =======
 >>>>>>> 39cf522 (Functions and Definitions Update)
+=======
+>>>>>>> a6d7ba278becbe9869efeefe706139cbc9a8892a
+>>>>>>> 28cf6d4 (Functions and Definitions Update)
