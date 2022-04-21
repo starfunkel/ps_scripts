@@ -1,5 +1,3 @@
-<<<<<<< HEAD:ps-scripts/vmware/vmware.ps1
-
 #  +++++ Vi Server Anmeldung + Zertifikatscheck aus + Kein Participation
 set-PowerCLIConfiguration -scope user -ParticipateinCEIP $false -Confirm:$false | Out-Null
 set-PowerCLIConfiguration -invalidcertificateaction  ignore -Confirm:$false | Out-Null 
@@ -190,4 +188,3 @@ while ($i -le $vmamount){
 
 Disconnect-VIServer -Server $viserver -Confirm:$false
 Disconnect-HVServer -Server $hvserver -Confirm:$false
->>>>>>> a6d7ba278becbe9869efeefe706139cbc9a8892a:ps-scripts/Clone_vms.ps11
