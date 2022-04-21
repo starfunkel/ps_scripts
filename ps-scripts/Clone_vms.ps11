@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿<#
         .SYNOPSIS
         klont VMs
@@ -107,6 +108,8 @@ while ($i -le $vmamount){
 
 Disconnect-VIServer -Server $viserver -Confirm:$false
 =======
+=======
+>>>>>>> 39cf522 (Functions and Definitions Update)
 ﻿<#
         .SYNOPSIS
         klont VMs
@@ -214,5 +217,117 @@ while ($i -le $vmamount){
 }
 
 Disconnect-VIServer -Server $viserver -Confirm:$false
+<<<<<<< HEAD
 >>>>>>> 917294a (Functions and Definitions Update)
+=======
+=======
+﻿<#
+        .SYNOPSIS
+        klont VMs
+        .NOTES
+        Author: Christian Rathnau 
+        2022
+
+        TO Do
+        Add Auto Scan of Network based either in VI/HV Servers to get Hypervisors and Foreach ESX get vm Info
+    
+        .LINK
+        None.     
+
+        .INPUTS
+        None.
+    
+        .OUTPUTS
+        None.
+#>
+
+### Vi Server Anmeldung + Zertifikatscheck aus + Kein Participation
+
+set-PowerCLIConfiguration -scope user -ParticipateinCEIP $false -Confirm:$false | Out-Null
+set-PowerCLIConfiguration -invalidcertificateaction  ignore -Confirm:$false | Out-Null 
+
+$viserver=Read-Host "Enter VI Server IP"
+connect-viserver $vserver-ErrorAction Stop
+
+$hvserver=Read-Host "Enter HV Server IP"
+connect-hvserver $hvserver -ErrorAction Stop
+
+### Alte ESXI Variablen
+$vm_on_esx1 = (get-vm -Location "esx").count
+
+### ESXI Abfrage
+$vmamount = Read-Host "[!] How many Vm's do you want to clone" 
+Write-Host ""
+Write-Host "Please choose" -ForegroundColor Green
+Write-Host "ESXI Host       VMs"
+Write-Host "-----------     ----"
+Write-Host "  ESX1:         $vm_on_esx1"  # Lists Vms per ESX Host
+Write-Host "--------------------"
+$vmhost = Read-Host "[!] On which Host should they run" 
+
+### Datastore Abfrage
+Write-Host ""
+Write-host "Datastore overview" -ForegroundColor Green
+$dstorename= Get-datastore | Sort-Object Name
+$dstorename
+Write-Host ""
+$dstore = Read-Host "Please choose a target datastore" 
+Write-Host ""
+
+### VM Creation + User and PC Pool Assigning 
+$i = 1
+while ($i -le $vmamount){
+    Write-Host "Please choose" -ForegroundColor Green
+    Write-Host "ESXI Host       VMs"
+    Write-Host "-----------     ----"
+    Write-Host "  ESX1:         $vm_on_esx1"  # Lists Vms per ESX Host
+    Write-Host "--------------------"
+    $vmhost = Read-Host "[!] On which Host should they run" 
+
+    ### Datastore Abfrage
+    Write-Host ""
+    Write-host "Datastore overview" -ForegroundColor Green
+    $dstorename= Get-datastore | Sort-Object Name
+    $dstorename
+    Write-Host ""
+    $dstore = Read-Host "Please choose a target datastore" 
+    Write-Host ""
+
+    ### VM Naming
+    $vmname = Read-Host "VM-Name"
+
+    ### User Assignment
+    $username = Read-Host "Assigned User"
+
+    ### Adding Notes
+    # $Notes=Read-Host "Evtl. Notizen fuer die Vm eintragen"
+    
+    ### Setting Notes
+    # Set-VM "WXL-$vmname" -Notes $Notes -Confirm:$false -RunAsync
+    # Get-VM "WXL-$vmname" | Select-Object Name,Notes
+
+    ### VM Creation
+    New-VM -Name "WXL-$vmname" -Template "WXL-LTSC-MUTTER-Template" -OSCustomizationSpec "Windows 10 LTSC Cloning" -VMHost "$vmhost.bla.com" -Datastore "$dstore" -RunAsync |
+    Out-Null
+ 
+    ### Move to Pool + Assign User
+    Write-Host "User pool assignment"
+    add-hvdesktop -poolname "Win-10-LTSC" -machines "WXL-$vmname"     # https://communities.vmware.com/t5/Horizon-Desktops-and-Apps/Assign-user-in-Dedicated-pool-with-Powershell/td-p/980880
+    New-HVEntitlement -User $username'@bla.com' -ResourceName  "Win-10-LTSC"
+    start-sleep -s 5
+    get-hvmachine -machinename "WXL-$vmname" | 
+    set-hvmachine -user "$username@blacom"
+    Move-VM -VM "WXL-$vmname" -InventoryLocation "ViewVW_WBK" | 
+    Out-Null
+
+    ### Start VM
+    Write-host "Start cloning(s)..."
+    Start-vm -VM "WXL-$vmname" -RunAsync | 
+    Out-Null
+    $i++
+}
+
+Disconnect-VIServer -Server $viserver -Confirm:$false
+>>>>>>> a6d7ba278becbe9869efeefe706139cbc9a8892a
+>>>>>>> 39cf522 (Functions and Definitions Update)
 Disconnect-HVServer -Server $hvserver -Confirm:$false
