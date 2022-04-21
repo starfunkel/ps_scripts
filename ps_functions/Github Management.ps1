@@ -26,16 +26,25 @@ function ga         {
 }
 
 function gs       { ### $PSHOME only Admin can do that
-                        
+                        Write-Host ""
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "Powershell Profile commit"
                         $current_path = (Get-Location).path
                         Set-Location $PSHOME
                         git add .\profile.ps1
                         git commit -m "Profile Updated"
                         git push
+                        Write-Host "Profile commited"
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host ""
+                        Write-Host "POSH Repo commit"
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
                         git commit -m "Functions and Definitions Update"
                         git push
+                        Write-Host "POSH Repo commited"
+                        Write-Host "-------------------------------------------------------------------"
+                        
                         Set-Location $current_path
                         Remove-Variable -Name current_path
 }
