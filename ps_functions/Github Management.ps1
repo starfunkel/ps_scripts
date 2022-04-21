@@ -37,6 +37,7 @@ function gs       { ### $PSHOME only Admin can do that
                         Write-Host "Profile commited"
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host ""
+                        Write-Host "-------------------------------------------------------------------"
                         Write-Host "POSH Repo commit"
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
