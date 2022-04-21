@@ -105,3 +105,4 @@ while ($i -le $vmamount){
 }
 
 Disconnect-VIServer -Server $viserver -Confirm:$false
+Disconnect-HVServer -Server $hvserver -Confirm:$false

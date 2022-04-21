@@ -36,7 +36,6 @@ function gs       { ### $PSHOME only Admin can do that
                         git push
                         Write-Host "Profile commited" -ForegroundColor Green
                         Write-Host "-------------------------------------------------------------------"
-                        Write-Host ""
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "POSH Repo commit" -ForegroundColor Yellow
                         Set-Location C:\support\code\_git-repos\POSH
