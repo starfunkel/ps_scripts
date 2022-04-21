@@ -25,9 +25,9 @@ function ga         {
                         Remove-Variable -Name message
 }
 
-function git-ps       { ### $PSHOME only Admin can do that
+function gs       { ### $PSHOME only Admin can do that
                         
-                        $current_path = (pwd).path
+                        $current_path = (Get-Location).path
                         Set-Location $PSHOME
                         git add .\profile.ps1
                         git commit -m "Profile Updated"
