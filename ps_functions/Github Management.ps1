@@ -1,3 +1,18 @@
+<#
+    .SYNOPSIS
+    Powershell & Git  combined functions to easy commit and push repos to Github
+
+    .DESCRIPTION
+    These functions will programmatically utilize git add . , auto commit -m ; and push.  
+
+    Beware that repo directories have to be hardoced in here to make it function
+    .EXAMPLE
+            
+    .NOTES
+    Heavy work in progress
+#>
+
+
 ### Github Management
 
 function ga         {
