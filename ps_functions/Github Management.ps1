@@ -41,8 +41,8 @@ function git-ps     {
                             Write-Host "-------------------------------------------------------------------"
                             Write-Host "-------------------------------------------------------------------"
                             Write-Host "POSH Repo commit" -ForegroundColor Yellow
-                        }
-                        
+                        } -verb RunAs
+
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
                         git commit -m "Functions and Definitions Update" 
