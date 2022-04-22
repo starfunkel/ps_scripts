@@ -25,7 +25,7 @@ function ga         {
                         Remove-Variable -Name message
 }
 
-function git-ps     {
+function gitc     {
 
                         $current_path = (Get-Location).path                    
                         Write-Host "-------------------------------------------------------------------"
