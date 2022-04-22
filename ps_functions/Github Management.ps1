@@ -32,7 +32,7 @@ function git-ps     {
                         Write-Host "Powershell Profile commit" -ForegroundColor Yellow
                         $current_path = (Get-Location).path
                         
-                        Start-Process -FilePath powershell.exe --ArgumentList {
+                        Start-Process -FilePath powershell.exe -ArgumentList {
                             Set-Location $PSHOME
                             git add .\profile.ps1
                             git commit -m "Profile Updated" 
