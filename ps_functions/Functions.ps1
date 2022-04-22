@@ -58,7 +58,7 @@ function ip         { $env:externalip = ( # gets external $ internal IPs of Loca
                         Write-Host "Internal IP:"
                         $localIpAddress
                         Write-host ""
-}
+                    }
 
 ### Reload profile https: //itenium.be/blog/dev-setup/powershell-profiles/
 function rel        {

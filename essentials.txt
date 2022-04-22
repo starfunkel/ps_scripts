@@ -1,19 +1,19 @@
 <#
-  .SYNOPSIS
+    .SYNOPSIS
+    Powershell script for setting up a new profile for administrative work in AD hybrid enviroments
+    .DESCRIPTION
 
-  .DESCRIPTION
+    .PARAMETER InputPath
 
-  .PARAMETER InputPath
+    .PARAMETER OutputPath
 
-  .PARAMETER OutputPath
+    .INPUTS
 
-  .INPUTS
+    .OUTPUTS
 
-  .OUTPUTS
+    .EXAMPLE
 
-  .EXAMPLE
+    .EXAMPLE
 
-  .EXAMPLE
-
-  .EXAMPLE
+    .EXAMPLE
 #>

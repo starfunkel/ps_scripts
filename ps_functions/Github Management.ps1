@@ -1,11 +1,11 @@
 <#
     .SYNOPSIS
-    Powershell & Git  combined functions to easy commit and push repos to Github
+    Powershell functions for working with Git commands to easaly commit and push repos to Github even in system directories
 
     .DESCRIPTION
-    These functions will programmatically utilize git add . , auto commit -m ; and push.  
+    These functions will programmatically utilize git add . ; auto commit -m ; and push.  
 
-    Beware that repo directories have to be hardoced in here to make it function
+    Beware that repo directories have to be hardoced in here to make it work
     .EXAMPLE
             
     .NOTES
@@ -32,8 +32,8 @@ function git-ps     {
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
-                                                start-Sleep 1
-                        ""                        
+                        start-Sleep 1
+                        
                         Start-Process -FilePath powershell.exe -ArgumentList {
                             $PID
                             Clear-Host
@@ -56,7 +56,6 @@ function git-ps     {
                             stop-process -id $PID
                         } -verb RunAs
                         
-                        ""
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"

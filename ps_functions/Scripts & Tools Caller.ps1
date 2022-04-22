@@ -34,4 +34,4 @@ function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe"}
 ### Firefox
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
 # function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p testing }
-# function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
+function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
