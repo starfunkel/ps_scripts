@@ -26,6 +26,7 @@ function ga         {
 }
 
 function git-ps     {
+                        
                         Start-Process powershell -Verb runAs    
                         Write-Host ""
                         Write-Host "-------------------------------------------------------------------"
