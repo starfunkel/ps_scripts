@@ -25,7 +25,8 @@ function ga         {
                         Remove-Variable -Name message
 }
 
-function gs       {     Start-Process -Verb RunAs powershell.exe -Args "-executionpolicy bypass -command gs" ### $PSHOME only Admin can do that
+function git-ps     {
+                        Start-Process powershell -Verb runAs    
                         Write-Host ""
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "Powershell Profile commit" -ForegroundColor Yellow
@@ -47,4 +48,5 @@ function gs       {     Start-Process -Verb RunAs powershell.exe -Args "-executi
                         
                         Set-Location $current_path
                         Remove-Variable -Name current_path
+                        ""
 }
