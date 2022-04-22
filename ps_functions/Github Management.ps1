@@ -25,7 +25,7 @@ function ga         {
                         Remove-Variable -Name message
 }
 
-function gs       { ### $PSHOME only Admin can do that
+function gs       {     Start-Process -Verb RunAs powershell.exe -Args "-executionpolicy bypass -command gs" ### $PSHOME only Admin can do that
                         Write-Host ""
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "Powershell Profile commit" -ForegroundColor Yellow
