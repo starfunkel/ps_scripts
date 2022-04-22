@@ -29,8 +29,7 @@ function git-ps     {
 
                         $current_path = (Get-Location).path                    
                         Write-Host "-------------------------------------------------------------------"
-
-                        Write-Host ""
+                        Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                                                 start-Sleep 1
@@ -48,14 +47,18 @@ function git-ps     {
                             git commit -m "Profile_Updated"
                             ""
                             git push
+                            ""
+                            Write-Host "Profile commited" -ForegroundColor Green
                             Write-Host "-------------------------------------------------------------------"
-                            #start-Sleep 4
+                            Write-Host "###################################################################"
+                            Write-Host "-------------------------------------------------------------------"
+                            start-Sleep 4
                             stop-process -id $PID
                         } -verb RunAs
                         
-                        Write-Host "Profile commited" -ForegroundColor Green
-                        Write-Host "-------------------------------------------------------------------"
                         ""
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "POSH Repo commit" -ForegroundColor Yellow
                         ""
@@ -67,6 +70,8 @@ function git-ps     {
                         git push
                         ""
                         Write-Host "POSH Repo commited" -ForegroundColor Green
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
                         
                         Set-Location $current_path
