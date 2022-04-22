@@ -48,7 +48,8 @@ function git-ps     {
                             git commit -m "Profile_Updated"
                             ""
                             git push
-                            start-Sleep 4
+                            Write-Host "-------------------------------------------------------------------"
+                            #start-Sleep 4
                             stop-process -id $PID
                         } -verb RunAs
                         
