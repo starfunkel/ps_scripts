@@ -73,11 +73,7 @@ function git-ps     {
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
                         ""
-                        ""
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "###################################################################"
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "POSH Repo commit" -ForegroundColor Yellow
+                        Write-Host "Get-ADInfo Repo commit" -ForegroundColor Yellow
                         ""
                         Set-Location "C:\support\code\_git-repos\get-ADInfo"
                         git add .
@@ -86,7 +82,7 @@ function git-ps     {
                         ""
                         git push
                         ""
-                        Write-Host "POSH Repo commited" -ForegroundColor Green
+                        Write-Host "Get-ADInfo Repo commited" -ForegroundColor Green
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
