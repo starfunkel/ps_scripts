@@ -26,22 +26,23 @@ function ga         {
 }
 
 function git-ps     {
-                        
+
                         Write-Host ""
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "Powershell Profile commit" -ForegroundColor Yellow
                         $current_path = (Get-Location).path
-                        Set-Location $PSHOME
-
-
-
-                        git add .\profile.ps1
-                        git commit -m "Profile Updated" 
-                        git push
-                        Write-Host "Profile commited" -ForegroundColor Green
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "POSH Repo commit" -ForegroundColor Yellow
+                        
+                        Start-Process -FilePath powershell.exe --ArgumentList {
+                            Set-Location $PSHOME
+                            git add .\profile.ps1
+                            git commit -m "Profile Updated" 
+                            git push
+                            Write-Host "Profile commited" -ForegroundColor Green
+                            Write-Host "-------------------------------------------------------------------"
+                            Write-Host "-------------------------------------------------------------------"
+                            Write-Host "POSH Repo commit" -ForegroundColor Yellow
+                        }
+                        
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
                         git commit -m "Functions and Definitions Update" 
