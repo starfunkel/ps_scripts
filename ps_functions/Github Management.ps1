@@ -27,27 +27,17 @@ function ga         {
 
 function git-ps     {
                         
-  #  if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-  #      Start-Process PowerShell -Verb RunAs "-NoProfile -ExecutionPolicy Bypass -Command `"cd '$pwd'; & '$PSCommandPath';`"";
-  #      exit;
-   # }    
                         Write-Host ""
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "Powershell Profile commit" -ForegroundColor Yellow
                         $current_path = (Get-Location).path
                         Set-Location $PSHOME
-                        if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-                            Start-Process PowerShell -Verb RunAs "-NoProfile -ExecutionPolicy Bypass -Command `"git add .\profile.ps1; 'git commit -m "Profile Updated"'; 'git push';`"";
-                            
-                            
-                           # cd '$pwd'; & '$PSCommandPath';`"";
-                           #  exit;
-                        }
 
 
-                        # git add .\profile.ps1
-                        # git commit -m "Profile Updated" 
-                        # git push
+
+                        git add .\profile.ps1
+                        git commit -m "Profile Updated" 
+                        git push
                         Write-Host "Profile commited" -ForegroundColor Green
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "-------------------------------------------------------------------"
