@@ -35,7 +35,7 @@ function git-ps     {
                         Start-Process -FilePath powershell.exe -ArgumentList {
                             Set-Location $PSHOME
                             git add .\profile.ps1
-                            git commit -m "Updated_Updated"
+                            git commit -m "Profile_Updated"
                             git push
                         } -verb RunAs 
                         
