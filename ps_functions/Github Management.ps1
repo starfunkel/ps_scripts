@@ -39,6 +39,8 @@ function git-ps     {
                             Clear-Host
                             ""
                             Write-Host "-------------------------------------------------------------------"
+                            Write-Host "###################################################################"
+                            Write-Host "-------------------------------------------------------------------"
                             Write-Host "Powershell Profile commit"
                             Set-Location $PSHOME
                             ""
@@ -87,7 +89,6 @@ function git-ps     {
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
                         ""
-                                                
                         Set-Location $current_path
                         Remove-Variable -Name current_path
 
