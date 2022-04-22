@@ -27,21 +27,34 @@ function ga         {
 
 function git-ps     {
 
+                        $current_path = (Get-Location).path                    
+                        $line = Write-Host "-------------------------------------------------------------------"
+
                         Write-Host ""
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "Powershell Profile commit" -ForegroundColor Yellow
-                        $current_path = (Get-Location).path
-                        
+                        $line
+                        Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
+                                                start-Sleep 1
+                        ""                        
                         Start-Process -FilePath powershell.exe -ArgumentList {
+                            $PID
+                            Clear-Host
+                            ""
+                            $line
+                            Write-Host "Powershell Profile commit"
                             Set-Location $PSHOME
+                            ""
                             git add .\profile.ps1
+                            ""
                             git commit -m "Profile_Updated"
+                            ""
                             git push
-                        } -verb RunAs 
+                            start-Sleep 4
+                            stop-process -id $PID
+                        } -verb RunAs
                         
                         Write-Host "Profile commited" -ForegroundColor Green
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "-------------------------------------------------------------------"
+                        $line
+                        $line
                         Write-Host "POSH Repo commit" -ForegroundColor Yellow
 
                         Set-Location C:\support\code\_git-repos\POSH
