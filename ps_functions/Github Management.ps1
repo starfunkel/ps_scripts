@@ -28,10 +28,10 @@ function ga         {
 function git-ps     {
 
                         $current_path = (Get-Location).path                    
-                        $line = Write-Host "-------------------------------------------------------------------"
+                        Write-Host "-------------------------------------------------------------------"
 
                         Write-Host ""
-                        $line
+                        Write-Host "-------------------------------------------------------------------"
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                                                 start-Sleep 1
                         ""                        
@@ -39,7 +39,7 @@ function git-ps     {
                             $PID
                             Clear-Host
                             ""
-                            $line
+                            Write-Host "-------------------------------------------------------------------"
                             Write-Host "Powershell Profile commit"
                             Set-Location $PSHOME
                             ""
@@ -53,14 +53,18 @@ function git-ps     {
                         } -verb RunAs
                         
                         Write-Host "Profile commited" -ForegroundColor Green
-                        $line
-                        $line
+                        Write-Host "-------------------------------------------------------------------"
+                        ""
+                        Write-Host "-------------------------------------------------------------------"
                         Write-Host "POSH Repo commit" -ForegroundColor Yellow
-
+                        ""
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
+                        ""
                         git commit -m "Functions and Definitions Update" 
+                        ""
                         git push
+                        ""
                         Write-Host "POSH Repo commited" -ForegroundColor Green
                         Write-Host "-------------------------------------------------------------------"
                         
