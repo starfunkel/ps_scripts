@@ -38,13 +38,13 @@ function git-ps     {
                             git commit -m "Profile Updated" 
                             git push
 
-                        } -verb RunAs
+                        } -verb RunAs 
                         
                         Write-Host "Profile commited" -ForegroundColor Green
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "POSH Repo commit" -ForegroundColor Yellow
-                        
+
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
                         git commit -m "Functions and Definitions Update" 
