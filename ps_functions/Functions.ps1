@@ -1,3 +1,22 @@
+<#
+  .SYNOPSIS
+
+  .DESCRIPTION
+
+  .PARAMETER InputPath
+
+  .PARAMETER OutputPath
+
+  .INPUTS
+
+  .OUTPUTS
+
+  .EXAMPLE
+
+  .EXAMPLE
+
+  .EXAMPLE
+#>
 ### Funcions
 
 ### Compute file hashes 

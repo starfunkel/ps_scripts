@@ -1,3 +1,24 @@
+<#
+  .SYNOPSIS
+
+  .DESCRIPTION
+
+  .PARAMETER InputPath
+
+  .PARAMETER OutputPath
+
+  .INPUTS
+
+  .OUTPUTS
+
+  .EXAMPLE
+
+  .EXAMPLE
+
+  .EXAMPLE
+#>
+
+
 ### temps
 
 ### Reimport get-adinfo.psm1 for development
