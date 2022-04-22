@@ -64,7 +64,7 @@ function git-ps     {
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
                         ""
-                        git commit -m "Functions and Definitions Update" 
+                        git commit -m "Auto-commit" 
                         ""
                         git push
                         ""
@@ -72,8 +72,27 @@ function git-ps     {
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
-                        
+                        ""
+                        ""
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "POSH Repo commit" -ForegroundColor Yellow
+                        ""
+                        Set-Location "C:\support\code\_git-repos\get-ADInfo"
+                        git add .
+                        ""
+                        git commit -m "Auto-commit" 
+                        ""
+                        git push
+                        ""
+                        Write-Host "POSH Repo commited" -ForegroundColor Green
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
+                        ""
+                                                
                         Set-Location $current_path
                         Remove-Variable -Name current_path
-                        ""
+
 }
