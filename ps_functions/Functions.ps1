@@ -48,6 +48,15 @@ function aterm      { Start-Process wt.exe -Verb runAs }
 ### Custom functions
 function pong       { Test-Connection $args[0] | Format-Table -Autosize } 
 
+function ToBase64   {[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes("$args[0]"))}
+
+<#
+function FromBase64 { $string=}
+
+{[System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("$args[0]"))}
+
+#>
+
 function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
                         Invoke-WebRequest "ifconfig.me/ip").Content;
                         $localIpAddress = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]

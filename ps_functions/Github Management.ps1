@@ -27,6 +27,8 @@ function ga         {
 
 function gitc     {
 
+                        ### powershell_profile (System32) Commit
+
                         $current_path = (Get-Location).path                    
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
@@ -50,7 +52,7 @@ function gitc     {
                             ""
                             git push
                             ""
-                            Write-Host "Profile commited" -ForegroundColor Green
+                            Write-Host "Profile comitted" -ForegroundColor Green
                             Write-Host "-------------------------------------------------------------------"
                             Write-Host "###################################################################"
                             Write-Host "-------------------------------------------------------------------"
@@ -58,6 +60,9 @@ function gitc     {
                             stop-process -id $PID
                         } -verb RunAs
                         
+
+                        ### powershell_stuff Repo in C:\support\code\_git-repos\POSH
+
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
@@ -70,7 +75,10 @@ function gitc     {
                         ""
                         git push
                         ""
-                        Write-Host "POSH Repo commited" -ForegroundColor Green
+                        Write-Host "POSH Repo comitted" -ForegroundColor Green
+
+                        ###  get-adinfo Repo in C:\support\code\_git-repos\get-ADInfo
+
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
@@ -83,11 +91,27 @@ function gitc     {
                         ""
                         git push
                         ""
-                        Write-Host "Get-ADInfo Repo commited" -ForegroundColor Green
+                        Write-Host "Get-ADInfo Repo comitted" -ForegroundColor Green
+
+                        ### Verwaltungstool Repo C:\support\code\_git-repos\Verwaltungstool
+
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
+                        Write-Host "Verwaltungstool Repo commit" -ForegroundColor Yellow
                         ""
+                        Set-Location "C:\support\code\_git-repos\Verwaltungstool"
+                        git add .
+                        ""
+                        git commit -m "Auto commit"
+                        ""
+                        git push
+                        ""
+                        Write-Host "Verwaltungstool Repo comitted"
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
+
                         Set-Location $current_path
                         Remove-Variable -Name current_path
 
