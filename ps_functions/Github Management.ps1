@@ -107,7 +107,7 @@ function gitc     {
                         ""
                         git push
                         ""
-                        Write-Host "Verwaltungstool Repo comitted"
+                        Write-Host "Verwaltungstool Repo comitted" -ForegroundColor Green
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
