@@ -27,12 +27,12 @@ function ga         {
 
 function gitc     {
 
+                        $LINEDELIMITERS=Write-Host "zzz-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"                    
+
                         ### powershell_profile (System32) Commit
 
                         $current_path = (Get-Location).path                    
-                        Write-Host "-------------------------------------------------------------------"
-                        Write-Host "###################################################################"
-                        Write-Host "-------------------------------------------------------------------"
+                        $LINEDELIMITERS
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                         start-Sleep 1
                         
