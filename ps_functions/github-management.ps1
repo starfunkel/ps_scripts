@@ -25,7 +25,7 @@ function ga         {
                         Remove-Variable -Name MESSAGE
 }
 
-function gitc     {
+function gitc     { ### evtl Parameter: repo, message
 
                         ### powershell_profile (System32) Commit
 
@@ -34,7 +34,7 @@ function gitc     {
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                         start-Sleep 1
                         
-                        Start-Process -FilePath powershell.exe -noprofile -ArgumentList {
+                        Start-Process -FilePath powershell.exe -ArgumentList { ### evtl Startjob
                             Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------" -InformationVariable LINEDELIMITERS
                             $PID
                             Clear-Host
