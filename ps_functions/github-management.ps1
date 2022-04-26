@@ -40,7 +40,7 @@ function gitc     {
                             Clear-Host
                             ""
                             $LINEDELIMITERS
-                            Write-Host "Powershell Profile commit (powershell_profile)"
+                            Write-Host "Powershell Profile commit" 
                             Set-Location $PSHOME
                             ""
                             git add .\profile.ps1
