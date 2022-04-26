@@ -34,8 +34,8 @@ function cat        { get-content $args[0] }
 function less       { get-content $args[0] | out-host -paging }
 function find       { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
 
-function uname      { $Properties = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'; Get-CimInstance Win32_OperatingSystem | 
-                        Select-Object $Properties |
+function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'; Get-CimInstance Win32_OperatingSystem | 
+                        Select-Object $PROPERTIES |
                          Format-Table -AutoSize 
                     }
                     
@@ -59,13 +59,13 @@ function FromBase64 { $string=}
 
 function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
                         Invoke-WebRequest "ifconfig.me/ip").Content;
-                        $localIpAddress = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
+                        $LOCALIPADRESS = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
                         Write-host ""
                         Write-Output "External IP:"; 
                         $env:externalip;
                         Write-host ""
                         Write-Host "Internal IP:"
-                        $localIpAddress
+                        $LOCALIPADRESS
                         Write-host ""
                     }
 
@@ -84,10 +84,10 @@ function rel        {
     }
 }
 
-### Get Windows ACL Information  https: //exchangepedia.com/2017/11/get-file-or-folder-permissions-using-powershell.html
+### Get Windows ACL Information  https: //exchangepedia.com/2017/11/get-file-or-FOLDER-permissions-using-powershell.html
 
-function gacl       ( $folder ) { 
-        (get-acl $folder).access | Select-Object `
+function gacl       ( $FOLDER ) { 
+        (get-acl $FOLDER).access | Select-Object `
           @{Label="Identity";Expression={$_.IdentityReference}}, `
           @{Label="Right";Expression={$_.FileSystemRights}}, `
           @{Label="Access";Expression={$_.AccessControlType}}, `
