@@ -12,11 +12,8 @@
   .OUTPUTS
 
   .EXAMPLE
-
-  .EXAMPLE
-
-  .EXAMPLE
 #>
+
 ### Funcions
 
 ### Compute file hashes 
@@ -47,6 +44,23 @@ function aterm      { Start-Process wt.exe -Verb runAs }
 
 ### Custom functions
 function pong       { Test-Connection $args[0] | Format-Table -Autosize } 
+
+### Scripts & Tools Caller
+
+### Scripts
+function mtr        { C:\support\code\ps-scripts\mtr.ps1 $args[0] }
+function gpa        { C:\support\code\ps-scripts\GPAnalyser.ps1 }
+### Tools
+function lgpo       { C:\support\runners\lgpo.exe }
+function nmap       { C:\support\Nmap\nmap.exe $args[0] }
+
+### Screen Captures
+function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe"}
+
+### Firefox
+function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
+# function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p testing }
+function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
 
 function ToBase64   {[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes("$args[0]"))}
 
@@ -83,15 +97,3 @@ function rel        {
         }
     }
 }
-
-### Get Windows ACL Information  https: //exchangepedia.com/2017/11/get-file-or-FOLDER-permissions-using-powershell.html
-
-function gacl       ( $FOLDER ) { 
-        (get-acl $FOLDER).access | Select-Object `
-          @{Label="Identity";Expression={$_.IdentityReference}}, `
-          @{Label="Right";Expression={$_.FileSystemRights}}, `
-          @{Label="Access";Expression={$_.AccessControlType}}, `
-          @{Label="Inherited";Expression={$_.IsInherited}}, `
-          @{Label="Inheritance Flags";Expression={$_.InheritanceFlags}}, `
-          @{Label="Propagation Flags";Expression={$_.PropagationFlags}} | Format-Table -auto
-          }
