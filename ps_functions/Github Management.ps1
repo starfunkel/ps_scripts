@@ -40,6 +40,7 @@ function gitc     {
                             $PID
                             Clear-Host
                             ""
+                            $LINEDELIMITERS
                             Write-Host "-------------------------------------------------------------------"
                             Write-Host "###################################################################"
                             Write-Host "-------------------------------------------------------------------"
@@ -53,6 +54,7 @@ function gitc     {
                             git push
                             ""
                             Write-Host "Profile comitted" -ForegroundColor Green
+                            $LINEDELIMITERS
                             Write-Host "-------------------------------------------------------------------"
                             Write-Host "###################################################################"
                             Write-Host "-------------------------------------------------------------------"
@@ -62,7 +64,8 @@ function gitc     {
                         
 
                         ### powershell_stuff Repo in C:\support\code\_git-repos\POSH
-
+                        
+                        $LINEDELIMITERS
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
@@ -78,7 +81,8 @@ function gitc     {
                         Write-Host "POSH Repo comitted" -ForegroundColor Green
 
                         ###  get-adinfo Repo in C:\support\code\_git-repos\get-ADInfo
-
+                        
+                        $LINEDELIMITERS
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
@@ -94,7 +98,8 @@ function gitc     {
                         Write-Host "Get-ADInfo Repo comitted" -ForegroundColor Green
 
                         ### Verwaltungstool Repo C:\support\code\_git-repos\Verwaltungstool
-
+                        
+                        $LINEDELIMITERS
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
@@ -108,6 +113,7 @@ function gitc     {
                         git push
                         ""
                         Write-Host "Verwaltungstool Repo comitted" -ForegroundColor Green
+                        $LINEDELIMITERS
                         Write-Host "-------------------------------------------------------------------"
                         Write-Host "###################################################################"
                         Write-Host "-------------------------------------------------------------------"
