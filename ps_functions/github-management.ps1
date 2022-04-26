@@ -40,7 +40,7 @@ function gitc     {
                             Clear-Host
                             ""
                             $LINEDELIMITERS
-                            Write-Host "Powershell Profile commit"
+                            Write-Host "Powershell Profile commit (powershell_profile)"
                             Set-Location $PSHOME
                             ""
                             git add .\profile.ps1
@@ -59,7 +59,7 @@ function gitc     {
                         ### powershell_stuff Repo in C:\support\code\_git-repos\POSH
                         
                         $LINEDELIMITERS
-                        Write-Host "POSH Repo commit" -ForegroundColor Yellow
+                        Write-Host "PS Helper functions Repo commit (powershell_stuff)" -ForegroundColor Yellow
                         ""
                         Set-Location C:\support\code\_git-repos\POSH
                         git add .
