@@ -37,6 +37,7 @@ function gitc     {
                         start-Sleep 1
                         
                         Start-Process -FilePath powershell.exe -ArgumentList {
+                            $LINEDELIMITERS=Write-Host "zzz-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"                    
                             $PID
                             Clear-Host
                             ""
