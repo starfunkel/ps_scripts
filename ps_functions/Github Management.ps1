@@ -27,7 +27,7 @@ function ga         {
 
 function gitc     {
 
-                        $LINEDELIMITERS=Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"                    
+                        $LINEDELIMITERS=Write-Host "zzz-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"                    
 
                         ### powershell_profile (System32) Commit
 
@@ -40,7 +40,9 @@ function gitc     {
                             $PID
                             Clear-Host
                             ""
-                            $LINEDELIMITERS
+                            Write-Host "-------------------------------------------------------------------"
+                            Write-Host "###################################################################"
+                            Write-Host "-------------------------------------------------------------------"
                             Write-Host "Powershell Profile commit"
                             Set-Location $PSHOME
                             ""
@@ -51,15 +53,19 @@ function gitc     {
                             git push
                             ""
                             Write-Host "Profile comitted" -ForegroundColor Green
-                            $LINEDELIMITERS
-                            Start-Sleep 4
-                            Stop-Process -id $PID
+                            Write-Host "-------------------------------------------------------------------"
+                            Write-Host "###################################################################"
+                            Write-Host "-------------------------------------------------------------------"
+                            start-Sleep 4
+                            stop-process -id $PID
                         } -verb RunAs
                         
 
                         ### powershell_stuff Repo in C:\support\code\_git-repos\POSH
 
-                        $LINEDELIMITERS
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
                         Write-Host "POSH Repo commit" -ForegroundColor Yellow
                         ""
                         Set-Location C:\support\code\_git-repos\POSH
@@ -73,7 +79,9 @@ function gitc     {
 
                         ###  get-adinfo Repo in C:\support\code\_git-repos\get-ADInfo
 
-                        $LINEDELIMITERS
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
                         Write-Host "Get-ADInfo Repo commit" -ForegroundColor Yellow
                         ""
                         Set-Location "C:\support\code\_git-repos\get-ADInfo"
@@ -87,7 +95,9 @@ function gitc     {
 
                         ### Verwaltungstool Repo C:\support\code\_git-repos\Verwaltungstool
 
-                        $LINEDELIMITERS
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
                         Write-Host "Verwaltungstool Repo commit" -ForegroundColor Yellow
                         ""
                         Set-Location "C:\support\code\_git-repos\Verwaltungstool"
@@ -98,7 +108,9 @@ function gitc     {
                         git push
                         ""
                         Write-Host "Verwaltungstool Repo comitted" -ForegroundColor Green
-                        $LINEDELIMITERS
+                        Write-Host "-------------------------------------------------------------------"
+                        Write-Host "###################################################################"
+                        Write-Host "-------------------------------------------------------------------"
 
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
