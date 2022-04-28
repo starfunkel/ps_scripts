@@ -30,7 +30,7 @@ function gitc     { ### evtl Parameter: repo, message
                         ### powershell_profile (System32) Commit
 
                         $CURRENT_PATH = (Get-Location).path                    
-                        Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------" -InformationVariable LINEDELIMITERS
+                        Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"  -ForegroundColor Yellow -InformationVariable LINEDELIMITERS
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                         start-Sleep 1
                         
