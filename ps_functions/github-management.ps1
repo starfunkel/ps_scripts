@@ -51,7 +51,7 @@ function gitc     { ### evtl Parameter: repo, message
                             ""
                             Write-Host "Profile comitted" -ForegroundColor Green
                             $LINEDELIMITERS
-                            start-Sleep 4
+                            start-Sleep 2
                             stop-process -id $PID
                         } -verb RunAs
                         
