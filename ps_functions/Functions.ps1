@@ -59,7 +59,7 @@ function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe"}
 
 ### Firefox
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
-function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p testing }
+function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p Testing }
 function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
 
 function ToBase64   {[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes("$args[0]"))}
