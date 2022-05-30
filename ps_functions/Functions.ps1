@@ -38,38 +38,32 @@ function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType',
                     
 function history    { get-history -Count 20 }
 
-function imp        { Import-Module $args[0] }
 function touch      { New-Item $args[0] }
+
+### Windows Terminal as Admin
 function aterm      { Start-Process wt.exe -Verb runAs }
 
 ### Custom functions
 function pong       { Test-Connection $args[0] | Format-Table -Autosize } 
-
-### Scripts & Tools Caller
+function imp        { Import-Module $args[0] }
 
 ### Scripts
 function mtr        { C:\support\code\ps-scripts\mtr.ps1 $args[0] }
 function gpa        { C:\support\code\ps-scripts\GPAnalyser.ps1 }
+
 ### Tools
 function lgpo       { C:\support\runners\lgpo.exe }
 function nmap       { C:\support\Nmap\nmap.exe $args[0] }
 
-### Screen Captures
-function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe"}
-
+### custom app shortcuts
+function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe" }
+function mmc        { & "C:\Windows\SysWOW64\mmc.exe" }
+function cmmc       { & "C:\support\code\configs\cmmc.msc" }
 ### Firefox
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
 function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p Testing }
 function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
-
-function ToBase64   {[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes("$args[0]"))}
-
-<#
-function FromBase64 { $string=}
-
-{[System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String("$args[0]"))}
-
-#>
+function rel        { & powershell}
 
 function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
                         Invoke-WebRequest "ifconfig.me/ip").Content;
@@ -83,4 +77,3 @@ function ip         { $env:externalip = ( # gets external $ internal IPs of Loca
                         Write-host ""
                     }
 
-function rel {& powershell}
