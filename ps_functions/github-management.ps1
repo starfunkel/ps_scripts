@@ -40,7 +40,7 @@ function gitc     { ### evtl Parameter: repo, message
                             Write-Host "-------------------------------------------------------------------`n
                             ###################################################################`n
                             -------------------------------------------------------------------" -InformationVariable LINEDELIMITERS
-                            $PID
+                            $PID # Gets Process ID of current Process
                             Clear-Host
                             ""
                             $LINEDELIMITERS
@@ -58,8 +58,7 @@ function gitc     { ### evtl Parameter: repo, message
                             start-Sleep 2
                             stop-process -id $PID
                         } -verb RunAs
-                        
-
+  
                         ### powershell_stuff Repo in C:\support\code\_git-repos\POSH
                         
                         $LINEDELIMITERS
