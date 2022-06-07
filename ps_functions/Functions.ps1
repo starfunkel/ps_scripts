@@ -53,7 +53,6 @@ function gpa        { C:\support\code\ps-scripts\GPAnalyser.ps1 }
 
 ### Tools
 function lgpo       { C:\support\runners\lgpo.exe }
-function nmap       { C:\support\Nmap\nmap.exe $args[0] }
 
 ### custom app shortcuts
 function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe" }
