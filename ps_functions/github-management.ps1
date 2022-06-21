@@ -35,15 +35,13 @@ function gitc     { ### evtl Parameter: repo, message
                         start-Sleep 1
                         
                         Start-Process -FilePath powershell.exe -ArgumentList { ### evtl Startjob
-                            Write-Host "-------------------------------------------------------------------`n
-                            ###################################################################`n
-                            -------------------------------------------------------------------" -InformationVariable LINEDELIMITERS
+                            Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------" -InformationVariable LINEDELIMITERS
                             $PID # Gets Process ID of current Process
                             Clear-Host
                             ""
                             $LINEDELIMITERS
                             Set-Location $PSHOME
-                            Write-Host "Powershell Profile commit" 
+                            Write-Host "Powershell Profile commit"
                             ""
                             git add .\profile.ps1
                             ""
