@@ -76,3 +76,4 @@ function ip         { $env:externalip = ( # gets external $ internal IPs of Loca
                         Write-host ""
                     }
 
+function py          {& "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.1520.0_x64__qbz5n2kfra8p0\python3.10.exe" }
