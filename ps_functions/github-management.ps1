@@ -68,9 +68,10 @@ function gitc     { ### evtl Parameter: repo, message
                         git push
                         ""
                         Write-Host "POSH Repo comitted" -ForegroundColor Green
-
+                        Write-Host ""
                         ###  get-adinfo Repo in C:\support\code\_git-repos\cras_stuff\get-ADInfo
                         $LINEDELIMITERS
+                        Write-Host ""
                         Write-Host "Get-ADInfo Repo commit" -ForegroundColor Yellow
                         ""
                         Set-Location "C:\support\code\_git-repos\cras_stuff\get-ADInfo"
@@ -81,11 +82,6 @@ function gitc     { ### evtl Parameter: repo, message
                         git push
                         ""
                         Write-Host "Get-ADInfo Repo comitted" -ForegroundColor Green
-
-
-
-
-                    
 
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
