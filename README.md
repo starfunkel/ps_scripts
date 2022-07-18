@@ -1,6 +1,8 @@
-# Powershell
+# Powershell Working Stuff
 
-## powershell system Profile
+##
+
+### powershell system profile
 
 > Put this scriptblock in the $PSHOME profile
 
@@ -9,7 +11,9 @@ powershell -noprofile -noexit -command "invoke-expression '. ''PATH_TO_CLONED_RE
 ```
 
 
-## Powershell scripts and definitions scriptblock which autoloads them when put in Powershell profile
+### Powershell scripts and definitions scriptblock
+
+> autoloads them when put in Powershell profile
 
 ```powershell
 $Path = "PATH_TO_CLONED_REPO"
