@@ -27,21 +27,21 @@ function ga         {
 
 function gitc     { ### evtl Parameter: repo, message
 
-                        ### powershell_profile (System32) Commit
-
                         $CURRENT_PATH = (Get-Location).path                    
                         Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"   -InformationVariable LINEDELIMITERS
+                        
+                        <#
+                        ### powershell_profile (System32) Commit
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                         start-Sleep 1
-                        
-                        Start-Process -FilePath powershell.exe -ArgumentList { ### evtl Startjob
+                        Start-Process -FilePath powershell.exe -ArgumentList { ### evtl Start-job hieraus machen
                             Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------" -InformationVariable LINEDELIMITERS
                             $PID # Gets Process ID of current Process
                             Clear-Host
                             ""
                             $LINEDELIMITERS
                             Set-Location $PSHOME
-                            Write-Host "Powershell Profile commit"
+                            Write-Host "Powershell Profile commit (Sys32)"
                             ""
                             git add .\profile.ps1
                             ""
@@ -49,18 +49,18 @@ function gitc     { ### evtl Parameter: repo, message
                             ""
                             git push
                             ""
-                            Write-Host "Profile comitted" -ForegroundColor Green
+                            Write-Host "Profile (Sys32) comitted" -ForegroundColor Green
                             $LINEDELIMITERS
                             start-Sleep 2
                             stop-process -id $PID
                         } -verb RunAs
+                        #>
   
-                        ### powershell_stuff Repo in C:\support\code\_git-repos\POSH
-                        
+                        ### powershell_stuff Repo in C:\support\code\_git-repos\cras_stuff\POSH
                         $LINEDELIMITERS
                         Write-Host "PS Helper functions Repo commit (powershell_stuff)" -ForegroundColor Yellow
                         ""
-                        Set-Location C:\support\code\_git-repos\POSH
+                        Set-Location "C:\support\code\_git-repos\cras_stuff\POSH"
                         git add .
                         ""
                         git commit -m "Auto-commit" 
@@ -69,12 +69,11 @@ function gitc     { ### evtl Parameter: repo, message
                         ""
                         Write-Host "POSH Repo comitted" -ForegroundColor Green
 
-                        ###  get-adinfo Repo in C:\support\code\_git-repos\get-ADInfo
-                        
+                        ###  get-adinfo Repo in C:\support\code\_git-repos\cras_stuff\get-ADInfo
                         $LINEDELIMITERS
                         Write-Host "Get-ADInfo Repo commit" -ForegroundColor Yellow
                         ""
-                        Set-Location "C:\support\code\_git-repos\get-ADInfo"
+                        Set-Location "C:\support\code\_git-repos\cras_stuff\get-ADInfo"
                         git add .
                         ""
                         git commit -m "Auto-commit" 
@@ -83,20 +82,10 @@ function gitc     { ### evtl Parameter: repo, message
                         ""
                         Write-Host "Get-ADInfo Repo comitted" -ForegroundColor Green
 
-                        ### Verwaltungstool Repo C:\support\code\_git-repos\Verwaltungstool
-                        
-                        $LINEDELIMITERS
-                        Write-Host "Verwaltungstool Repo commit" -ForegroundColor Yellow
-                        ""
-                        Set-Location "C:\support\code\_git-repos\Verwaltungstool"
-                        git add .
-                        ""
-                        git commit -m "Auto commit"
-                        ""
-                        git push
-                        ""
-                        Write-Host "Verwaltungstool Repo comitted" -ForegroundColor Green
-                        $LINEDELIMITERS
+
+
+
+                    
 
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
