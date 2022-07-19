@@ -58,6 +58,7 @@ function lgpo       { C:\support\runners\lgpo.exe }
 function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe" }
 function mmc        { & "C:\Windows\SysWOW64\mmc.exe" }
 function cmmc       { & "C:\support\code\configs\cmmc.msc" }
+
 ### Firefox
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
 function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p Testing }
@@ -80,3 +81,9 @@ function py          { & "C:\Program Files\WindowsApps\PythonSoftwareFoundation.
 
 function c          { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
 function t          { Get-Cowsay -cowfile tux "$args" }
+
+### Directory jumpers
+
+function dl         { Set-Location "C:\Users\rathnau\Downloads" }
+function co         { Set-Location "C:\support\code"}
+function da         { Set-Location D:\ }
