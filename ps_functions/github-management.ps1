@@ -83,9 +83,6 @@ function gitc     { ### evtl Parameter: repo, message
                         ""
                         Write-Host "Get-ADInfo Repo comitted" -ForegroundColor Green
 
-                        Set-Location $CURRENT_PATH
-                        Remove-Variable -Name CURRENT_PATH
-
                         ### iit-ansible-inventory C:\support\code\_git-repos\iit_\iit-ansible-inventory
                         $LINEDELIMITERS
                         Write-Host "iit-ansible Repo commit (iit-ansible-inventory)" -ForegroundColor Yellow
@@ -99,7 +96,7 @@ function gitc     { ### evtl Parameter: repo, message
                         ""
                         Write-Host "iit-asible-inventory Repo comitted" -ForegroundColor Green
                         Write-Host ""
-                        
+
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
 }
