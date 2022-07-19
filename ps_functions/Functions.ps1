@@ -63,6 +63,8 @@ function cmmc       { & "C:\support\code\configs\cmmc.msc" }
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
 function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p Testing }
 function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
+
+### Reload Powershell Profile
 function rel        { & powershell}
 
 function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
