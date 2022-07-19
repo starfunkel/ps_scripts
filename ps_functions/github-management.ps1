@@ -57,7 +57,6 @@ function gitc     { ### evtl Parameter: repo, message
                         #>
   
                         ### powershell_stuff Repo in C:\support\code\_git-repos\cras_stuff\POSH
-                        $LINEDELIMITERS
                         Write-Host "PS Helper functions Repo commit (powershell_stuff)" -ForegroundColor Yellow
                         ""
                         Set-Location "C:\support\code\_git-repos\cras_stuff\POSH"
