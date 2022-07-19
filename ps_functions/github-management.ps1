@@ -86,4 +86,20 @@ function gitc     { ### evtl Parameter: repo, message
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
 
+                        ### iit-ansible-inventory C:\support\code\_git-repos\iit_\iit-ansible-inventory
+                        $LINEDELIMITERS
+                        Write-Host "iit-ansible Repo commit (iit-ansible-inventory)" -ForegroundColor Yellow
+                        ""
+                        Set-Location "C:\support\code\_git-repos\iit_\iit-ansible-inventory"
+                        git add .
+                        ""
+                        git commit -m "Auto-commit" 
+                        ""
+                        git push
+                        ""
+                        Write-Host "iit-asible-inventory Repo comitted" -ForegroundColor Green
+                        Write-Host ""
+                        
+                        Set-Location $CURRENT_PATH
+                        Remove-Variable -Name CURRENT_PATH
 }
