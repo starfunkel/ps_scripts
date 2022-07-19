@@ -15,7 +15,7 @@
 
 ### Github Management
 
-function ga         {
+function ga         { ### commits all in the current directory
                         
                         param([string]$MESSAGE = "auto commit - nothing to special")
 

@@ -60,6 +60,8 @@ Get-ChildItem -Path $Path  -Filter *.ps1 |ForEach-Object {
     . $_.FullName
 }
 
+$env:PSModulePath = ((@("C:\support\code\_git-repos\cras_stuff\POSH\ps-modules") + ($env:PSModulePath -split ";")) -join ";")
+
 ### Setting Start Dir
 Set-Location c:\support
 
