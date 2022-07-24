@@ -6,15 +6,20 @@ Cra's Powershell Profile
 2020 - 2022
  
 .NOTES
-All additional scripts and functions which should be loaded by default wwhen a new ps session starts have to be placed in 
-C:\support\code\_git-repos\POSH\ps_functions ( See line 55 in code ) 
-Test
+All additional scripts and functions which should be loaded by default when a new ps session starts have to be placed according to line 59
+
+To Do:
+
+Build variables for custom location folders
+
 #>
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
 
 $host.ui.RawUI.WindowTitle='Black Magic'
+
 Clear-Host
+
 <#
 Write-Host "##########################" -ForegroundColor Yellow 
 Write-Host "#                        #" -ForegroundColor Yellow
@@ -22,7 +27,6 @@ Write-Host "#      Hello Friend!     #" -ForegroundColor Yellow
 Write-Host "#                        #" -ForegroundColor Yellow
 Write-Host "##########################" -ForegroundColor Yellow
 #>
-
 
 ### Colored and timy time promt
 function prompt
@@ -41,7 +45,7 @@ function prompt
 function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
 getw
 
-### Get time for shell
+### Get time for prompt
 function Get-Time   { return $(get-date | ForEach-Object { $_.ToLongTimeString() } ) }
 
 
@@ -54,12 +58,13 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-### Import ps scripts and definitions
+### Import ps scripts and definitions by iterating through each folder 
 $Path = "C:\support\code\_git-repos\cras_stuff\POSH\ps_functions"
 Get-ChildItem -Path $Path  -Filter *.ps1 |ForEach-Object {
     . $_.FullName
 }
 
+### Set Custom PS module directory
 $env:PSModulePath = ((@("C:\support\code\_git-repos\cras_stuff\POSH\ps-modules") + ($env:PSModulePath -split ";")) -join ";")
 
 ### Setting Start Dir
