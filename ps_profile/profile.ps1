@@ -9,6 +9,10 @@ Cra's Powershell Profile
 All additional scripts and functions which should be loaded by default wwhen a new ps session starts have to be placed in 
 C:\support\code\_git-repos\POSH\ps_functions ( See line 55 in code ) 
 Test
+
+Set custom profile path
+
+powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1''' "
 #>
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
@@ -60,6 +64,7 @@ Get-ChildItem -Path $Path  -Filter *.ps1 |ForEach-Object {
     . $_.FullName
 }
 
+# Set custom Module Path
 $env:PSModulePath = ((@("C:\support\code\_git-repos\cras_stuff\POSH\ps-modules") + ($env:PSModulePath -split ";")) -join ";")
 
 ### Setting Start Dir
