@@ -1,6 +1,6 @@
 <#
     .SYNOPSIS
-    Powershell functions for working with Git commands to easaly commit and push repos to Github even in system directories
+    Powershell functions for easy working with git commands to easaly commit and push repos to Github even in system directories
 
     .DESCRIPTION
     These functions will programmatically utilize git add . ; auto commit -m ; and push.  
@@ -15,7 +15,7 @@
 
 ### Github Management
 
-function ga         { ### commits all in the current directory
+function ga         { ### auto commits all the things in the current directory
                         
                         param([string]$MESSAGE = "auto commit - nothing to special")
 
@@ -30,7 +30,8 @@ function gitc     { ### evtl Parameter: repo, message
                         $CURRENT_PATH = (Get-Location).path                    
                         Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"   -InformationVariable LINEDELIMITERS
                         
-                        <#
+                        <#      --->> Old stuff
+
                         ### powershell_profile (System32) Commit
                         Write-Host "Elevating for Powershell Profile commit..." -ForegroundColor Yellow
                         start-Sleep 1
@@ -58,7 +59,6 @@ function gitc     { ### evtl Parameter: repo, message
   
                         ### powershell_stuff Repo in C:\support\code\_git-repos\cras_stuff\POSH
                         Write-Host "PS Helper functions Repo commit (powershell_stuff)" -ForegroundColor Yellow
-                        ""
                         Set-Location "C:\support\code\_git-repos\cras_stuff\POSH"
                         git add .
                         ""
@@ -67,10 +67,10 @@ function gitc     { ### evtl Parameter: repo, message
                         git push
                         ""
                         Write-Host "POSH Repo comitted" -ForegroundColor Green
-                        Write-Host ""
+                        ""
                         ###  get-adinfo Repo in C:\support\code\_git-repos\cras_stuff\get-ADInfo
                         $LINEDELIMITERS
-                        Write-Host ""
+                        ""
                         Write-Host "Get-ADInfo Repo commit" -ForegroundColor Yellow
                         ""
                         Set-Location "C:\support\code\_git-repos\cras_stuff\get-ADInfo"
@@ -94,8 +94,6 @@ function gitc     { ### evtl Parameter: repo, message
                         git push
                         ""
                         Write-Host "iit-asible-inventory Repo comitted" -ForegroundColor Green
-                        Write-Host ""
-
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
 }

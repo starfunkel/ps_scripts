@@ -33,7 +33,7 @@ function find       { Get-Childitem -Filter $args[0] -Recurse -File | out-host -
 
 function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'; Get-CimInstance Win32_OperatingSystem | 
                         Select-Object $PROPERTIES |
-                         Format-Table -AutoSize 
+                        Format-Table -AutoSize 
                     }
                     
 function history    { get-history -Count 20 }
@@ -79,8 +79,10 @@ function ip         { $env:externalip = ( # gets external $ internal IPs of Loca
                         Write-host ""
                     }
 
-function py          { & "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.1520.0_x64__qbz5n2kfra8p0\python3.10.exe" }
+### Start python 
+function py         { & "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.1520.0_x64__qbz5n2kfra8p0\python3.10.exe" }
 
+### cowsay stuff
 function c          { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
 function t          { Get-Cowsay -cowfile tux "$args" }
 
