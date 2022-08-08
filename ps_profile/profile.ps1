@@ -37,7 +37,8 @@ function Get-Time
 ### Colored and tiny time prompt
 function prompt
 
-    {   # Write the time and dir
+    {   
+        # Write the time and dir
         write-host "[" -noNewLine
         write-host $(Get-Time) -foreground yellow -noNewLine
         write-host "] " -noNewLine
@@ -66,9 +67,12 @@ Get-ChildItem -Path $Path  -Filter *.ps1 |
         . $_.FullName
     }
 
-
 # Set Custom PS module directory
-$env:PSModulePath = ((@("C:\support\code\_git-repos\cras_stuff\POSH\ps-modules") + ($env:PSModulePath -split ";")) -join ";")
+$env:PSModulePath = (
+    (
+        @("C:\support\code\_git-repos\cras_stuff\POSH\ps-modules") + ($env:PSModulePath -split ";")
+    ) -join ";"
+)
 
 # Start with this:
 getw
