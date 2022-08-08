@@ -13,10 +13,6 @@ Test
 Set custom profile path
 
 powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1''' "
-=======
-All additional scripts and functions which should be loaded by default when a new ps session starts have to be placed according to line 59
-=======
-All additional scripts and functions which should be loaded by default when a new ps session initiates have to be placed to a location according to line 62.
 
 To Do
 
