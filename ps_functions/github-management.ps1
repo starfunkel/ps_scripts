@@ -94,6 +94,7 @@ function gitc     { ### evtl Parameter: repo, message
                         git push
                         ""
                         Write-Host "iit-asible-inventory Repo comitted" -ForegroundColor Green
+                        ""
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
 }
