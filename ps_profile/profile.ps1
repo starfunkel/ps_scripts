@@ -34,13 +34,14 @@ function Get-Time
 function prompt
 
     {   
-        # Write the time and dir
+        # Write the username, computername, time and direcory
         write-host "[" -noNewLine
         write-host "$env:username"  -ForegroundColor red -noNewLine
         write-host "@"  -ForegroundColor white -noNewLine
-        write-host "$env:COMPUTERNAME " -ForegroundColor red -noNewLine
+        write-host "$env:COMPUTERNAME " -ForegroundColor DarkCyan -noNewLine
         write-host $(Get-Time) -foreground yellow -noNewLine
         write-host "] " -noNewLine
+
         # Write the path
         write-host $($(Get-Location).Path.replace($home,"~").replace("\","/")) -foreground green -noNewLine
         write-host $(if ($nestedpromptlevel -ge 1) { '>>' }) -noNewLine
