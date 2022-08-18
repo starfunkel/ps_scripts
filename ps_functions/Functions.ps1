@@ -1,20 +1,4 @@
-<#
-  .SYNOPSIS
-
-  .DESCRIPTION
-
-  .PARAMETER InputPath
-
-  .PARAMETER OutputPath
-
-  .INPUTS
-
-  .OUTPUTS
-
-  .EXAMPLE
-#>
-
-### Funcions
+### Powershell Funcions
 
 ### Compute file hashes 
 function md5        { Get-FileHash -Algorithm MD5 $args }
@@ -66,6 +50,24 @@ function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
 
 ### Reload Powershell Profile
 function rel        { & powershell}
+
+<#
+# alternative Reload profile https: //itenium.be/blog/dev-setup/powershell-profiles/
+function rel        {
+                      @(
+                          $Profile.AllUsersAllHosts,
+                          $Profile.AllUsersCurrentHost,
+                          $Profile.CurrentUserAllHosts,
+                          $Profile.CurrentUserCurrentHost
+                      ) | 
+                      ForEach-Object {
+                          if (Test-Path $_) {
+                              Write-Verbose "Reloading $_"
+                              . $_
+                          }
+                      }
+      }
+#>
 
 function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
                         Invoke-WebRequest "ifconfig.me/ip").Content;

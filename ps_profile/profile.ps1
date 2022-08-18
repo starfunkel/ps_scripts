@@ -40,7 +40,7 @@ function prompt
         write-host "@"  -ForegroundColor white -noNewLine
         write-host "$env:COMPUTERNAME " -ForegroundColor DarkCyan -noNewLine
         write-host $(Get-Time) -foreground yellow -noNewLine
-        write-host "] " -noNewLine
+        write-host "] "
 
         # Write the path
         write-host $($(Get-Location).Path.replace($home,"~").replace("\","/")) -foreground green -noNewLine
