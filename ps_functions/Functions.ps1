@@ -91,3 +91,6 @@ function t          { Get-Cowsay -cowfile tux "$args" }
 function dl         { Set-Location "C:\Users\rathnau\Downloads" }
 function co         { Set-Location "C:\support\code"}
 function da         { Set-Location D:\ }
+
+function zip        { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
+function unzip      { Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] }

@@ -36,6 +36,9 @@ function prompt
     {   
         # Write the time and dir
         write-host "[" -noNewLine
+        write-host "$env:username"  -ForegroundColor red -noNewLine
+        write-host "@"  -ForegroundColor white -noNewLine
+        write-host "$env:COMPUTERNAME " -ForegroundColor red -noNewLine
         write-host $(Get-Time) -foreground yellow -noNewLine
         write-host "] " -noNewLine
         # Write the path
