@@ -85,7 +85,7 @@ function ip         { $env:externalip = ( # gets external $ internal IPs of Loca
 function py         { & "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.10_3.10.1520.0_x64__qbz5n2kfra8p0\python3.10.exe" }
 
 ### cowsay stuff
-function c          { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
+function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
 function t          { Get-Cowsay -cowfile tux "$args" }
 
 ### Directory jumpers
