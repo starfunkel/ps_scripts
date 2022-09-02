@@ -13,6 +13,10 @@ function ~          { Set-Location $env:UserProfile }
 function posh       { Set-Location C:\support\code\_git-repos\cras_stuff\POSH }
 function gitd       { Set-Location C:\support\code\_git-repos }
 
+function dl         { Set-Location "C:\Users\rathnau\Downloads" }
+function co         { Set-Location "C:\support\code"}
+function da         { Set-Location D:\ }
+
 ### Directoriey movement
 
 function cd..       { Set-Location .. }

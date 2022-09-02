@@ -19,6 +19,8 @@ function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType',
                         Select-Object $PROPERTIES |
                         Format-Table -AutoSize 
                     }
+
+function sudo       {Start-Process -verb RunAs wt}
                     
 function history    { get-history -Count 20 }
 
@@ -86,13 +88,10 @@ function py         { & "C:\Program Files\WindowsApps\PythonSoftwareFoundation.P
 
 ### cowsay stuff
 function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
-function t          { Get-Cowsay -cowfile tux "$args" }
+function tux        { Get-Cowsay -cowfile tux "$args" }
 
 ### Directory jumpers
 
-function dl         { Set-Location "C:\Users\rathnau\Downloads" }
-function co         { Set-Location "C:\support\code"}
-function da         { Set-Location D:\ }
 
 function zip        { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
 function unzip      { Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] }
