@@ -34,8 +34,8 @@ function pong       { Test-Connection $args[0] | Format-Table -Autosize }
 function imp        { Import-Module $args[0] }
 
 ### Scripts
-function mtr        { C:\support\code\ps-scripts\mtr.ps1 $args[0] }
-function gpa        { C:\support\code\ps-scripts\GPAnalyser.ps1 }
+function mtr        { C:\support\code\_git-repos\cras_stuff\POSH\ps-scripts\mtr.ps1 $args[0] }
+function gpa        { C:\support\code\_git-repos\cras_stuff\POSH\ps-scripts\GPAnalyser.ps1 }
 
 ### Tools
 function lgpo       { C:\support\runners\lgpo.exe }
