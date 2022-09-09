@@ -15,39 +15,39 @@
 
 ### Github Management
 
-function ga         { ### auto commits all the things in the current directory
-                        
-                        param([string]$MESSAGE = "auto commit - nothing to special")
+function ga { ### auto commits all the things in the current directory
+                
+    param([string]$MESSAGE = "auto commit - nothing to special")
 
-                        git add .
-                        git commit -m $MESSAGE
-                        git push
-                        Remove-Variable -Name MESSAGE
+    git add .
+    git commit -m $MESSAGE
+    git push
+    Remove-Variable -Name MESSAGE
 }
 
-function gitc     { ### evtl Parameter: repo, message
+function gitc   { ### evtl Parameter: repo, message
 
-                    $repos =    "C:\support\code\_git-repos\cras_stuff\POSH",`
-                                "C:\support\code\_git-repos\cras_stuff\get-ADInfo",`
-                                "C:\support\code\_git-repos\iit_\iit-ansible-inventory",`
-                                "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
-                                "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool"
-                                "C:\support\code\_git-repos\iit_\Code-Snips"
-                                
-                    foreach ($repo in $repos) {
+    $repos =    "C:\support\code\_git-repos\cras_stuff\POSH",`
+                "C:\support\code\_git-repos\cras_stuff\get-ADInfo",`
+                "C:\support\code\_git-repos\iit_\iit-ansible-inventory",`
+                "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
+                "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool"; `
+                "C:\support\code\_git-repos\iit_\Code-Snips"
 
-                    $CURRENT_PATH = (Get-Location).path
-                    Set-Location $repo
-                    Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
-                    $folder = Split-Path -leaf -path (Get-Location)
-                    Write-Host "              $folder" -ForegroundColor Green  
-                    Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
-                    git add .
-                    git commit -m "Auto-commit" 
-                    git push
-                    Write-Host "" -ForegroundColor Green
+    foreach ($repo in $repos) {
 
-                    Set-Location $CURRENT_PATH
-                    Remove-Variable -Name CURRENT_PATH
-                    }         
+        $CURRENT_PATH = (Get-Location).path
+        Set-Location $repo
+        Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
+        $folder = Split-Path -leaf -path (Get-Location)
+        Write-Host "              $folder" -ForegroundColor Green  
+        Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
+        git add .
+        git commit -m "Auto-commit" 
+        git push
+        Write-Host "" -ForegroundColor Green
+
+        Set-Location $CURRENT_PATH
+        Remove-Variable -Name CURRENT_PATH
+    }         
 }
