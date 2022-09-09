@@ -27,14 +27,13 @@ function ga { ### auto commits all the things in the current directory
 
 function gitc   { ### evtl Parameter: repo, message
 
+    $CURRENT_PATH = (Get-Location).path
     $repos =    "C:\support\code\_git-repos\cras_stuff\POSH",`
                 "C:\support\code\_git-repos\cras_stuff\get-ADInfo",`
                 "C:\support\code\_git-repos\iit_\iit-ansible-inventory",`
                 "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
-                "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool";`
+                "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool",`
                 "C:\support\code\_git-repos\iit_\Code-Snips"
-
-    $CURRENT_PATH = (Get-Location).path
 
     foreach ($repo in $repos) {
 
