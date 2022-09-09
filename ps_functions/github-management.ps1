@@ -27,53 +27,26 @@ function ga         { ### auto commits all the things in the current directory
 
 function gitc     { ### evtl Parameter: repo, message
 
-                        $CURRENT_PATH = (Get-Location).path                    
-                        Write-Host "-------------------------------------------------------------------`n###################################################################`n-------------------------------------------------------------------"   -InformationVariable LINEDELIMITERS
+                    $repos =    "C:\support\code\_git-repos\cras_stuff\POSH",`
+                                "C:\support\code\_git-repos\cras_stuff\get-ADInfo",`
+                                "C:\support\code\_git-repos\iit_\iit-ansible-inventory",`
+                                "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
+                                "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool"
 
-                        ### powershell_stuff Repo in C:\support\code\_git-repos\cras_stuff\POSH
-                        Write-Host "PS Helper functions Repo commit (powershell_stuff)" -ForegroundColor Yellow
-                        Set-Location "C:\support\code\_git-repos\cras_stuff\POSH"
-                        git add .
-                        git commit -m "Auto-commit" 
-                        git push
-                        Write-Host "POSH Repo comitted" -ForegroundColor Green
-                        
-                        ###  get-adinfo Repo in C:\support\code\_git-repos\cras_stuff\get-ADInfo
-                        $LINEDELIMITERS
-                        Write-Host "Get-ADInfo Repo commit" -ForegroundColor Yellow
-                        Set-Location "C:\support\code\_git-repos\cras_stuff\get-ADInfo"
-                        git add .
-                        git commit -m "Auto-commit" 
-                        git push
-                        Write-Host "Get-ADInfo Repo comitted" -ForegroundColor Green
+                    foreach ($repo in $repos) {
 
-                        ### iit-ansible-inventory C:\support\code\_git-repos\iit_\iit-ansible-inventory
-                        $LINEDELIMITERS
-                        Write-Host "iit-ansible Repo commit (iit-ansible-inventory)" -ForegroundColor Yellow
-                        Set-Location "C:\support\code\_git-repos\iit_\iit-ansible-inventory"
-                        git add .
-                        git commit -m "Auto-commit" 
-                        git push
-                        Write-Host "iit-asible-inventory Repo comitted" -ForegroundColor Green
-                                                
-                        ### BKG-CLI-Onboarding C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding
-                        $LINEDELIMITERS
-                        Write-Host "BKG-CLI-Onboarding" -ForegroundColor Yellow
-                        Set-Location "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding"
-                        git add .
-                        git commit -m "Auto-commit" 
-                        git push
-                        Write-Host "BKG-CLI-Onboarding" -ForegroundColor Green
+                    $CURRENT_PATH = (Get-Location).path
+                    Set-Location $repo
+                    Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
+                    $folder = Split-Path -leaf -path (Get-Location)
+                    Write-Host "              $folder" -ForegroundColor Green  
+                    Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
+                    git add .
+                    git commit -m "Auto-commit" 
+                    git push
+                    Write-Host "" -ForegroundColor Green
 
-                        ### BKG-GUI-Verwaltungstool C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool
-                        $LINEDELIMITERS
-                        Write-Host "BKG-GUI-Verwaltungstool" -ForegroundColor Yellow
-                        Set-Location "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool"
-                        git add .
-                        git commit -m "Auto-commit" 
-                        git push
-                        Write-Host "BKG-GUI-Verwaltungstool" -ForegroundColor Green
-                        
-                        Set-Location $CURRENT_PATH
-                        Remove-Variable -Name CURRENT_PATH
+                    Set-Location $CURRENT_PATH
+                    Remove-Variable -Name CURRENT_PATH
+                    }         
 }
