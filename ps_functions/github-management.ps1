@@ -55,7 +55,6 @@ function gitc     { ### evtl Parameter: repo, message
                         git commit -m "Auto-commit" 
                         git push
                         Write-Host "iit-asible-inventory Repo comitted" -ForegroundColor Green
-                        Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
                         
                         ### BKG-CLI-Onboarding C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding
