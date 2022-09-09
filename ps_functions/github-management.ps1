@@ -37,7 +37,6 @@ function gitc   { ### evtl Parameter: repo, message
 
     foreach ($repo in $repos) {
 
-        $CURRENT_PATH = (Get-Location).path
         Set-Location $repo
         Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
         $folder = Split-Path -leaf -path (Get-Location)
@@ -48,8 +47,8 @@ function gitc   { ### evtl Parameter: repo, message
         git push
         Write-Host "" -ForegroundColor Green
 
-        Remove-Variable -Name CURRENT_PATH
     }  
     
-    Set-Location $CURRENT_PATH    
+    Set-Location $CURRENT_PATH
+    Remove-Variable -Name CURRENT_PATH
 }
