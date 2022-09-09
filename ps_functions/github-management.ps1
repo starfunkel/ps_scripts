@@ -58,12 +58,21 @@ function gitc     { ### evtl Parameter: repo, message
                                                 
                         ### BKG-CLI-Onboarding C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding
                         $LINEDELIMITERS
-                        Write-Host "iit-ansible Repo commit (BKG-CLI-Onboarding)" -ForegroundColor Yellow
+                        Write-Host "BKG-CLI-Onboarding" -ForegroundColor Yellow
                         Set-Location "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding"
                         git add .
                         git commit -m "Auto-commit" 
                         git push
                         Write-Host "BKG-CLI-Onboarding" -ForegroundColor Green
+
+                        ### BKG-GUI-Verwaltungstool C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool
+                        $LINEDELIMITERS
+                        Write-Host "BKG-GUI-Verwaltungstool" -ForegroundColor Yellow
+                        Set-Location "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool"
+                        git add .
+                        git commit -m "Auto-commit" 
+                        git push
+                        Write-Host "BKG-GUI-Verwaltungstool" -ForegroundColor Green
                         
                         Set-Location $CURRENT_PATH
                         Remove-Variable -Name CURRENT_PATH
