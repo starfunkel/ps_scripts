@@ -34,6 +34,8 @@ function gitc   { ### evtl Parameter: repo, message
                 "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool";`
                 "C:\support\code\_git-repos\iit_\Code-Snips"
 
+    $CURRENT_PATH = (Get-Location).path
+
     foreach ($repo in $repos) {
 
         $CURRENT_PATH = (Get-Location).path
@@ -47,7 +49,8 @@ function gitc   { ### evtl Parameter: repo, message
         git push
         Write-Host "" -ForegroundColor Green
 
-        Set-Location $CURRENT_PATH
         Remove-Variable -Name CURRENT_PATH
-    }         
+    }  
+    
+    Set-Location $CURRENT_PATH    
 }
