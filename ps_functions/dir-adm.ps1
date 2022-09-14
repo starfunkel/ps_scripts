@@ -13,9 +13,9 @@ function gacl   ( $FOLDER ){
 
 # Get all ACLs recursively from $SCRIPROOT
 function gacls  (){
-    $PATH=(Get-Childitem)
+    $PATH=(Get-Childitem).name
     ForEach ($FOLDER in $PATH) {
-        Write-Host (Get-Location).path -ForegroundColor Yellow
+        Write-Host (Get-Childitem).name -ForegroundColor Yellow
         (get-acl $PATH).access |
         Select-Object `
         @{Label="Identity";Expression={$_.IdentityReference}}, `

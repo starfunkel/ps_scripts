@@ -36,7 +36,6 @@ function gitc   { ### evtl Parameter: repo, message
                 "C:\support\code\_git-repos\iit_\Code-Snips"
 
     foreach ($repo in $repos) {
-
         Set-Location $repo
         Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
         $folder = Split-Path -leaf -path (Get-Location)
@@ -46,7 +45,6 @@ function gitc   { ### evtl Parameter: repo, message
         git commit -m "Auto-commit" 
         git push
         Write-Host "" -ForegroundColor Green
-
     }  
     
     Set-Location $CURRENT_PATH

@@ -14,7 +14,7 @@ function cat        { get-content $args[0] }
 function less       { get-content $args[0] | out-host -paging }
 function find       { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
 function sudo       {Start-Process -verb RunAs wt}
-function history    { get-history -Count 20 }
+function history    { get-history }
 function touch      { New-Item $args[0] }
 function zip        { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
 function unzip      { Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] }
