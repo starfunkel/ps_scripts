@@ -25,7 +25,7 @@ function ga { ### auto commits all the things in the current directory
     Remove-Variable -Name MESSAGE
 }
 
-function gitc   { ### evtl Parameter: repo, message
+function gitc   { ### evtl ein Parameter: repo, message
 
     $CURRENT_PATH = (Get-Location).path
     $repos =    "C:\support\code\_git-repos\cras_stuff\POSH",`

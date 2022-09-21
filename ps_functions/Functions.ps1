@@ -25,14 +25,9 @@ function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType',
                     }
 
 ### Custom functions
-function pong       { Test-Connection $args[0] | Format-Table -Autosize } 
+function pong       { Test-Connection $args[0] | Format-Table -Autosize }
+
 function imp        { Import-Module $args[0] }
-
-### Scripts
-function mtr        { C:\support\code\_git-repos\cras_stuff\POSH\ps-scripts\mtr.ps1 $args[0] }
-
-### Tools
-function lgpo       { C:\support\runners\lgpo.exe }
 
 ### custom app shortcuts
 function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe" }
@@ -62,5 +57,3 @@ function ip         { $env:externalip = ( # gets external $ internal IPs of Loca
 ### cowsay stuff
 function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
 function tux        { Get-Cowsay -cowfile tux "$args" }
-
-function chainsaw   { C:\support\runners\chainsaw\chainsaw.exe $args[0] }

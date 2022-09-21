@@ -25,9 +25,9 @@ function x500 (){
     $IMCEAEX = ($IMCEAEX).Replace("+2E", ".")
     
     Write-Host ""
-    Write-Host "- Converted to X500"
+    Write-Host "- Converted to X500" -ForegroundColor Yellow
     "X500:$($IMCEAEX)" | clip
-    Write-Host "- Copied to Clipboard"
+    Write-Host "- Copied to Clipboard" -ForegroundColor Yellow
     Write-Host ""
     Return "X500:$($IMCEAEX)"
 }
