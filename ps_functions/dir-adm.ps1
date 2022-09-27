@@ -9,6 +9,7 @@ function gacl   ( $FOLDER ){
     @{Label="Inheritance Flags";Expression={$_.InheritanceFlags}}, `
     @{Label="Propagation Flags";Expression={$_.PropagationFlags}} |
     Format-Table -auto
+    Sort-Object Identity -Descending
     }
 
 # Get all ACLs recursively from $SCRIPROOT

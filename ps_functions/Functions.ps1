@@ -33,6 +33,9 @@ function imp        { Import-Module $args[0] }
 function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe" }
 function mmc        { & "C:\Windows\SysWOW64\mmc.exe" }
 function cmmc       { & "C:\support\code\configs\cmmc.msc" }
+function winscp     { & "C:\support\tools\Portable_APPS\WinSCPPortable\App\winscp\WinSCP.exe" }
+function baobab     { & "C:\support\tools\Portable_APPS\WinDirStatPortable\App\WinDirStat\windirstat.exe" }
+function x64dgb     { & "C:\support\tools\x64dgb\release\x64\x64dbg.exe"}
 
 ### Firefox
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
@@ -42,18 +45,28 @@ function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
 ### Reload Powershell Profile
 function rel        { & powershell}
 
-function ip         { $env:externalip = ( # gets external $ internal IPs of Localhost
-                        Invoke-WebRequest "ifconfig.me/ip").Content;
-                        $LOCALIPADRESS = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
-                        Write-host ""
-                        Write-Output "External IP:"; 
-                        $env:externalip;
-                        Write-host ""
-                        Write-Host "Internal IP:"
-                        $LOCALIPADRESS
-                        Write-host ""
-                    }
+function ip         {
+    [CmdletBinding()]
+    param(
+        $Filter,
+        $OrganizationalUnit
+    )
+    $env:externalip = ( # gets external $ internal IPs of Localhost
+        Invoke-WebRequest "ifconfig.me/ip").Content;
+        $LOCALIPADRESS = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
+        Write-host ""
+        Write-Output "External IP:"; 
+        $env:externalip;
+        Write-host ""
+        Write-Host "Internal IP:"
+        $LOCALIPADRESS
+        Write-host ""
+    }
 
 ### cowsay stuff
 function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
 function tux        { Get-Cowsay -cowfile tux "$args" }
+
+### winfetch
+
+function winfetch   { C:\support\code\_git-repos\foreign\winfetch\winfetch.ps1 }
