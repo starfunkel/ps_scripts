@@ -7,16 +7,11 @@ Cra's Powershell Profile
  
 .NOTES
 All additional scripts and functions which should be loaded by default wwhen a new ps session starts have to be placed in 
-C:\support\code\_git-repos\POSH\ps_functions ( See line 55 in code ) 
+C:\support\code\_git-repos\POSH\ps_functions
 Test
 
 Set custom profile path
-
 powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1''' "
-
-To Do
-
-Build variables for custom location folders
 #>
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser # Living on the edge of things ;-)
