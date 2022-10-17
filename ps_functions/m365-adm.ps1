@@ -1,6 +1,9 @@
 # Exchange Ad-hoc functions
 
-function push-azure-sync   {
+function push-azure-sync (){
+    [cmdletbinding()]
+        param ()
+
     Connect-AzureAD
     Import-Module ADSync
     Get-ADSyncScheduler

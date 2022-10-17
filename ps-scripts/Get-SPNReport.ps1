@@ -129,7 +129,9 @@ foreach($User in $AllUsers)
     }
 }
 
-$Table | select Username,'User Domain',UserEnabled,Hostname,SPN,Domain,'SPN Status' | Out-GridView -Title "SPN Report of ($DNSRoot)"
+$Table | select Username,'User Domain',UserEnabled,Hostname,SPN,Domain,'SPN Status' | Export-csv c:\admin\spn-report.csv -NoTypeInformation
+
+#Out-GridView -Title "SPN Report of ($DNSRoot)"
 
 }
 
