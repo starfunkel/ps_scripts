@@ -39,7 +39,7 @@ function gitc   { ### evtl ein Parameter: repo, message
         Set-Location $repo
         Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
         $folder = Split-Path -leaf -path (Get-Location)
-        Write-Host "              $folder" -ForegroundColor Green  
+        Write-Host "$folder" -ForegroundColor Green  
         Write-Host "---------------------------------------------------------" -ForegroundColor Yellow
         git add .
         git commit -m "Auto-commit" 
