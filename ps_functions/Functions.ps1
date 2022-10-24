@@ -45,24 +45,6 @@ function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
 ### Reload Powershell Profile
 function rel        { & powershell}
 
-function ip         {
-    [CmdletBinding()]
-    param(
-        $Filter,
-        $OrganizationalUnit
-    )
-    $env:externalip = ( # gets external $ internal IPs of Localhost
-        Invoke-WebRequest "ifconfig.me/ip").Content;
-        $LOCALIPADRESS = ((ipconfig | findstr [0-9].\.)[0]).Split()[-1]
-        Write-host ""
-        Write-Output "External IP:"; 
-        $env:externalip;
-        Write-host ""
-        Write-Host "Internal IP:"
-        $LOCALIPADRESS
-        Write-host ""
-    }
-
 ### cowsay stuff
 function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
 function tux        { Get-Cowsay -cowfile tux "$args" }
