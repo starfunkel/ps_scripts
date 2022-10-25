@@ -36,6 +36,7 @@ function cmmc       { & "C:\support\code\configs\cmmc.msc" }
 function winscp     { & "C:\support\tools\Portable_APPS\WinSCPPortable\App\winscp\WinSCP.exe" }
 function baobab     { & "C:\support\tools\Portable_APPS\WinDirStatPortable\App\WinDirStat\windirstat.exe" }
 function x64dgb     { & "C:\support\tools\x64dgb\release\x64\x64dbg.exe"}
+function wifi       { & "C:\support\tools\WifiInfoView.exe"}
 
 ### Firefox
 function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
