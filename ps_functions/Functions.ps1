@@ -53,3 +53,7 @@ function tux        { Get-Cowsay -cowfile tux "$args" }
 ### winfetch
 
 function winfetch   { C:\support\code\_git-repos\foreign\winfetch\winfetch.ps1 }
+
+### vrtualbox
+
+function start-lab {. 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' startvm "VM-LX-SRV-DEBIAN-11" --type headless}

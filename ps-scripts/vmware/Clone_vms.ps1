@@ -24,7 +24,7 @@ set-PowerCLIConfiguration -scope user -ParticipateinCEIP $false -Confirm:$false 
 set-PowerCLIConfiguration -invalidcertificateaction  ignore -Confirm:$false | Out-Null 
 
 $viserver=Read-Host "Enter VI Server IP"
-connect-viserver $vserver-ErrorAction Stop
+connect-viserver $vserver -ErrorAction Stop
 
 $hvserver=Read-Host "Enter HV Server IP"
 connect-hvserver $hvserver -ErrorAction Stop
