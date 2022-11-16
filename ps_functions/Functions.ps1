@@ -28,32 +28,3 @@ function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType',
 function pong       { Test-Connection $args[0] | Format-Table -Autosize }
 
 function imp        { Import-Module $args[0] }
-
-### custom app shortcuts
-function fla        { & "$env:ProgramFiles\flameshot\bin\flameshot.exe" }
-function mmc        { & "C:\Windows\SysWOW64\mmc.exe" }
-function cmmc       { & "C:\support\code\configs\cmmc.msc" }
-function winscp     { & "C:\support\tools\Portable_APPS\WinSCPPortable\App\winscp\WinSCP.exe" }
-function baobab     { & "C:\support\tools\Portable_APPS\WinDirStatPortable\App\WinDirStat\windirstat.exe" }
-function x64dgb     { & "C:\support\tools\x64dgb\release\x64\x64dbg.exe"}
-function wifi       { & "C:\support\tools\WifiInfoView.exe"}
-
-### Firefox
-function ffd        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p default }
-function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p Testing }
-function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
-
-### Reload Powershell Profile
-function rel        { & powershell}
-
-### cowsay stuff
-function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp
-function tux        { Get-Cowsay -cowfile tux "$args" }
-
-### winfetch
-
-function winfetch   { C:\support\code\_git-repos\foreign\winfetch\winfetch.ps1 }
-
-### vrtualbox
-
-function start-lab {. 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' startvm "VM-LX-SRV-DEBIAN-11" --type headless}

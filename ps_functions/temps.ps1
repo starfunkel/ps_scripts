@@ -13,22 +13,21 @@ function FromBase64 { $string=}
 
 #>
 
- 
-<#
-.Synopsis
-  Search DHCP for the specified MAC address
-.DESCRIPTION
-  This function enumerates through each scope in either a defined site or the current site and displays any DHCP lease or reservation that matches the MAC address specified 
-.EXAMPLE 
-  Get-Mac -Mac 000000000000 
-.EXAMPLE
-  Get-Mac -Mac 0000 -DhcpSite CONTOSO 
-.EXAMPLE
-  Get-Mac -Mac 000000 -DhcpSite *
-#>
-
 function Get-Mac
 {
+    <#
+  .Synopsis
+    Search DHCP for the specified MAC address
+  .DESCRIPTION
+    This function enumerates through each scope in either a defined site or the current site and displays any DHCP lease or reservation that matches the MAC address specified 
+  .EXAMPLE 
+    Get-Mac -Mac 000000000000 
+  .EXAMPLE
+    Get-Mac -Mac 0000 -DhcpSite CONTOSO 
+  .EXAMPLE
+    Get-Mac -Mac 000000 -DhcpSite *
+    #>
+
     Param
     (
         [Parameter(Mandatory=$true,
