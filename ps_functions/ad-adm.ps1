@@ -60,10 +60,11 @@ function adc    ( $COMPUTER ){ # Get Ad Computer Info
     }
 
 # Get ad group modifications (e.g. add / delete group memebr)
-function gmc  ($dc, $GROUPC){
-    $sid=(get-adgroup $GROUPC).SID | foreach {$_.Value}
-    $sid2="<SID=$sid>"
-    repadmin.exe /showobjmeta $dc $sid2
+function gmc    ( $dc, $GROUPC ){
+        $sid=(get-adgroup $GROUPC).SID |
+        foreach {$_.Value}
+        $sid2="<SID=$sid>"
+        repadmin.exe /showobjmeta $dc $sid2
     }
 
 # Azure AD 
