@@ -58,10 +58,10 @@ Increase max hop count from default of 30 to 45.
     [Alias("s")]
     [IPAddress]$DNSServer = $Null,
 	
-	[Parameter(ValueFromPipeline)]
-	[Alias("h")]
-	[ValidateRange(30,120)]
-	[Int]$Hops = 60,
+    [Parameter(ValueFromPipeline)]
+    [Alias("h")]
+    [ValidateRange(30,120)]
+    [Int]$Hops = 60,
 	
     [Parameter(ValueFromPipeline)]
     [Alias("f")]

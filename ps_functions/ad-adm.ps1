@@ -33,7 +33,7 @@ function adg    ( $GROUP ){ # Get AD Group Info
         $LINEDELIMITERS
         Write-Host ""
         Write-Host "Group Member Info:"
-        get-adGROUPmember $GROUP -Recursive -Server vwdc |
+        get-adGROUPmember $GROUP -Recursive -Server |
         Get-ADUser -Properties *  |
         Select-Object   SamAccountName, Displayname, Enabled, lastlogondate, `
                         LastBadpasswordAttempt, BadLogonCount, PasswordLastSet,`
