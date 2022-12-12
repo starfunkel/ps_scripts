@@ -55,6 +55,9 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
+# Set default console output to verbose
+$PSDefaultParameterValues=@{"*:Verbose"=$True}
+
 # Import ps scripts and definitions by iterating through each folder 
 $Path = "C:\support\code\_git-repos\cras_stuff\POSH\ps_functions"
 Get-ChildItem -Path $Path  -Filter *.ps1 |
