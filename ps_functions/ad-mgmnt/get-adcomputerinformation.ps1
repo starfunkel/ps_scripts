@@ -1,5 +1,5 @@
 # Get Ad Computer Info
-function get-adcomputerinformation {
+function Get-ADComputerInformation {
     [CmdletBinding()]
     [Alias("adc")]
     param(

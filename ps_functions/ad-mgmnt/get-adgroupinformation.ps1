@@ -1,5 +1,5 @@
 # Gather and dusplay AD group information
-function get-adgroupinformation {
+function Get-ADGroupInformation {
     [CmdletBinding()]
     [Alias("adg")]
     param(

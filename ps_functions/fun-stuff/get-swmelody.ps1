@@ -1,4 +1,4 @@
-function get-swmelody () {
+function Get-SWMelody () {
 
     [console]::beep(440,500)
     [console]::beep(440,500)

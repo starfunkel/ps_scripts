@@ -1,5 +1,5 @@
 # Gather and display AD user information
-function get-aduserinformation {
+function Get-ADUserInformation {
     [CmdletBinding()]
     [Alias("adu")]
     param(
