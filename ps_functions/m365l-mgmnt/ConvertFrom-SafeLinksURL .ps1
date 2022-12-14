@@ -1,30 +1,5 @@
 
-
-function x500 (){
-    [cmdletbinding()]
-        param (
-            [Parameter(Position=0,Mandatory)]
-            [string]
-            $IMCEAEX
-        )
-    $IMCEAEX = ($IMCEAEX).Replace("IMCEAEX-", "")
-    $IMCEAEX = ($IMCEAEX).Replace("_", "/")
-    $IMCEAEX = ($IMCEAEX).Replace("+20", " ")
-    $IMCEAEX = ($IMCEAEX).Replace("+28", "(")
-    $IMCEAEX = ($IMCEAEX).Replace("+29", ")")
-    $IMCEAEX = ($IMCEAEX).Replace("+2E", ".")
-    
-    Write-Host ""
-    Write-Host "- Converted to X500" -ForegroundColor Yellow
-    "X500:$($IMCEAEX)" | clip
-    Write-Host "- Copied to Clipboard" -ForegroundColor Yellow
-    Write-Host ""
-    Return "X500:$($IMCEAEX)"
-}
-
-function ConvertFrom-SafeLinksURL 
-{
-   <#
+ <#
          .SYNOPSIS
          Decode a ATP SafeLinks URL
 
@@ -63,7 +38,9 @@ function ConvertFrom-SafeLinksURL
          https://products.office.com/en-us/exchange/online-email-threat-protection
    #>
 
+function ConvertFrom-SafeLinksURL {
    [CmdletBinding(ConfirmImpact = 'None')]
+   [Alias("safelink")]
    [OutputType([string])]
    param
    (
@@ -74,8 +51,7 @@ function ConvertFrom-SafeLinksURL
          HelpMessage = 'The ATP SafeLinks URL that you want to decode into original URL')]
       [ValidateNotNullOrEmpty()]
       [Alias('SafeLink')]
-      [uri]
-      $SafeLinksURL
+      [uri]$SafeLinksURL
    )
 
    begin
