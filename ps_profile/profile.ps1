@@ -60,7 +60,7 @@ $PSDefaultParameterValues=@{"*:Verbose"=$True}
 
 # Import ps scripts and definitions by iterating through each folder 
 $Path = "C:\support\code\_git-repos\cras_stuff\POSH\ps_functions"
-Get-ChildItem -Path $Path  -Filter *.ps1 |
+Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
     ForEach-Object {
         . $_.FullName
     }
