@@ -27,7 +27,7 @@ Function Get-VMInformation {
                 Position=0,
                 ParameterSetName="NonPipeline"
             )]
-            [Alias("VM")]
+            [Alias("VM-Info")]
             [string[]]  $Name,
      
      

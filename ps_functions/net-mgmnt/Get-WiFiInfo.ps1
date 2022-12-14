@@ -1,5 +1,11 @@
-
-function get-WifiInfo   {
+function Get-WifiInfo {
+    [CmdletBinding()]
+    [Alias("wifiinfo")]
+    param(
+       [Parameter(Mandatory=$true)]
+       [String]$Server
+    )
+ 
     $logs=@()
     $date=Get-Date
     $cmd=netsh wlan show networks mode=bssid
