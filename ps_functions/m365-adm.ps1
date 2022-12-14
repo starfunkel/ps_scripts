@@ -1,17 +1,4 @@
-# Exchange Ad-hoc functions
 
-function push-azure-sync (){
-    [cmdletbinding()]
-        param ()
-
-    Connect-AzureAD
-    Import-Module ADSync
-    Get-ADSyncScheduler
-    Start-ADSyncSyncCycle -PolicyType Delta
-    start-Sleep -seconds 30
-    Start-ADSyncSyncCycle -PolicyType Initial
-    Disconnect-AzureAD
-    }
 
 function x500 (){
     [cmdletbinding()]
