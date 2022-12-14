@@ -1,4 +1,3 @@
-# Get Windows ACL Information  https: //exchangepedia.com/2017/11/get-file-or-FOLDER-permissions-using-powershell.html
 function gacl   ( $FOLDER ){ 
     (get-acl $FOLDER).access |
     Select-Object `
@@ -12,7 +11,7 @@ function gacl   ( $FOLDER ){
     Sort-Object Identity -Descending
     }
 
-# Get all ACLs recursively from $SCRIPROOT
+
 function gacls  (){
     $PATH=(Get-Childitem).name
     ForEach ($FOLDER in $PATH) {
