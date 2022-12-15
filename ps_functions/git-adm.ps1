@@ -17,7 +17,7 @@
 
 function ga { ### auto commits all the things in the current directory
                 
-    param([string]$MESSAGE = "auto commit - nothing to special")
+    param([string]$MESSAGE = "auto commit")
 
     git add .
     git commit -m $MESSAGE
@@ -34,6 +34,7 @@ function gitc   { ### evtl ein Parameter: repo, message
                 "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
                 "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool",`
                 "C:\support\code\_git-repos\iit_\Code-Snips"
+                "C:\support\code\_git-repos\cras_stuff\code_snippets"
 
     foreach ($repo in $repos) {
         Set-Location $repo
