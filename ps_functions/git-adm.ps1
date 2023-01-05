@@ -42,6 +42,7 @@ function gitc   { ### evtl ein Parameter: repo, message
         $folder = Split-Path -leaf -path (Get-Location)
         Write-Host "$folder Repository" -ForegroundColor Green  
         Write-Host "---------------------------------" -ForegroundColor Yellow
+        git pull
         git add .
         git commit -m "Auto-commit" 
         git push
