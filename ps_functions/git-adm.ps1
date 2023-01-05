@@ -33,7 +33,6 @@ function gitc   { ### evtl ein Parameter: repo, message
                 "C:\support\code\_git-repos\iit_\iit-ansible-inventory",`
                 "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
                 "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool",`
-                "C:\support\code\_git-repos\iit_\Code-Snips"
                 "C:\support\code\_git-repos\cras_stuff\code_snippets"
 
     foreach ($repo in $repos) {
