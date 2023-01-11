@@ -28,3 +28,4 @@ function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType',
 function pong       { Test-Connection $args[0] | Format-Table -Autosize }
 
 function imp        { Import-Module $args[0] }
+function pnp        { PowerShell.exe -noprofile }

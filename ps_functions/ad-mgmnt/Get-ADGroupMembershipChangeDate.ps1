@@ -1,4 +1,7 @@
 <#
+##Requires -Module GroupPolicy,ActiveDirectory
+#>
+<#
 
 .SYNOPSIS
 A Script to check the AD groupmembership modifications with repadmin.exe
@@ -10,7 +13,7 @@ Gets a user defined ad-group object and calls repadmin.exe /showobjmeta to retri
 .PARAMETER DC
 Specifies the target domain controller.
 
-.PARAMETER PingCycles
+.PARAMETER grp
 Specifies the target ad group.
 
 .INPUTS
@@ -47,8 +50,7 @@ function Get-ADGroupmembershipModification  (){
     Begin {}
 
     Process {
-     
-        $grp = "administratoren"
+            
         $dgrpn = (Get-ADGroup -Identity $grp).DistinguishedName
         repadmin.exe /showobjmeta $dc $dgrpn
     }
