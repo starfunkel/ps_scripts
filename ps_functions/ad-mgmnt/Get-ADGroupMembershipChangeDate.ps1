@@ -1,6 +1,5 @@
-<#
-##Requires -Module GroupPolicy,ActiveDirectory
-#>
+#Requires -Module GroupPolicy,ActiveDirectory
+
 <#
 
 .SYNOPSIS
