@@ -4,7 +4,7 @@ $taskName = "Set Cras Explorer View"
 # task action
 $taskAction= New-ScheduledTaskAction `
     -Execute 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' `
-    -Argument '-file "C:\support\code\_git-repos\cras_stuff\POSH\Scheduled Tasks\set-explorer-view.ps1"'
+    -Argument '-nop -executionpolicy bypass -file "C:\support\code\_git-repos\cras_stuff\POSH\Scheduled Tasks\set-explorer-view.ps1"'
 
 # task Time and trigger
 $taskTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Minutes 30)
