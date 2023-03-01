@@ -15,6 +15,7 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
 #>
 
 # Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser # Living on the edge of things ;-)
+
 $host.ui.RawUI.WindowTitle='Black Magic' # Set window title
 Clear-Host
 
