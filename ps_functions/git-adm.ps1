@@ -28,13 +28,11 @@ function ga { ### auto commits all the things in the current directory
 function gitc   { ### evtl ein Parameter: repo, message
 
     $CURRENT_PATH = (Get-Location).path
-    $repos =    "C:\support\code\_git-repos\cras_stuff\POSH",`
-                "C:\support\code\_git-repos\cras_stuff\get-ADInfo",`
-                "C:\support\code\_git-repos\iit_\iit-ansible-inventory",`
-                "C:\support\code\_git-repos\iit_\BKG-CLI-Onboarding",`
-                "C:\support\code\_git-repos\iit_\BKG-GUI-Verwaltungstool",`
-                "C:\support\code\_git-repos\cras_stuff\code_snippets",`
-                "C:\support\code\_git-repos\iit_\CWA-Scripts"
+    $repos =    "C:\support\code\git-repos\starfunkel\powershell_stuff",`
+                "C:\support\code\git-repos\starfunkel\get-ADInfo",`
+                "C:\support\code\git-repos\starfunkel\iit-ansible-inventory",`
+                "C:\support\code\git-repos\starfunkel\code_snippets",`
+                "C:\support\code\git-repos\starfunkel\CWA-Scripts"
 
     foreach ($repo in $repos) {
         Set-Location $repo

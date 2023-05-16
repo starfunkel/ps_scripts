@@ -60,7 +60,7 @@ Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 # $PSDefaultParameterValues=@{"*:Verbose"=$True}
 
 # Import ps scripts and definitions by iterating through each folder 
-$Path = "C:\support\code\_git-repos\cras_stuff\POSH\ps_functions"
+$Path = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
 Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
     ForEach-Object {
         . $_.FullName
@@ -69,7 +69,7 @@ Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
 # Set Custom PS module directory
 $env:PSModulePath = (
     (
-        @("C:\support\code\_git-repos\cras_stuff\POSH\ps-modules") + ($env:PSModulePath -split ";")
+        @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
     ) -join ";"
 )
 
