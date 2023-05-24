@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Cra's Powershell Profile 
+ Powershell Profile 
 
 .DESCRIPTION
 2020 - 2022
@@ -14,19 +14,52 @@ Set custom profile path
 powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1''' "
 #>
 
-# Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser # Living on the edge of things ;-)
+# Set default console output to verbose
+# $PSDefaultParameterValues=@{"*:Verbose"=$True}
 
+# Living on the edge of things
+# Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser 
+
+# Import ps files
+$Path = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
+Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
+    ForEach-Object {
+        . $_.FullName
+    }
+
+# Set module dir
+$env:PSModulePath = (
+    (
+        @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
+    ) -join ";"
+)
+
+# The FEEL!
+# Autocompletion
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+# Autocompletion for arrow keys
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+# Don't waste time 
 $host.ui.RawUI.WindowTitle='Black Magic' # Set window title
 Clear-Host
 
-# Get time for prompt
+# Start with this:
+getw
+
+# Start at that:
+Set-Location c:\support
+
+# Get the time
 function Get-Time
     { return $(get-date |
         ForEach-Object { $_.ToLongTimeString() } 
               )
     }
 
-### Colored and tiny time prompt
+### Colored and fancy!
 function prompt
 
     {   
@@ -44,38 +77,8 @@ function prompt
         return "> "
     }
 
-# Get weather forecast function
-function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
+# Get the weather
+# function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
 
-# Handling & Moving in posh
 
-# Autocompletion
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-
-# Autocompletion for arrow keys
-Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-
-# Set default console output to verbose
-# $PSDefaultParameterValues=@{"*:Verbose"=$True}
-
-# Import ps scripts and definitions by iterating through each folder 
-$Path = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
-Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
-    ForEach-Object {
-        . $_.FullName
-    }
-
-# Set Custom PS module directory
-$env:PSModulePath = (
-    (
-        @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
-    ) -join ";"
-)
-
-# Start with this:
-getw
-
-# Setting Start Dir
-Set-Location c:\support
-
+# Good luck! You are on your own now!
