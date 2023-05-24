@@ -1,41 +1,41 @@
 
  <#
-         .SYNOPSIS
-         Decode a ATP SafeLinks URL
+.SYNOPSIS
+Decode a ATP SafeLinks URL
 
-         .DESCRIPTION
-         Decode a Office 365 Advanced Threat Protection SafeLinks URL
+.DESCRIPTION
+Decode a Office 365 Advanced Threat Protection SafeLinks URL
 
-         .PARAMETER SafeLinksURL
-         The ATP SafeLinks URL that you want to decode into original URL
+.PARAMETER SafeLinksURL
+The ATP SafeLinks URL that you want to decode into original URL
 
-         .EXAMPLE
-         PS C:\> ConvertFrom-SafeLinksURL -SafeLinksURL 'https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhochwald.net%2F&data=04%7C01%7Cjoerg%40hochwald.net%7C6944b67827e54648125508d884babf16%7Cb768b3c4dc4b445c94c0388882f966fb%7C0%7C0%7C637405284900251734%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=qPb0a6MdRNuAzMIyLPlQ9iHPAufxNRywP2kKi%2FIHs%2FA%3D&reserved=0'
+.EXAMPLE
+PS C:\> ConvertFrom-SafeLinksURL -SafeLinksURL 'https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhochwald.net%2F&data=04%7C01%7Cjoerg%40hochwald.net%7C6944b67827e54648125508d884babf16%7Cb768b3c4dc4b445c94c0388882f966fb%7C0%7C0%7C637405284900251734%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=qPb0a6MdRNuAzMIyLPlQ9iHPAufxNRywP2kKi%2FIHs%2FA%3D&reserved=0'
 
-         This will decode the given URL and return the original URL (https://hochwald.net/)
+This will decode the given URL and return the original URL (https://hochwald.net/)
 
-         .EXAMPLE
-         PS C:\> ConvertFrom-SafeLinksURL -SafeLinksURL 'https://jhochwald.com'
+.EXAMPLE
+PS C:\> ConvertFrom-SafeLinksURL -SafeLinksURL 'https://jhochwald.com'
 
-         This will fail, the provided string is not a valid ATP SafeLink URL
+This will fail, the provided string is not a valid ATP SafeLink URL
 
-         .EXAMPLE
-         PS C:\> ConvertFrom-SafeLinksURL -SafeLinksURL 'https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhochwald.net%2F&reserved=0'
+.EXAMPLE
+PS C:\> ConvertFrom-SafeLinksURL -SafeLinksURL 'https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhochwald.net%2F&reserved=0'
 
-         This will fail, the provided string is not a valid ATP SafeLink URL
+This will fail, the provided string is not a valid ATP SafeLink URL
 
-         .NOTES
-         Basic PowerShell function to replace an outdated Ruby script
-         There is also a great web based solution for this approach: http://www.o365atp.com
+.NOTES
+Basic PowerShell function to replace an outdated Ruby script
+There is also a great web based solution for this approach: http://www.o365atp.com
 
-         .LINK
-         https://gist.github.com/jhochwald/8c9a3ef448058502ed184512e586815f
+.LINK
+https://gist.github.com/jhochwald/8c9a3ef448058502ed184512e586815f
 
-         .LINK
-         http://www.o365atp.com
+.LINK
+http://www.o365atp.com
 
-         .LINK
-         https://products.office.com/en-us/exchange/online-email-threat-protection
+.LINK
+https://products.office.com/en-us/exchange/online-email-threat-protection
    #>
 
 function ConvertFrom-SafeLinksURL {
