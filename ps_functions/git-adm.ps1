@@ -16,17 +16,14 @@
 ### Github Management
 
 function ga { ### auto commits all the things in the current directory
-                
     param([string]$MESSAGE = "auto commit")
-
     git add .
     git commit -m $MESSAGE
     git push
     Remove-Variable -Name MESSAGE
 }
 
-function gitc   { ### evtl ein Parameter: repo, message
-
+function gps   { ### evtl ein Parameter: repo, message
     $CURRENT_PATH = (Get-Location).path
     $repos =    "C:\support\code\git-repos\starfunkel\powershell_stuff",`
                 "C:\support\code\git-repos\starfunkel\get-ADInfo",`
@@ -50,3 +47,6 @@ function gitc   { ### evtl ein Parameter: repo, message
     Set-Location $CURRENT_PATH
     Remove-Variable -Name CURRENT_PATH
 }
+
+function gpl {
+    }
