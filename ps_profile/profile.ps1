@@ -20,6 +20,19 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
 # Living on the edge of things
 # Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser 
 
+# The FEEL!
+# Autocompletion
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+# Autocompletion for arrow keys
+Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+# Don't waste time 
+$host.ui.RawUI.WindowTitle='Black Magic' # Set window title
+
+
+
 # Import ps files
 $Path = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
 Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
@@ -34,20 +47,10 @@ $env:PSModulePath = (
     ) -join ";"
 )
 
-# The FEEL!
-# Autocompletion
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-# Autocompletion for arrow keys
-Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
-
-# Don't waste time 
-$host.ui.RawUI.WindowTitle='Black Magic' # Set window title
-Clear-Host
 
 # Start with this:
-getw
+#Clear-Host
 
 # Start at that:
 Set-Location c:\support
@@ -78,7 +81,7 @@ function prompt
     }
 
 # Get the weather
-# function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
-
+function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
+getw
 
 # Good luck! You are on your own now!
