@@ -17,6 +17,9 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
 # Set default console output to verbose
 # $PSDefaultParameterValues=@{"*:Verbose"=$True}
 
+# More debug
+# Set-PSDebug -Trace 1
+
 # Living on the edge of things
 # Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser 
 
@@ -64,7 +67,6 @@ function Get-Time
 
 ### Colored and fancy!
 function prompt
-
     {   
         # Write the username, computername, time and direcory
         write-host "[" -noNewLine
