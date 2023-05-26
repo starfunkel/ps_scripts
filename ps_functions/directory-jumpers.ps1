@@ -7,8 +7,7 @@ function HKCU       { Set-Location HKCU: }
 function Env        { Set-Location Env: }
 function C          { Set-Location C:\ }
 function ~          { Set-Location $env:UserProfile }
-function posh       { Set-Location C:\support\code\_git-repos\ }
-function gitd       { Set-Location C:\support\code\_git-repos }
+function gitd       { Set-Location C:\support\code\git-repos\starfunkel }
 function dl         { Set-Location "C:\Users\rathnau\Downloads" }
 function co         { Set-Location "C:\support\code"}
 function da         { Set-Location D:\ }
