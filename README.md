@@ -1,6 +1,7 @@
 # Powershell Stuff 
 
-## Powershell $PSHOME profile system profile
+## Load custom profile.ps1 from cloned repo location
+### If persistence is prefered put this line with the custom repo location in one of Powershells $PSHome file path
 <br>
 
 ```powershell
