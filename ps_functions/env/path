@@ -1,0 +1,6 @@
+# Path env
+
+$INSTALL_STPS = "C:\support\code\git-repos\starfunkel\powershell_stuff"
+
+if (-not [Enviroment]::GetEnviromentVariable('$INSTALL-EVS', 'User'))
+    {$Env:support = '$INSTALL_STPS'}
