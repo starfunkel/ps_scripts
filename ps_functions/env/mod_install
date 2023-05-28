@@ -1,5 +1,0 @@
-function install-rsat {
-
-    if(Get-WindowsCapability -online | where-object Name -Match "RSAT")   
-    else{Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}
-}

@@ -32,7 +32,6 @@ if(get-Module -ListAvailable  -name vmware*){    # Checks if PowerCli Module is 
     Get-Module -ListAvailable 'VMware.Hv.Helper' | 
     Import-Module    # Please download the Hv Helper 
 }else{
-
     New-Item -Path "$env:USERPROFILE\Documents\WindowsPowershell\Modules" -ItemType Directory | 
     Out-Null
     Copy-Item -Path "$PSScriptRoot\VMware.Hv.Helper\" -Destination "$env:USERPROFILE\Documenets\WindowsPowershell\Modules\VMware.Hv.Helper\" -Recurse -Force    # Copy Vmware.HV.Helper to Destination Dir
@@ -50,11 +49,3 @@ if(get-Module -ListAvailable  -name vmware*){    # Checks if PowerCli Module is 
 
 # RSAT Module availabilty check - Brauchen wir noch nicht
 
-if(
-    Get-WindowsCapability -online |
-    where-object Name -Match "RSAT")    # Checks if RSAT Modules are installed
-
-else{
-    Get-WindowsCapability -Name RSAT* -Online | 
-    Add-WindowsCapability -Online
-}
