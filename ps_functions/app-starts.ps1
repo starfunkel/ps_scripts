@@ -15,7 +15,7 @@ function fft        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p Testi
 function ffp        { & "$env:ProgramFiles\Mozilla Firefox\firefox.exe" -p }
 
 ### Reload Powershell Profile
-function rel        { & powershell}
+function rel        { & powershell -nop}
 
 ### cowsay stuff
 function cow        { Get-Cowsay "$args" } # Install-Module -Name CowsaySharp

@@ -47,6 +47,3 @@ function gps   { ### evtl ein Parameter: repo, message
     Set-Location $CURRENT_PATH
     Remove-Variable -Name CURRENT_PATH
 }
-
-function gpl {
-    }
