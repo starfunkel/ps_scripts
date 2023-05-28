@@ -4,7 +4,7 @@ function install-rsat {
     else{Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}
 }
 
-function installpowercli (
+function install-powercli (
     if(get-Module -ListAvailable  -name vmware*){  
         Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
         set-PowerCLIConfiguration -invalidcertificateaction  ignore 
