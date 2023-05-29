@@ -2,8 +2,10 @@
 
 hardcoded Links ahead!
 
+***
+***
 
-To Do:
+## To Do:
 
 Build fully automated and Windows platform dependent powershell profile
 
@@ -16,4 +18,3 @@ Build fully automated and Windows platform dependent powershell profile
     - set path env's:
         - add repo path to $PATH var of Windows (This may be an alternative to dor sourcing all .ps1 files at every powershell startup) 
 
- 
