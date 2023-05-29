@@ -1,9 +1,32 @@
-function install-rsat {
-
-    if(Get-WindowsCapability -online | where-object Name -Match "RSAT")   
+# RSAT - Install Remote Server Administration Tools
+if(Get-WindowsCapability -online | where-object Name -Match "RSAT")   
     else{Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}
-}
 
+# AzureAD - Connect to the AzureAD service. Install the module if needed. 
+if (Get-Module -ListAvailable -Name AzureAD) { 
+    Write-Host "Conneting to Azure AD Online Service" @Green 
+    Connect-AzureAD
+    }
+else { 
+    Write-Host "AzureAD required. Now installing" @Yellow 
+    Install-Module -Name AzureAD -Scope AllUsers -Force 
+    Write-Host "Conneting to Azure AD Online Service" @Cyan 
+    Connect-AzureAD 
+    }
+
+# ExchangeOnline - Connect to the Exchange Online Service. Install the module if needed. 
+if (Get-Module -ListAvailable -Name ExchangeOnlineManagement) { 
+    Write-Host "Conneting to Exchange Online Service" @Green 
+    Connect-ExchangeOnline 
+    }
+else { 
+    Write-Host "ExchangeOnline required. Now installing" @Yellow
+    Install-Module -Name ExchangeOnlineManagement -Scope AllUsers -Force
+    Write-Host "Conneting to Exchange Online Service" @Cyan 
+    Connect-ExchangeOnline 
+    }
+
+# Optional - VMWare PowerCli
 function install-powercli (
     if(get-Module -ListAvailable  -name vmware*){  
         Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
