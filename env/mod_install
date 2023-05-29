@@ -1,3 +1,8 @@
+$Green = @{ "ForegroundColor" = "Green" } 
+$Yellow = @{ "ForegroundColor" = "Yellow" } 
+$Red = @{ "ForegroundColor" = "Red" } 
+$Cyan = @{ "ForegroundColor" = "Cyan" }
+
 # RSAT - Install Remote Server Administration Tools
 if(Get-WindowsCapability -online | where-object Name -Match "RSAT")   
     else{Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}
