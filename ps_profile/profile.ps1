@@ -18,7 +18,7 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
 # $PSDefaultParameterValues=@{"*:Verbose"=$True}
 
 # More debug
-# Set-PSDebug -Trace 1
+Set-PSDebug -Trace 1
 
 # Living on the edge of things
 # Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser 
