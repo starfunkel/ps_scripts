@@ -31,7 +31,7 @@ else {
     Connect-ExchangeOnline 
     }
 
-# Optional - VMWare PowerCli
+# VMWare PowerCli
 function install-powercli (
     if(get-Module -ListAvailable  -name vmware*){  
         Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
@@ -43,6 +43,7 @@ function install-powercli (
     }
 )
 
+# Sharepoint
 function install-sharepoint (
 
     $AdminSiteURL = $(Write-Host "Enter the new SharePoint admin domain." u/Green -NoNewLine)`
@@ -60,6 +61,7 @@ function install-sharepoint (
         }
 )
 
+# DSInternals
 function install-dsinternals (
     Install-Module -Name DSInternals -Force
 )
