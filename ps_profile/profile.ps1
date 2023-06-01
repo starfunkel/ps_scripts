@@ -53,7 +53,7 @@ $env:PSModulePath = (
 
 
 # Start with this:
-#Clear-Host
+Clear-Host
 
 # Start at that:
 Set-Location c:\support
