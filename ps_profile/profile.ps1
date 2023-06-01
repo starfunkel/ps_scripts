@@ -87,3 +87,14 @@ function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "cu
 getw
 
 # Good luck! You are on your own now!
+
+
+<#
+
+# Load scripts from the following locations
+$env:Path += ";D:\SysAdmin\scripts\Connectors"
+$env:Path += ";D:\SysAdmin\scripts\Office365"
+Set-PSReadlineKeyHandler -Key Tab -Function Complete
+Set-StrictMode -Version 2
+
+#>
