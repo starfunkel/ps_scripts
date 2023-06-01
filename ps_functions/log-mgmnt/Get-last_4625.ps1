@@ -15,4 +15,4 @@ $filter='<QueryList>
  </Query>
  </QueryList>'
  $LogonEvents = Get-WinEvent -FilterXml $filter
- $LogonEvents | sort -Property TimeCreated | Select-Object -First 1
+ $LogonEvents | sort -Property TimeCreated #| Select-Object -First 1
