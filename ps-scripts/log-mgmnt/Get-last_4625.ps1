@@ -2,7 +2,7 @@
 function get-4625 {
     $filter4625='<QueryList>
     <Query Id="0" Path="file://C:\support\playground\log_audit\logs\BKG\BKG-WTS-01_Security.evtx">
-      <Select Path="file://C:\support\playground\log_audit\logs\BKG\BKG-WTS-01_Security.evtx">*[System[(EventID=4625)]]</Select>
+      <Select Path="file://C:\support\playground\log_audit\logs\BKG\BKG-WTS-01_Security.evtx">*[System[(EventID=681)]]</Select>
     </Query>
   </QueryList>'
     $LogonEvents = Get-WinEvent -FilterXml $filter4625 
@@ -16,3 +16,6 @@ $filter='<QueryList>
 </QueryList>'
 $LogonEvents = Get-WinEvent -FilterXml $filter
 $LogonEvents | sort -Property TimeCreated #| Select-Object -First 1
+
+
+Get-WmiObject win32_service  | Format-Table name, startname
