@@ -1,6 +1,3 @@
-$executionTime = Measure-Command `
-{
-
 <#
 .SYNOPSIS
  Powershell Profile 
@@ -16,6 +13,9 @@ Test
 Set custom profile path
 powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1''' "
 #>
+
+#$executionTime = Measure-Command `
+#{
 
 # Set default console output to verbose
 # $PSDefaultParameterValues=@{"*:Verbose"=$True}
@@ -53,10 +53,7 @@ $env:PSModulePath = (
     ) -join ";"
 )
 
-
-
-# Start with this:
-# Clear-Host
+Clear-Host
 
 # Start at that:
 Set-Location c:\support
@@ -93,13 +90,13 @@ getw
 
 
 <#
-
 # Load scripts from the following locations
 $env:Path += ";D:\SysAdmin\scripts\Connectors"
 $env:Path += ";D:\SysAdmin\scripts\Office365"
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-StrictMode -Version 2
-
 #>
-}
-Write-Host "$PSCommandPath execution time: $executionTime"
+
+
+#}
+#Write-Host "$PSCommandPath execution time: $executionTime"
