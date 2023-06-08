@@ -1,3 +1,6 @@
+$executionTime = Measure-Command `
+{
+
 <#
 .SYNOPSIS
  Powershell Profile 
@@ -53,7 +56,7 @@ $env:PSModulePath = (
 
 
 # Start with this:
-Clear-Host
+# Clear-Host
 
 # Start at that:
 Set-Location c:\support
@@ -98,3 +101,5 @@ Set-PSReadlineKeyHandler -Key Tab -Function Complete
 Set-StrictMode -Version 2
 
 #>
+}
+Write-Host "$PSCommandPath execution time: $executionTime"
