@@ -3,11 +3,10 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
     'Description',
     'EmailAddress',
     'LockedOut',
-    'Manager',
-    'MobilePhone',
     'telephoneNumber',
     'PasswordLastSet',
     'PasswordExpired',
+    'LastLogonDate',
     'ProxyAddresses',
     'Title',
     'wwWHomePage'
