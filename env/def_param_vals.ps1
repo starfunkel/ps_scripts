@@ -9,12 +9,9 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
     'LastLogonDate',
     'ProxyAddresses',
     'Title',
-    'wwWHomePage'
 )
 
-$PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = $true
-
-<#
--Encoding Default
--Force 
-#>
+$PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = @(
+    '$true',
+    'Encoding Default',
+    'Force'
