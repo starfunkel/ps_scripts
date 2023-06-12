@@ -41,8 +41,8 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     Set-StrictMode -Version 2
 
     # Import ps files
-    $Path = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
-    Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
+    $FuncPath = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
+    Get-ChildItem -Path $FuncPath  -Recurse -Filter *.ps1 |
         ForEach-Object {
             . $_.FullName
         }
@@ -54,7 +54,12 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
         ) -join ";"
     )
 
-    Clear-Host
+    # Set DefaultParameterDefinitions
+
+    . C:\support\code\git-repos\starfunkel\powershell_stuff\env\def_param_vals.ps1
+
+
+    #Clear-Host
 
     # Start at that:
     Set-Location c:\support
