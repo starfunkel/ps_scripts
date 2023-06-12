@@ -12,4 +12,9 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
     'wwWHomePage'
 )
 
-# $PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = $true
+$PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = $true
+
+<#
+-Encoding Default
+-Force 
+#>
