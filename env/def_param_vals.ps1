@@ -8,7 +8,7 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
     'PasswordExpired',
     'LastLogonDate',
     'ProxyAddresses',
-    'Title',
+    'Title'
 )
 
 $PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = @(
