@@ -14,3 +14,4 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
 $PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = @(
     '$true',
     'Encoding Default'
+)
