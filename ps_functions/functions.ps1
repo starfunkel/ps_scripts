@@ -14,6 +14,7 @@ function cat        { get-content $args[0] }
 function less       { get-content $args[0] | out-host -paging }
 function find       { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
 function sudo       { Start-Process -verb RunAs wt }
+function su         { Start-Process -FilePath powershell.exe -ArgumentList[0] }
 function history    { get-history }
 function touch      { New-Item $args[0] }
 function zip        { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
