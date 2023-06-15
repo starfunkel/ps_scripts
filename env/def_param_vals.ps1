@@ -3,14 +3,15 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
     'Description',
     'EmailAddress',
     'LockedOut',
-    'Manager',
-    'MobilePhone',
     'telephoneNumber',
     'PasswordLastSet',
     'PasswordExpired',
+    'LastLogonDate',
     'ProxyAddresses',
-    'Title',
-    'wwWHomePage'
+    'Title'
 )
 
-# $PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = $true
+$PSDefaultParameterValues['Export-Csv:NoTypeInformation'] = @(
+    '$true',
+    'Encoding Default'
+)

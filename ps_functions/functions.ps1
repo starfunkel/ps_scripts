@@ -13,8 +13,12 @@ function man        { get-help $args[0] -Full | out-host -paging }
 function cat        { get-content $args[0] }
 function less       { get-content $args[0] | out-host -paging }
 function find       { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
+<<<<<<< HEAD
 function sudo       { Start-Process -verb RunAs wt }
 function su         { Start-Process -FilePath powershell.exe -ArgumentList[0] }
+=======
+function sudo       { Start-Process -verb RunAs powershell.exe }
+>>>>>>> 8b445618ded4f5c22acbb59210a1b440324a2e3b
 function history    { get-history }
 function touch      { New-Item $args[0] }
 function zip        { Compress-Archive -Path $args[0] -DestinationPath $args[1] }

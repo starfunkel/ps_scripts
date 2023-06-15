@@ -14,76 +14,85 @@ Set custom profile path
 powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1''' "
 #>
 
-# Set default console output to verbose
-# $PSDefaultParameterValues=@{"*:Verbose"=$True}
+#$executionTime = Measure-Command `
+#{
 
-# More debug
-#Set-PSDebug -Trace 1
+    # Set default console output to verbose
+    # $PSDefaultParameterValues=@{"*:Verbose"=$True}
 
-# Living on the edge of things
-# Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser 
+    # More debug
+    #Set-PSDebug -Trace 1
 
-# The FEEL!
-# Autocompletion
-Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+    # Living on the edge of things
+    # Set-ExecutionPolicy -ExecutionPolicy remotesigned -Scope CurrentUser 
 
-# Autocompletion for arrow keys
-Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+    # The FEEL!
+    # Autocompletion
+    Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
-# Don't waste time 
-$host.ui.RawUI.WindowTitle='Black Magic' # Set window title
+    # Autocompletion for arrow keys
+    Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
+    Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+    # Don't waste time; do the most important!
+    $host.ui.RawUI.WindowTitle='Black Magic' # Set window title
+
+    # Set meaningful output
+    Set-StrictMode -Version 2
+
+    # Import ps files
+    $FuncPath = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
+    Get-ChildItem -Path $FuncPath  -Recurse -Filter *.ps1 |
+        ForEach-Object {
+            . $_.FullName
+        }
+
+    # Set module dir
+    $env:PSModulePath = (
+        (
+            @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
+        ) -join ";"
+    )
+
+    # Set DefaultParameterDefinitions
+
+    . C:\support\code\git-repos\starfunkel\powershell_stuff\env\def_param_vals.ps1
 
 
+    #Clear-Host
 
-# Import ps files
-$Path = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
-Get-ChildItem -Path $Path  -Recurse -Filter *.ps1 |
-    ForEach-Object {
-        . $_.FullName
-    }
+    # Start at that:
+    Set-Location c:\support
 
-# Set module dir
-$env:PSModulePath = (
-    (
-        @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
-    ) -join ";"
-)
+    # Get the time
+    function Get-Time
+        { return $(get-date |
+            ForEach-Object { $_.ToLongTimeString() } 
+                )
+        }
 
+    ### Colored and fancy!
+    function prompt
+        {   
+            # print the username, computername, time and direcory
+            write-host "[" -noNewLine
+            write-host "$env:username"  -ForegroundColor red -noNewLine
+            write-host "@"  -ForegroundColor white -noNewLine
+            write-host "$env:COMPUTERNAME " -ForegroundColor DarkCyan -noNewLine
+            write-host $(Get-Time) -foreground yellow -noNewLine
+            write-host "] "
 
+            # print the path
+            write-host $($(Get-Location).Path.replace($home,"~").replace("\","/")) -foreground green -noNewLine
+            write-host $(if ($nestedpromptlevel -ge 1) { '>>' }) -noNewLine
+            return "> "
+        }
 
-# Start with this:
-#Clear-Host
+    # Get the weather
+    function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
+    getw
 
-# Start at that:
-Set-Location c:\support
+    # Good luck! You are on your own now!
 
-# Get the time
-function Get-Time
-    { return $(get-date |
-        ForEach-Object { $_.ToLongTimeString() } 
-              )
-    }
-
-### Colored and fancy!
-function prompt
-    {   
-        # Write the username, computername, time and direcory
-        write-host "[" -noNewLine
-        write-host "$env:username"  -ForegroundColor red -noNewLine
-        write-host "@"  -ForegroundColor white -noNewLine
-        write-host "$env:COMPUTERNAME " -ForegroundColor DarkCyan -noNewLine
-        write-host $(Get-Time) -foreground yellow -noNewLine
-        write-host "] "
-
-        # Write the path
-        write-host $($(Get-Location).Path.replace($home,"~").replace("\","/")) -foreground green -noNewLine
-        write-host $(if ($nestedpromptlevel -ge 1) { '>>' }) -noNewLine
-        return "> "
-    }
-
-# Get the weather
-function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
-getw
-
-# Good luck! You are on your own now!
+#}
+#Write-Host "$PSCommandPath execution time: $executionTime"

@@ -15,6 +15,7 @@ if (Get-Module -ListAvailable -Name AzureAD) {
 else { 
     Write-Host "AzureAD required. Now installing" @Yellow 
     Install-Module -Name AzureAD -Scope AllUsers -Force 
+    Install-Module -Name Az.Resources -Scope AllUsers -Force 
     Write-Host "Conneting to Azure AD Online Service" @Cyan 
     Connect-AzureAD 
     }

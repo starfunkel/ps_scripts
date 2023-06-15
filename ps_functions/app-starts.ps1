@@ -27,3 +27,8 @@ function winfetch   { "C:\support\code\_git-repos\foreign\winfetch\winfetch.ps1"
 ### vrtualbox
 function vboxmanage { & "$env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe" $args[0] $args[1] $args[2] }
 function start-lab  { & "$env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe" startvm "VM-LX-SRV-DEBIAN-11" --type headless}
+
+function nm         { & "C:\Program Files\Microsoft Network Monitor 3\netmon.exe"}
+function nmwifi     { & "C:\Program Files\Microsoft Network Monitor 3\nmwifi.exe"}
+
+function vim        { & "C:\Program Files\Vim\vim90\vim.exe"}
