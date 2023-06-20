@@ -1,25 +1,57 @@
-# Source / credit:
-# https://social.technet.microsoft.com/wiki/contents/articles/18996.active-directory-powershell-script-to-list-all-spns-used.aspx
+function get-spn {
 
-cls
-$search = New-Object DirectoryServices.DirectorySearcher([ADSI]"")
-$search.filter = "(servicePrincipalName=*)"
-
-## You can use this to filter for OU's:
-## $results = $search.Findall() | ?{ $_.path -like '*OU=whatever,DC=whatever,DC=whatever*' }
-$results = $search.Findall()
-
-foreach( $result in $results ) {
-	$userEntry = $result.GetDirectoryEntry()
-	Write-host "Object Name	=	"	$userEntry.name -backgroundcolor "yellow" -foregroundcolor "black"
-	Write-host "DN	=	"	$userEntry.distinguishedName
-	Write-host "Object Cat.	=	" $userEntry.objectCategory
-	Write-host "servicePrincipalNames"
-
-	$i=1
-	foreach( $SPN in $userEntry.servicePrincipalName ) {
-		Write-host "SPN ${i} =$SPN" | Out-file    "C:\support\playground\iit_spns.log" -Encoding utf8
-		$i+=1
+	param (
+		[string]$computerName,
+		[string]$userName,
+		[switch]$allComputers,
+		[switch]$allUsernames,
+		[switch]$exportToCsv,
+		[switch]$outputAsList
+	)
+	
+	$rootDSE = New-Object System.DirectoryServices.DirectoryEntry("LDAP://RootDSE")
+	$defaultNamingContext = $rootDSE.defaultNamingContext
+	
+	$searcher = New-Object System.DirectoryServices.DirectorySearcher
+	$searcher.SearchRoot = New-Object System.DirectoryServices.DirectoryEntry("LDAP://$defaultNamingContext")
+	
+	if ($allComputers) {
+		$searcher.Filter = "(&(servicePrincipalName=*)(cn=*))"
+	} elseif ($allUsernames) {
+		$searcher.Filter = "(&(servicePrincipalName=*)(samAccountName=*))"
+	} else {
+		$searcher.Filter = "(&(servicePrincipalName=*)(|(cn=$computerName)(samAccountName=$userName)))"
 	}
-	Write-host ""
+	
+	$searcher.PageSize = 1000
+	$searcher.PropertiesToLoad.AddRange(@("name", "servicePrincipalName"))
+	
+	$results = $searcher.FindAll()
+	
+	$output = foreach ($result in $results) {
+		$entry = $result.GetDirectoryEntry()
+		$spnValues = $entry.Properties["servicePrincipalName"] | ForEach-Object { $_ -join "`n" }
+		
+		[PSCustomObject]@{
+			'Object Name' = $entry.Properties["name"] -join ';'
+			'Service Principal Names' = $spnValues
+		}
+	}
+	
+	if ($exportToCsv) {
+		$output | Select-Object 'Object Name', 'Service Principal Names' |
+			Export-Csv -Path "C:\support\playground\spn_output.csv" -NoTypeInformation
+	} elseif ($outputAsList) {
+		$output | ForEach-Object {
+			Write-Host "Object Name: $($_.'Object Name')"
+			Write-Host "Service Principal Names:"
+			Write-Host $_.'Service Principal Names'
+			Write-Host
+		}
+	} else {
+		$output | Format-Table
+	}
+	
+	$searcher.Dispose()
+	
 }
