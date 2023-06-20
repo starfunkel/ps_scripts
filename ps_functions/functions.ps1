@@ -27,4 +27,4 @@ function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType',
 
 ### Custom functions
 function pong       { Test-Connection $args[0] | Format-Table -Autosize }
-function imp        { Import-Module $args[0] }
+function imp        { Import-Module -Name $args[0] }
