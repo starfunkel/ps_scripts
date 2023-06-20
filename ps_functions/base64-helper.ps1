@@ -23,3 +23,6 @@ function ConvertFrom-Base64 {
         $plainText
     }
 }
+
+Set-Alias -Name ToBase64 -Value ConvertTo-Base64
+Set-Alias -Name FromBase64 -Value ConvertFrom-Base64
