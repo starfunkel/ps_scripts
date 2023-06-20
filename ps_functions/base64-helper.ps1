@@ -1,2 +1,25 @@
-function to-base64    {[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('[0]'))}
-function from-base64  {[Text.Encoding]::Utf8.GetString([Convert]::FromBase64String('[0]'))}
+function ConvertTo-Base64 {
+    param (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [string]$InputString
+    )
+
+    process {
+        $bytes = [System.Text.Encoding]::UTF8.GetBytes($InputString)
+        $base64String = [System.Convert]::ToBase64String($bytes)
+        $base64String
+    }
+}
+
+function ConvertFrom-Base64 {
+    param (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [string]$InputString
+    )
+
+    process {
+        $bytes = [System.Convert]::FromBase64String($InputString)
+        $plainText = [System.Text.Encoding]::UTF8.GetString($bytes)
+        $plainText
+    }
+}
