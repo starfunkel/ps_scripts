@@ -34,6 +34,9 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
     Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
+    # Hide duplicates entry in Powershells history
+    Set-PSReadlineOption -HistoryNoDuplicates
+
     # Don't waste time; do the most important!
     $host.ui.RawUI.WindowTitle='Black Magic' # Set window title
 
