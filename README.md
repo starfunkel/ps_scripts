@@ -1,37 +1,26 @@
-# Powershell Stuff 
+# Fully Automated Powershell Profile Kickstarter
 
-## Load custom profile.ps1 from cloned repo location
-### If persistence is prefered put this line with the custom repo location in one of Powershells $PSHome file path
-<br>
+## To do:
 
+- Auto Download and extract Systinternals and accpet EULA via Reg add
+- Add Path for sysinternals
+
+### How to use
+
+#### Option 1 
 ```powershell
-powershell -noprofile -noexit -command "invoke-expression '. ''PATH_TO_CLONED_REPO\profile.ps1''' "
+$dest = $PROFILE.CurrentUserAllHosts
+if (-not (Test-Path $dest)) {New-Item $dest -Type File -Force }
+Split-Path $dest | Push-Location
+Start-BitsTransfer https://raw.githubusercontent.com/starfunkel....
+Start-BitsTransfer https://raw.githubusercontent.com/starfunkel....
+Start-BitsTransfer https://raw.githubusercontent.com/starfunkel....
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+. $dest
 ```
 
-## Autoload .ps1  files 
-<br>
-
+#### Clone the repo and do
 ```powershell
-$Path = "PATH_TO_CLONED_REPO"
-Get-ChildItem -Path $Path  -Filter *.ps1 |
-ForEach-Object {
-    . $_.FullName
-}
+Copy-Item .\*.ps1 (Split-Path $PROFILE.CurrentUserAllHosts)
 ```
-
-***
-***
-
-## To Do:
-
-Build fully automated and Windows platform dependent powershell profile
-
-
-- set env's:
-    - module install
-        - on startup of powershell check if installed and install if not
-    - may be time sonsuming --> testing required!
-
-    - set path env's:
-        - add repo path to $PATH var of Windows (This may be an alternative to dor sourcing all .ps1 files at every powershell startup) 
-
