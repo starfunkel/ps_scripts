@@ -19,6 +19,7 @@ function history    { get-history }
 function touch      { New-Item $args[0] }
 function zip        { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
 function unzip      { Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] }
+function credman    { rundll32 keymgr.dll, KRShowKeyMgr }
 
 function uname      { $PROPERTIES = 'Caption', 'CSName', 'Version', 'BuildType', 'OSArchitecture'; Get-CimInstance Win32_OperatingSystem | 
                         Select-Object $PROPERTIES |
