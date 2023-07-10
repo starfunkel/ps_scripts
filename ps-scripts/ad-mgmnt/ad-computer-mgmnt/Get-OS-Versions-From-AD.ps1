@@ -1,7 +1,8 @@
 # to do
 # add more versions
 
-Get-ADComputer -Filter 'operatingsystem -like "*Windows 10*"' -Properties  Name, OperatingSystemVersion | Select-Object -Property Name, OperatingSystemVersion |
+Get-ADComputer -Filter 'operatingsystem -like "*Windows 10*"' -Properties  Name, OperatingSystemVersion |
+Select-Object -Property Name, OperatingSystemVersion |
 group {
 switch -regex ($_.OperatingSystemVersion) {
 "19042" {"20.09";continue}
@@ -10,4 +11,5 @@ switch -regex ($_.OperatingSystemVersion) {
 "18362" {"19.03";continue}
 Default {"OLD"}
 }
-}| Select-Object Count,Name | Sort-Object -Property @{Expression = "Name"; Descending = $false}
+}| Select-Object Count,Name |
+Sort-Object -Property @{Expression = "Name"; Descending = $false}
