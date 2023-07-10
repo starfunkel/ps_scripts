@@ -24,5 +24,18 @@ function ConvertFrom-Base64 {
     }
 }
 
+function encodeandrun64 {
+
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+        [string]$InputString
+
+    $encodedcommand = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($string))
+    $encodedcommand
+    powershell.exe -EncodedCommand
+
+}
+
+
+
 Set-Alias -Name ToBase64 -Value ConvertTo-Base64
 Set-Alias -Name FromBase64 -Value ConvertFrom-Base64
