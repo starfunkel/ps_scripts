@@ -33,3 +33,7 @@ function imp        { Import-Module -Name $args[0] }
 
 function credman    { rundll32 keymgr.dll, KRShowKeyMgr }
 function mycreds    {﻿Get-ChildItem -path cert:\LocalMachine\My}
+
+function get-random  {﻿Add-Type -AssemblyName System.web
+                      [System.Web.Security.Membership]::GeneratePassword(32,0)
+                      }
