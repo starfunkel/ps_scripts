@@ -31,7 +31,7 @@ function encodeandrun64 {
 
     $encodedcommand = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($string))
     $encodedcommand
-    powershell.exe -EncodedCommand
+    powershell.exe -EncodedCommand $InputString
 
 }
 
