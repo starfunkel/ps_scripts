@@ -3,7 +3,7 @@
 
 Get-ADComputer -Filter 'operatingsystem -like "*Windows 10*"' -Properties  Name, OperatingSystemVersion |
 Select-Object -Property Name, OperatingSystemVersion |
-group {
+Group-Object {
 switch -regex ($_.OperatingSystemVersion) {
 "19042" {"20.09";continue}
 "19041" {"20.03";continue}
