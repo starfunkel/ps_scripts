@@ -32,7 +32,7 @@ function imp            { Import-Module -Name $args[0] }
 
 ### Windows Shortcuts
 
-function credman        { rundll32 keymgr.dll, KRShowKeyMgr }
+function credman        { 0}
 function userprofiles   { rundll32 sysdm.cpl,EditUserProfiles }
 function mycreds        { Get-ChildItem -path cert:\LocalMachine\My }
 
