@@ -92,8 +92,8 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
         }
 
     # Get the weather
-    function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
-    getw
+    #function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
+    #getw
 
     # Good luck! You are on your own now!
 
