@@ -16,7 +16,7 @@ function tail           { get-content $args[0] -Wait -tail 25}
 function find           { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
 function sudo           { Start-Process -verb RunAs wt }
 function su             { Start-Process -FilePath powershell.exe -ArgumentList[0] }
-function hist        { Get-Content (Get-PSReadlineOption).HistorySavePath | more }
+function hist           { Get-Content (Get-PSReadlineOption).HistorySavePath | more }
 function touch          { New-Item $args[0] }
 function zip            { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
 function unzip          { Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] }
@@ -32,7 +32,8 @@ function imp            { Import-Module -Name $args[0] }
 
 ### Windows Shortcuts
 
-function credman        { 0}
+function credman        { rundll32 keymgr.dll, KRShowKeyMgr }
+function boottime       {(Get-CimInstance Win32_OperatingSystem).LastBootUpTime}
 function userprofiles   { rundll32 sysdm.cpl,EditUserProfiles }
 function mycreds        { Get-ChildItem -path cert:\LocalMachine\My }
 

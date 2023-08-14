@@ -91,6 +91,15 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
             return "> "
         }
 
+
+if (!(Test-Path HKCR:)) {
+    $null = New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT
+    $null = New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
+}
+
+Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardWord
+Set-PSReadLineKeyHandler -Chord 'Enter' -Function ValidateAndAcceptLine
+
     # Get the weather
     #function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
     #getw
