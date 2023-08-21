@@ -4,8 +4,9 @@ $Red = @{ "ForegroundColor" = "Red" }
 $Cyan = @{ "ForegroundColor" = "Cyan" }
 
 # RSAT - Install Remote Server Administration Tools
-if(Get-WindowsCapability -online | where-object Name -Match "RSAT")   
-    else{Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}
+if (Get-WindowsCapability -online | where-object Name -Match "RSAT") {}
+else
+    {Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online}
 
 # AzureAD - Connect to the AzureAD service. Install the module if needed. 
 if (Get-Module -ListAvailable -Name AzureAD) { 
@@ -33,7 +34,7 @@ else {
     }
 
 # VMWare PowerCli
-function install-powercli (
+function install-powercli {
     if(get-Module -ListAvailable  -name vmware*){  
         Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false
         set-PowerCLIConfiguration -invalidcertificateaction  ignore 
@@ -42,10 +43,10 @@ function install-powercli (
         Install-Module -Name VMware.PowerCLI
         set-PowerCLIConfiguration -invalidcertificateaction  ignore
     }
-)
+}
 
 # Sharepoint
-function install-sharepoint (
+function install-sharepoint {
 
     $AdminSiteURL = $(Write-Host "Enter the new SharePoint admin domain." u/Green -NoNewLine)`
     + $(Write-Host " (i.e. 'conteso-admin.sharepoint.com'): " @Yellow -NoNewLine; Read-Host)
@@ -60,9 +61,12 @@ function install-sharepoint (
         Write-Host "Conneting to SharePoint Online Service" @Cyan 
         Connect-SPOService -Url $AdminSiteURL 
         }
-)
+}
 
 # DSInternals
-function install-dsinternals (
+function install-dsinternals {
     Install-Module -Name DSInternals -Force
-)
+}
+
+
+# Install-Module PwshSyntaxHighlight -Scope CurrentUser
