@@ -36,6 +36,13 @@ function credman        { rundll32 keymgr.dll, KRShowKeyMgr }
 function boottime       {(Get-CimInstance Win32_OperatingSystem).LastBootUpTime}
 function userprofiles   { rundll32 sysdm.cpl,EditUserProfiles }
 function mycreds        { Get-ChildItem -path cert:\LocalMachine\My }
+function sessions        {gwmi Win32_LogonSession |
+                             Foreach-Object { $one = $_ ; $one.GetRelated('Win32_Account') |
+                                Select-Object Domain, Name, SID, 
+                                    @{ n = 'LogonSessionHEX' ; e = { '0x{0:X}' -f ([int] $one.LogonId) } }, 
+                                    @{ n = 'LogonSessionDEC' ; e = { $one.LogonId } } , 
+                                    @{ n = 'LogonType' ; e = { $one.LogonType } } } 
+                                }
 
 function get-random     { Add-Type -AssemblyName System.web
                             [System.Web.Security.Membership]::GeneratePassword(32,0)
