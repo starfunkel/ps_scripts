@@ -38,5 +38,6 @@ function userprofiles   { rundll32 sysdm.cpl,EditUserProfiles }
 function mycreds        { Get-ChildItem -path cert:\LocalMachine\My }
 
 function get-random     { Add-Type -AssemblyName System.web
-                        [System.Web.Security.Membership]::GeneratePassword(32,0)
+                            [System.Web.Security.Membership]::GeneratePassword(32,0)
                         }
+function bcat           { Get-Content $args[0] -Raw | Write-CodeBlock -SyntaxHighlight -ShowLineNumbers }
