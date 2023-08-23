@@ -15,7 +15,7 @@ Written by: Christian Rathnau
 Website:	https://www.integrate-it.net/
 #>
 
-$Server = "HIN-SRV-023", "HIN-SRV-06"
+$Server = "ii-lap-60"
 
 $Connections = Get-SmBConnection -Server $Server
 
