@@ -77,7 +77,7 @@ function Show-Object{
         }
     
     }
-    "@ -ReferencedAssemblies presentationFramework,PresentationCore,WindowsBase,System.Xaml -ErrorAction SilentlyContinue
+"@ -ReferencedAssemblies presentationFramework,PresentationCore,WindowsBase,System.Xaml -ErrorAction SilentlyContinue
     ## form layout
     [xml]$xaml = @"
     <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -222,7 +222,7 @@ function Show-Object{
         <l:TreeListView x:Name="Tlv"/>
     </Window>
     
-    "@
+"@
     
     $rootVariableName = dir variable:\* -Exclude InputObject,Args |
         Where-Object {
