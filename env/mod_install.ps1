@@ -72,3 +72,5 @@ function install-dsinternals {
 # Install-Module PwshSyntaxHighlight -Scope CurrentUser
 
 # Install-Module -Name PartnerCenter -AllowClobber -Scope CurrentUser
+
+Install-Module -Name PSPKI
