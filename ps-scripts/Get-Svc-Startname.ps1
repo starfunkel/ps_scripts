@@ -11,4 +11,4 @@ function Get-SvcStartName {
     return $serviceObjects
 }
 
-Get-SvcStartName | Format-Table -AutoSize
+Get-SvcStartName | sort-object Startname | Format-Table -AutoSize
