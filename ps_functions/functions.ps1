@@ -48,6 +48,18 @@ function get-random     { Add-Type -AssemblyName System.web
                             [System.Web.Security.Membership]::GeneratePassword(32,0)
                         }
 function bcat           { Get-Content $args[0] -Raw | Write-CodeBlock -SyntaxHighlight -ShowLineNumbers }
-function whoami         { [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+function w              { 
+                          Write-Host
+                          Write-Host SID:
+                          [System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+                          Write-Host ---------------------------------------------------------------------------------
+                          Write-Host Name:
                           [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+                          Write-Host ---------------------------------------------------------------------------------
+                          Write-Host Sessions:
+                          quser
+                          Write-Host ---------------------------------------------------------------------------------
+                          qwinsta
+                          Write-Host ---------------------------------------------------------------------------------
+                          Write-Host
                         }
