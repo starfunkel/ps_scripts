@@ -78,3 +78,5 @@ Install-Module -Name PSPKI
 Install-Module -Name PSEventViewer 
 
 Install-Module -Name PSPKI
+
+Install-Module DomainHealthChecker
