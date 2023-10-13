@@ -8,8 +8,6 @@ function Get-Event {
         [string]$Format
     )
 
-
-
    if ($Format -eq 'list') { 
     
         Foreach ($i in $IDs)
@@ -17,8 +15,9 @@ function Get-Event {
                 $ID_Array = [int[]]($IDs -split ',')
                 $ID_Array.count
                 Write-Host Events of Event ID $I
-                Get-WinEvent -Logname $Logname | Where-object {$_.Id -in ($IDs)} |
-                Select-Object -Property TimeCreated, Id, Message -first $First  |
+                Get-WinEvent -Logname $Logname |
+                Where-object {$_.Id -in ($IDs)} |
+                Select-Object -Property TimeCreated, Id, Message, Providername -first $First  |
                 Format-List
             }
     }
@@ -30,8 +29,9 @@ function Get-Event {
                 $ID_Array = [int[]]($IDs -split ',')
                 $ID_Array.count
                 Write-Host Events of Event ID $I
-                Get-WinEvent -Logname $Logname | Where-object {$_.Id -in ($IDs)} |
-                Select-Object -Property TimeCreated, Id, Message -first $First  |
+                Get-WinEvent -Logname $Logname |
+                Where-object {$_.Id -in ($IDs)} |
+                Select-Object -Property TimeCreated, Id, Message, Providername -first $First  |
                 Format-Table -Autosize
             }
     }
