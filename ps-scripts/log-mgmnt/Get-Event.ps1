@@ -14,7 +14,7 @@ function Get-Event {
             {
                 $ID_Array = [int[]]($IDs -split ',')
                 $ID_Array.count
-                Write-Host Events of Event ID $I
+                Write-Host Events of Event ID $i
                 Get-WinEvent -Logname $Logname |
                 Where-object {$_.Id -in ($IDs)} |
                 Select-Object -Property TimeCreated, Id, Message, Providername -first $First  |
@@ -28,7 +28,7 @@ function Get-Event {
             {
                 $ID_Array = [int[]]($IDs -split ',')
                 $ID_Array.count
-                Write-Host Events of Event ID $I
+                Write-Host Events of Event ID $i
                 Get-WinEvent -Logname $Logname |
                 Where-object {$_.Id -in ($IDs)} |
                 Select-Object -Property TimeCreated, Id, Message, Providername -first $First  |
