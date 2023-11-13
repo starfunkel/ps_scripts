@@ -1,3 +1,5 @@
+function Get-Laps-permisssions {
+
 $ADSISearcher = [ADSISearcher]'(&(objectclass=computer)(ms-mcs-admpwd=*))' 
 $AllComputers = $ADSISearcher.FindAll() 
 $DailyHarvest = @() 
@@ -7,3 +9,5 @@ $DailyHarvest += New-Object psobject -Property @{Name = $Comp.properties.name; P
 } 
 
 $DailyHarvest 
+
+}
