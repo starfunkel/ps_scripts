@@ -8,7 +8,7 @@ function Get-RecurseACL {
        [String]$FOLDER
     )
 
-      $PATH=(Get-Childitem).name
+    $PATH=(Get-Childitem).name
       ForEach ($FOLDER in $PATH) {
           Write-Host (Get-Childitem).name -ForegroundColor Yellow
           (get-acl $PATH).access |
