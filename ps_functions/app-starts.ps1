@@ -30,5 +30,5 @@ function start-lab  { & "$env:ProgramFiles\Oracle\VirtualBox\VBoxManage.exe" sta
 
 function nm         { & "C:\Program Files\Microsoft Network Monitor 3\netmon.exe"}
 function nmwifi     { & "C:\Program Files\Microsoft Network Monitor 3\nmwifi.exe"}
-function vim	    { & "C:\Program Files\Neovim\bin\nvim.exe"}
+function vim	    { & "C:\Program Files\Neovim\bin\nvim.exe" $args[0] }
 
