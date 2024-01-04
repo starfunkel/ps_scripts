@@ -100,11 +100,11 @@ if (!(Test-Path HKCR:)) {
 Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardWord
 Set-PSReadLineKeyHandler -Chord 'Enter' -Function ValidateAndAcceptLine
 
-    # Get the weather
-    #function getw       {(Invoke-WebRequest http://wttr.in/:Berlin?0M -UserAgent "curl" -ErrorAction SilentlyContinue ).Content}
-    #getw
-
-    # Good luck! You are on your own now!
 
 #}
 #Write-Host "$PSCommandPath execution time: $executionTime"
+
+# Set envs
+
+$env:Path += ";C:\Program Files\OpenSSL\bin"
+$env:OPENSSL_CONF = "C:\support\certs\openssl.cnf"
