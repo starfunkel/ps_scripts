@@ -62,14 +62,11 @@ else {
 
 # DSInternals
 
-    Install-Module -Name DSInternals -Force
-
+Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser
+Install-Module -Name DSInternals -Force
 # Install-Module PwshSyntaxHighlight -Scope CurrentUser
-
 # Install-Module -Name PartnerCenter -AllowClobber -Scope CurrentUser
-
 Install-Module -Name PSPKI
-
 Install-Module -Name PSEventViewer 
-
 Install-Module DomainHealthChecker
+Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser 
