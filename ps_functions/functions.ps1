@@ -16,6 +16,10 @@ function tail           { get-content $args[0] -Wait -tail 25}
 function find           { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
 function sudo           { Start-Process -verb RunAs $args[0] }
 function hist           { Get-Content (Get-PSReadlineOption).HistorySavePath | more }
+
+function forget         {Remove-Item -Path (Get-PSReadlineOption).HistorySavePath -Force 
+                            pwsh.exe
+                        }
 function touch          { New-Item $args[0] }
 function zip            { Compress-Archive -Path $args[0] -DestinationPath $args[1] }
 function unzip          { Expand-Archive -LiteralPath $args[0] -DestinationPath $args[1] }
