@@ -17,7 +17,8 @@ function find           { Get-Childitem -Filter $args[0] -Recurse -File | out-ho
 function sudo           { Start-Process -verb RunAs $args[0] }
 function hist           { Get-Content (Get-PSReadlineOption).HistorySavePath | more }
 
-function forget         {Remove-Item -Path (Get-PSReadlineOption).HistorySavePath -Force 
+function forget         {Remove-Item -Path (Get-PSReadlineOption).HistorySavePath -Force
+                            Clear-Host
                             pwsh.exe
                         }
 function touch          { New-Item $args[0] }
