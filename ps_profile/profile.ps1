@@ -34,6 +34,10 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
     Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
+    # Better Powershell handling
+    Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardWord
+    Set-PSReadLineKeyHandler -Chord 'Enter' -Function ValidateAndAcceptLine
+
     # Hide duplicates entry in Powershells history
     Set-PSReadlineOption -HistoryNoDuplicates
 
@@ -96,10 +100,6 @@ if (!(Test-Path HKCR:)) {
     $null = New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT
     $null = New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
 }
-
-Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardWord
-Set-PSReadLineKeyHandler -Chord 'Enter' -Function ValidateAndAcceptLine
-
 
 #}
 #Write-Host "$PSCommandPath execution time: $executionTime"
