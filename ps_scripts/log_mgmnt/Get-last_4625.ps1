@@ -6,7 +6,7 @@ function get-4625 {
     </Query>
   </QueryList>'
     $LogonEvents = Get-WinEvent -FilterXml $filter4625 
-    $LogonEvents | sort -Property TimeCreated 
+    $LogonEvents | Sort-Object -Property TimeCreated 
 }
 
 $filter='<QueryList>
@@ -15,7 +15,7 @@ $filter='<QueryList>
 </Query>
 </QueryList>'
 $LogonEvents = Get-WinEvent -FilterXml $filter
-$LogonEvents | sort -Property TimeCreated #| Select-Object -First 1
+$LogonEvents | Sort-Object -Property TimeCreated #| Select-Object -First 1
 
 
 Get-WmiObject win32_service  | Format-Table name, startname

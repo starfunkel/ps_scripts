@@ -1,3 +1,27 @@
+<#
+  <Data Name="SubjectUserSid"></Data> 
+  <Data Name="SubjectUserName"></Data> 
+  <Data Name="SubjectDomainName"></Data> 
+  <Data Name="SubjectLogonId"></Data> 
+  <Data Name="TargetUserSid"></Data> 
+  <Data Name="TargetUserName"></Data> 
+  <Data Name="TargetDomainName"></Data> 
+  <Data Name="Status"></Data> 
+  <Data Name="FailureReason">%%</Data> 
+  <Data Name="SubStatus"></Data> 
+  <Data Name="LogonType"></Data> 
+  <Data Name="LogonProcessName"></Data> 
+  <Data Name="AuthenticationPackageName"></Data> 
+  <Data Name="WorkstationName"></Data> 
+  <Data Name="TransmittedServices">-</Data> 
+  <Data Name="LmPackageName">-</Data> 
+  <Data Name="KeyLength"></Data> 
+  <Data Name="ProcessId"></Data> 
+  <Data Name="ProcessName">-</Data> 
+  <Data Name="IpAddress"></Data> 
+  <Data Name="IpPort"></Data>
+#>
+
 function Get-ExplicitLogonEvents {
     [CmdletBinding()]
     Param(
