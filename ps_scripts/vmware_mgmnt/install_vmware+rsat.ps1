@@ -1,0 +1,51 @@
+#requires -version 5.1
+#  +++++ Admin Elevation - Installation soll nur für Admins sein
+
+param([switch]$Elevated)
+
+function Test-Admin{ # https://superuser.com/questions/108207/how-to-run-a-powershell-script-as-administrator
+ 
+  $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+  $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+} 
+
+if ((Test-Admin) -eq $false)  {
+    if ($elevated) 
+    {
+        # tried to elevate, did not work, aborting
+    } 
+    else {
+        Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+}
+
+exit
+}
+
+# PowerCli Module availabilty check
+
+if(get-Module -ListAvailable  -name vmware*){    # Checks if PowerCli Module is installed, if not it installs it {
+    Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $false -Confirm:$false | 
+    Out-Null 
+    set-PowerCLIConfiguration -invalidcertificateaction  ignore -Confirm:$false | 
+    Out-Null
+    Import-Module VMware.VimAutomation.HorizonView
+    Get-Module -ListAvailable 'VMware.Hv.Helper' | 
+    Import-Module    # Please download the Hv Helper 
+}else{
+    New-Item -Path "$env:USERPROFILE\Documents\WindowsPowershell\Modules" -ItemType Directory | 
+    Out-Null
+    Copy-Item -Path "$PSScriptRoot\VMware.Hv.Helper\" -Destination "$env:USERPROFILE\Documenets\WindowsPowershell\Modules\VMware.Hv.Helper\" -Recurse -Force    # Copy Vmware.HV.Helper to Destination Dir
+    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+    Install-Module -Name VMware.PowerCLI
+    set-PowerCLIConfiguration -scope user -ParticipateinCEIP $false -Confirm:$false | 
+    Out-Null      # Wir wollen kein Mitglied für Produktverbesserung werden!
+    set-PowerCLIConfiguration -invalidcertificateaction  ignore -Confirm:$false | 
+    Out-Null          # Wir ignorieren auch das fehlerhafte selbstsignierte SSL Zertifikat vom VI Server
+    Import-Module VMware.VimAutomation.HorizonView
+    Get-Module -ListAvailable 'VMware.Hv.Helper' | 
+    Import-Module
+
+}
+
+# RSAT Module availabilty check - Brauchen wir noch nicht
+
