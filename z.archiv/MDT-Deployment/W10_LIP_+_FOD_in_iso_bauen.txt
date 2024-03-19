@@ -1,0 +1,60 @@
+Language packs for Windows 10 install:
+
+1. Mount LanguagePack.iso (SW_DVD9_NTRL_Win_10_1809_32_64_ARM64_MultiLang_LangPackAll_LIP_X21-91305.ISO)
+
+2.mount wim Image:
+
+dism.exe /mount-image "/imagefile:D:\MDTBUILDLAB\Operating Systems\WXLTSC2019\sources\install.wim" /index:1 /MountDir:D:\data\os_mount
+
+3. Copy  cab from:
+
+/x64/langpacks to D:\MDTBUILDLAB\Operating Systems\WXLTSC2019\Langpacks\ to 
+
+D:\MDTBUILDLAB\Operating Systems\WXLTSC2019\Langpacks
+
+create lang folder: e.g: \de-de
+
+rename cab to lp.cab
+
+4. check lang packs:
+
+dism.exe /image:D:\mount "/distribution:D:\MDTBUILDLAB\Operating Systems\WXLTSC2019" /get-intl
+
+
+5. recreate langINI:
+
+dism.exe /image:d:\mount /gen-langINI "/distribution:D:\MDTBUILDLAB\Operating Systems\WXLTSC2019
+
+6. unmount image:
+
+dism.exe /unmount-image /mountdir:d:\mount /commit
+
+--------------------------------------------------------------------------------------------------
+
+windows LIP in iso machen:
+
+Check packages:
+.\dism.exe /image:"d:\mount" /get-packages /format:table
+
+Handwriting:
+dism /image:"d:\mount\" /add-capability /capabilityname:Language.handwriting~~~de-DE~0.0.1.0 /s
+ource:d:\data\tmp\
+
+OCR:
+ dism /image:"d:\mount\" /add-capability /capabilityname:Language.ocr~~~de-DE~0.0.1.0 /source:d:
+\data\tmp\
+
+FOD als capability adden:
+dism /image:"d:\mount\" /add-capability /capabilityname:Language.Basic~~~de-DE~0.0.1.0
+d:\data\tmp\
+
+regenrate lang.ini:
+dism /image:"d:\mount\" /Gen-LangINI /distribution:"D:\MDTBUILDLAB\Operating Systems\WXLTSC2019"
+
+noch mal prüfen:
+
+dism /image:"d:\mount" /get-Capabilities /format:table | findstr /i "installed"
+
+dism /image:"d:\mount\" /get-intl
+
+ dism /commit-image /mountdir:"d:\mount"

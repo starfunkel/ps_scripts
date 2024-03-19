@@ -1,0 +1,33 @@
+Infalls man gegen den Fehler rennt, dass man ein Deploy aus Gründen abgebrochen hat, oder man eine Applikation installieren wollte:
+
+
+force LTI /ZTI restart
+
+Fehlermeldung 1
+
+ "The task sequence has been suspended. LiteTouch is trying to install applications. This cannot be performed in Windows PE." RRS feed 
+
+F8 drücken
+
+
+    diskpart
+    list disk
+    select disk 0
+    list part
+    select part 1
+    clean
+    create part primary
+    assign
+    active
+    exit
+
+
+Fehlermeldung 2
+
+LTI /ZTI startet in die Konsole
+
+notepad.exe starten
+
+Datei ---> Öffnen und nun die Ordner 
+
+c:\_SMSTaskSequence und c:\MININT löschen --> reboot und neu deployen
