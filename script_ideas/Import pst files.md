@@ -1,8 +1,16 @@
-Import pst files
+<#Source:
+https://adamtheautomator.com/import-pst-to-outlook/
+#>
 
-    works offline and online
+function $FUNCION_NAME{
+   [CmdletBinding()]
+   [Alias("$ALIASNAME")]
+   param(
+      [Parameter(Mandatory=$true)]
+      [String]$PSTPath   
+   )
+}
 
-$PSTPath = "Pfad zum pst Ordner"
 Add-type -assembly "Microsoft.Office.Interop.Outlook"
 $outlook = new-object -comobject outlook.application
 $namespace = $outlook.GetNameSpace("MAPI")
@@ -11,6 +19,3 @@ Get-ChildItem $PSTPath -Filter *.pst |
 ForEach-Object {
     $namespace.AddStore($_.FullName)
 }
-
-Quelle:
-https://adamtheautomator.com/import-pst-to-outlook/
