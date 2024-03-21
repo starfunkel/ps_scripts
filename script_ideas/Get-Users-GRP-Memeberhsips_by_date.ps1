@@ -1,11 +1,17 @@
 ## Show a user's group memberships and the dates they were added to those groups
 
-```powershell
-Import-Module ActiveDirectory
-$username = ""
-$userobj  = Get-ADUser $username
-$server = ""
+function $FUNCION_NAME{
+   [CmdletBinding()]
+   [Alias("$ALIASNAME")]
+   param(
+      [Parameter(Mandatory=$true)]
+      [String]$STRINGANME_TO_BE_APENND_TO_FUNCTION
+      [String]username 
+      [String]server
+   )
+}
 
+$userobj  = Get-ADUser $username
 Get-ADUser $userobj.DistinguishedName -Properties memberOf |
  Select-Object -ExpandProperty memberOf |
  ForEach-Object {
@@ -16,4 +22,3 @@ Get-ADUser $userobj.DistinguishedName -Properties memberOf |
     } |
     Sort-Object FirstOriginatingCreateTime -Descending |
     Out-GridView
-```
