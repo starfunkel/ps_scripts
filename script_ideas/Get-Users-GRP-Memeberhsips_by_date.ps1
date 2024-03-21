@@ -5,7 +5,6 @@ function $FUNCION_NAME{
    [Alias("$ALIASNAME")]
    param(
       [Parameter(Mandatory=$true)]
-      [String]$STRINGANME_TO_BE_APENND_TO_FUNCTION
       [String]username 
       [String]server
    )
