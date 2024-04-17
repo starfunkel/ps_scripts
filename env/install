@@ -1,0 +1,11 @@
+# install Open SSH Server
+
+Get-WindowsCapability -online -name openssh.server* | Add-WindowsCapability -online
+
+Set-Service -Name sshd -StartupType Automatic
+Start-Service -Name sshd
+
+$regPath = "HKLM:\SOFTWARE\OpenSSH\"
+$regProperty = "DefaultShell"
+$regValue = (Get-Command powershell.exe).source
+Set-ItemProperty -Path $regPath -Name $regProperty -Value $regValue

@@ -62,8 +62,10 @@ else {
 
 # DSInternals
 
-Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser
 Install-Module -Name DSInternals -Force
+
+# Misc
+Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser
 # Install-Module PwshSyntaxHighlight -Scope CurrentUser
 # Install-Module -Name PartnerCenter -AllowClobber -Scope CurrentUser
 Install-Module -Name PSPKI
