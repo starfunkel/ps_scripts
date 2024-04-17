@@ -3,7 +3,7 @@
 <#
 To do:
 
-vuild variables
+build variables
 check
     foreach
         if variable exists
