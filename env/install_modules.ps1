@@ -11,26 +11,26 @@ else
 # AzureAD - Connect to the AzureAD service. Install the module if needed. 
 if (Get-Module -ListAvailable -Name AzureAD) { 
     Write-Host "Conneting to Azure AD Online Service" @Green 
-    Connect-AzureAD
+    #Connect-AzureAD
     }
 else { 
     Write-Host "AzureAD required. Now installing" @Yellow 
     Install-Module -Name AzureAD -Scope AllUsers -Force 
     Install-Module -Name Az.Resources -Scope AllUsers -Force 
     Write-Host "Conneting to Azure AD Online Service" @Cyan 
-    Connect-AzureAD 
+    #Connect-AzureAD 
     }
 
 # ExchangeOnline - Connect to the Exchange Online Service. Install the module if needed. 
 if (Get-Module -ListAvailable -Name ExchangeOnlineManagement) { 
     Write-Host "Conneting to Exchange Online Service" @Green 
-    Connect-ExchangeOnline 
+    #Connect-ExchangeOnline 
     }
 else { 
     Write-Host "ExchangeOnline required. Now installing" @Yellow
     Install-Module -Name ExchangeOnlineManagement -Scope AllUsers -Force
     Write-Host "Conneting to Exchange Online Service" @Cyan 
-    Connect-ExchangeOnline 
+    #Connect-ExchangeOnline 
     }
 
 # VMWare PowerCli
@@ -51,13 +51,13 @@ else{
 
 if (Get-Module -ListAvailable -Name Microsoft.Online.SharePoint.PowerShell) { 
     Write-Host "Connecting to SharePoint Online Service" @Green 
-    Connect-SPOService -Url $AdminSiteURL 
+    #Connect-SPOService -Url $AdminSiteURL 
     }
 else { 
     Write-Host "MSOnline required. Now installing" @Yellow 
     Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Scope AllUsers -Force 
     Write-Host "Conneting to SharePoint Online Service" @Cyan 
-    Connect-SPOService -Url $AdminSiteURL 
+    #Connect-SPOService -Url $AdminSiteURL 
     }
 
 # DSInternals
