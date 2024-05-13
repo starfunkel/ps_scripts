@@ -36,7 +36,7 @@ function gits   { ### evtl ein Parameter: repo, message
                 "C:\support\code\git-repos\starfunkel\code_snippets",`
                 #"C:\support\code\git-repos\starfunkel\CWA-Scripts",`
                 "C:\support\code\git-repos\starfunkel\CWA-Scripts",`
-                "C:\support\code\git-repos\starfunkel\sysmon-config"
+                #"C:\support\code\git-repos\starfunkel\sysmon-config"
 
     foreach ($repo in $repos) {
         Set-Location $repo
