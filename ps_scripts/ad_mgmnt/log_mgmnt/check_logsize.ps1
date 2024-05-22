@@ -1,0 +1,1 @@
+get-eventlog -list -ComputerName spc-dc-01 | where {$_.log -eq 'security'}
