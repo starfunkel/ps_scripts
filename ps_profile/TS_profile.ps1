@@ -19,10 +19,12 @@ Set-PSReadlineOption -HistoryNoDuplicates
 
 # fun and color
 $host.ui.RawUI.WindowTitle='TS magic'
-$console.backgroundcolor = "black"
-$console.foregroundcolor = "white"
+#$console.backgroundcolor = "black"
+#$console.foregroundcolor = "white"
 
 Set-StrictMode -Version 2
+
+Clear-Host
 
 # Prompt
 # Get the time
