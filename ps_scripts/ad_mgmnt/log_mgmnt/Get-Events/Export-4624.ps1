@@ -3,7 +3,7 @@ $logFileName = "4624_$timestamp.csv"
 
 $Events = Get-WinEvent -Logname security -FilterXPath "
     Event[System[(EventID=4624)]]
-    and Event[EventData[Data[@Name='TargetUserName']='administrator' or Data[@Name='TargetUserName']='adm_integrate01']]" |
+    and Event[EventData[Data[@Name='TargetUserName']='administrator']]" |
     Select-Object `
     @{Label='Time';Expression={$_.TimeCreated.ToString('g')}},
     @{Label='UserName';Expression={$_.Properties[5].Value}},

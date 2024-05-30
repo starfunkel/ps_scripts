@@ -16,6 +16,3 @@ $filter='<QueryList>
 </QueryList>'
 $LogonEvents = Get-WinEvent -FilterXml $filter
 $LogonEvents | Sort-Object -Property TimeCreated #| Select-Object -First 1
-
-
-Get-WmiObject win32_service  | Format-Table name, startname
