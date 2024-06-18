@@ -5,6 +5,9 @@ function Update-Modules {
      [switch]$WhatIf
     )
     
+    # Set PSGallery as trusted
+    Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
     # Test admin privileges without using -Requires RunAsAdministrator,
     # which causes a nasty error message, if trying to load the function within a PS profile but without admin privileges
     if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {
@@ -71,7 +74,7 @@ function Update-Modules {
      try {
       $latest = $onlineversions | Where-Object name -eq $module.Name -ErrorAction Stop
       if ([version]$Module.Version -lt [version]$latest.version) {
-       Update-Module -Name $Module.Name -AllowPrerelease:$AllowPrerelease -AcceptLicense -Scope:AllUsers -Force:$True -ErrorAction Stop -WhatIf:$WhatIf.IsPresent
+       Update-Module -Name $Module.Name -AllowPrerelease:$AllowPrerelease -AcceptLicense  -SkipPublisherCheck -Scope:AllUsers -Force:$True -ErrorAction Stop -WhatIf:$WhatIf.IsPresent
       }
      }
      catch {
@@ -114,4 +117,8 @@ function Update-Modules {
       Write-Host ("No modules were updated.") -ForegroundColor Gray
      }
     }
-   }
+
+# Set PSGallery as trusted
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Untrusted
+
+}
