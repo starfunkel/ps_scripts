@@ -72,7 +72,7 @@ function Update-Modules {
       $latest = $onlineversions | Where-Object name -eq $module.Name -ErrorAction Stop
       if ([version]$Module.Version -lt [version]$latest.version) {
        Write-Host "Updateing {$Module.Name}"
-       Update-Module -Name $Module.Name -AllowPrerelease:$AllowPrerelease -AcceptLicense  -SkipPublisherCheck -Scope:AllUsers -Force:$True -ErrorAction Stop -WhatIf:$WhatIf.IsPresent
+       Update-Module -Name $Module.Name -AllowPrerelease:$AllowPrerelease -AcceptLicense -SkipPublisherCheck -Scope:AllUsers -Force:$True -ErrorAction Stop -WhatIf:$WhatIf.IsPresent
       }
      }
      catch {
