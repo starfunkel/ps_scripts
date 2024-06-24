@@ -1,5 +1,7 @@
+# Search with chainsaw
+# chainsaw.exe search  -t 'Event.System.EventID: =4625' .\Security.evtx > 4625_secs.txt
 # Read the content of the text file
-$fileContent = Get-Content -Path "accounting.txt" -Raw
+$fileContent = Get-Content -Path "4625_secs.txt" -Raw
 
 # Split the content into individual events
 $events = $fileContent -split "Event:"
