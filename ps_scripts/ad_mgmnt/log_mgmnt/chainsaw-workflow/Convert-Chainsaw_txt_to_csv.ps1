@@ -40,7 +40,7 @@ foreach ($event in $events) {
 }
 
 # Select desired fields for CSV
-$fields = "Timestamp", "EventID", "LogonType", "IpAddress", "IpPort", "ProcessName", "SubjectUserName", "TargetUserName"
+$fields = "Timestamp", "EventID", "LogonType", "IpAddress", "IpPort", "ProcessName", "SubjectUserName", "TargetUserName", "Status", "SubStatus"
 
 # Export event data to CSV with UTF-8 encoding
 $eventsData | Select-Object $fields | Export-Csv -Path "events.csv" -NoTypeInformation -Encoding UTF8
