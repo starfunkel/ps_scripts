@@ -72,3 +72,4 @@ Install-Module -Name PSPKI
 Install-Module -Name PSEventViewer 
 Install-Module DomainHealthChecker
 Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser 
+Install-Module -Name MsrcSecurityUpdates -Scope CurrentUser
