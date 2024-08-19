@@ -36,7 +36,7 @@ function gits   { ### evtl ein Parameter: repo, message
                 "C:\support\code\git-repos\starfunkel\code_snippets",`
                 "C:\support\code\git-repos\starfunkel\CWA-Scripts",`
                 "C:\support\code\git-repos\starfunkel\ioc_triage_scripts"
-                "C:\support\code\git-repos\starfunkel\sysmon_config",#`
+                "C:\support\code\git-repos\starfunkel\sysmon_config"#,`
                 
     foreach ($repo in $repos) {
         Set-Location $repo
@@ -44,12 +44,16 @@ function gits   { ### evtl ein Parameter: repo, message
         $folder = Split-Path -leaf -path (Get-Location)
         Write-Host "$folder Repository" -ForegroundColor Green  
         Write-Host "---------------------------------" -ForegroundColor Yellow
+        Write-Host "Fetching" -ForegroundColor Yellow
         git fetch
+        Write-Host "Pulling" -ForegroundColor Yellow
         git pull
+        Write-Host "Auto Adding" -ForegroundColor Yellow
         git add .
-        git commit -m "Auto-commit" 
+        git commit -m "Auto-commit"
+        Write-Host "Pushing" -ForegroundColor Yellow
         git push
-        Write-Host "" -ForegroundColor Green
+        Write-Host "$folder Done" -ForegroundColor Green
     }  
     
     Set-Location $CURRENT_PATH
