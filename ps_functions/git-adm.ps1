@@ -32,18 +32,19 @@ function gits   { ### evtl ein Parameter: repo, message
     $CURRENT_PATH = (Get-Location).path
     $repos =    "C:\support\code\git-repos\starfunkel\powershell_stuff",`
                 "C:\support\code\git-repos\starfunkel\get-ADInfo",`
-                #"C:\support\code\git-repos\starfunkel\iit-ansible-inventory",`
+                "C:\support\code\git-repos\starfunkel\chainsaw",`
                 "C:\support\code\git-repos\starfunkel\code_snippets",`
-                #"C:\support\code\git-repos\starfunkel\CWA-Scripts",`
-                "C:\support\code\git-repos\starfunkel\CWA-Scripts"# ,`
-                #"C:\support\code\git-repos\starfunkel\sysmon-config"
-
+                "C:\support\code\git-repos\starfunkel\CWA-Scripts",`
+                "C:\support\code\git-repos\starfunkel\ioc_triage_scripts"
+                "C:\support\code\git-repos\starfunkel\sysmon_config",#`
+                
     foreach ($repo in $repos) {
         Set-Location $repo
         Write-Host "---------------------------------" -ForegroundColor Yellow
         $folder = Split-Path -leaf -path (Get-Location)
         Write-Host "$folder Repository" -ForegroundColor Green  
         Write-Host "---------------------------------" -ForegroundColor Yellow
+        git fetch
         git pull
         git add .
         git commit -m "Auto-commit" 
