@@ -35,7 +35,6 @@ function pong           { Test-Connection $args[0] | Format-Table -Autosize }
 function imp            { Import-Module -Name $args[0] }
 
 ### Windows Shortcuts
-
 function credman        { rundll32 keymgr.dll, KRShowKeyMgr }
 function boottime       {(Get-CimInstance Win32_OperatingSystem).LastBootUpTime}
 function userprofiles   { rundll32 sysdm.cpl,EditUserProfiles }
