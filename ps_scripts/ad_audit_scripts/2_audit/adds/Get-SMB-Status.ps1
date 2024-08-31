@@ -1,0 +1,1 @@
+Get-SmbServerConfiguration | Select-object EnableSMB1Protocol, EnableSMB2Protocol, EncryptionCiphers, Smb2CreditsMin
