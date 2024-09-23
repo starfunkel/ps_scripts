@@ -29,7 +29,7 @@ function log-extract  {
     Write-Host ""
     Write-Host "Writing $outputFileTXT finished" -ForegroundColor green
     Write-Host ""
-    Write-Host "Parsing $outputFileTXT and converting to $outputFileTXT" -ForegroundColor Green
+    Write-Host "Parsing $outputFileTXT..."-ForegroundColor Green
 
     # Start conversion from txt to csv
     $fileContent = Get-Content -Path $outputFileTXT -Raw
@@ -74,7 +74,9 @@ function log-extract  {
     
     # Select desired fields for CSV
     $fields = "Timestamp", "EventID", "LogonType", "IpAddress", "IpPort", "Computer", "ProcessName", "WorkstationName", "SubjectUserName", "TargetUserName", "Status", "SubStatus"
-    
+
+    Write-Host "Outputting $outputFileTXT..." -ForegroundColor Green
     # Export event data to CSV with UTF-8 encoding
     $eventsData | Select-Object $fields | Export-Csv -Path $outputFileCSV -NoTypeInformation -Encoding UTF8
+
 }
