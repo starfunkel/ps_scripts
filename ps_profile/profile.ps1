@@ -66,6 +66,10 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     . C:\support\code\git-repos\starfunkel\powershell_stuff\env\def_param_vals.ps1
     . C:\support\code\git-repos\starfunkel\powershell_stuff\env\def_chainsaw_dir.ps1
 
+
+    ### Display tips for knowledge
+    tips
+
     #Clear-Host
 
     # Start at that:
