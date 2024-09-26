@@ -41,6 +41,26 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     # Hide duplicates entry in Powershells history
     Set-PSReadlineOption -HistoryNoDuplicates
 
+    # Set PSReadlineOptions (Color + history handling)
+
+      $PSReadLineOptions = @{
+        Colors = @{
+            Command            = 'Magenta'
+            Number             = 'DarkGray'
+            Member             = 'DarkGray'
+            Operator           = 'DarkGray'
+            Type               = 'DarkGray'
+            Variable           = 'DarkGreen'
+            Parameter          = 'DarkGreen'
+            ContinuationPrompt = 'DarkGray'
+            Default            = 'DarkGray'
+        }
+        HistoryNoDuplicates = $true
+        HistorySearchCursorMovesToEnd = $true
+    
+    }
+    Set-PSReadLineOption @PSReadLineOptions
+
     # Don't waste time; do the most important!
     $host.ui.RawUI.WindowTitle='Black Magic' # Set window title
 
