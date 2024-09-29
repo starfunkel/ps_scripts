@@ -63,13 +63,6 @@ $hvserver = xxx.xxx.xxx.xxx
 
 $domain = domain
 
-# +++++ ESXI Variablen
-
-$vm_on_esx1 = (get-vm -Location "FQDN").count    # Counts VMs per ESX Host
-$vm_on_esx2 = (get-vm -Location "FQDN").count
-$vm_on_esx3 = (get-vm -Location "FQDN").count
-$vm_on_esx4 = (get-vm -Location "FQDN").count
-$vm_on_esx5 = (get-vm -Location "FQDN").count
 
 #  +++++ Admin Elevation
 
@@ -231,6 +224,14 @@ if ($appdata = "True"){     # Checks for Credential Store in %Appdata% - connect
     Write-Host "#######################################################################################"
 
 }
+
+# +++++ ESXI Variablen
+
+$vm_on_esx1 = (get-vm -Location "FQDN").count    # Counts VMs per ESX Host
+$vm_on_esx2 = (get-vm -Location "FQDN").count
+$vm_on_esx3 = (get-vm -Location "FQDN").count
+$vm_on_esx4 = (get-vm -Location "FQDN").count
+$vm_on_esx5 = (get-vm -Location "FQDN").count
 
 #  +++++ VM Creation
 
