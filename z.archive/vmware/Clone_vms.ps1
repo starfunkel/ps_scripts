@@ -15,6 +15,12 @@
         None.
 #>
 
+#  +++++ Variablen
+
+$viserver = xxx.xxx.xxx.xxx
+$hvserver = xxx.xxx.xxx.xxx
+$domain = domain
+
 #  +++++ Vi Server Anmeldung + Zertifikatscheck aus + Kein Participation
 set-PowerCLIConfiguration -scope user -ParticipateinCEIP $false -Confirm:$false | Out-Null
 set-PowerCLIConfiguration -invalidcertificateaction  ignore -Confirm:$false | Out-Null 
@@ -24,16 +30,19 @@ Write-Host ""
 Write-Host ""
 Write-Host "Bitte am Vi und HV Server anmelden, wenn aufgefordert" -ForegroundColor Green
 Write-Host ""
-connect-viserver 10.10.1.80 -ErrorAction Stop |
+connect-viserver $viserver -ErrorAction Stop |
 Out-Null  # $visserver muss als ganzer Befehl übergeben werden 
 Write-Host "Bitte nach Aufforderung am Vsphere Horizon anmelden" -ForegroundColor Green
-connect-hvserver 10.10.1.31 -ErrorAction Stop |
+connect-hvserver $hvserver -ErrorAction Stop |
 Out-Null
 
-# +++++ ESXI Variablen
-$vm_on_esx1 = (get-vm -Location "esx1.aab.vwz").count    # Counts VMs per ESX Host
-$vm_on_esx2 = (get-vm -Location "esx2.aab.vwz").count
-$vm_on_esx3 = (get-vm -Location "esx3.aab.vwz").count
+#  +++++ ESXI Variablen
+
+$vm_on_esx1 = (get-vm -Location "FQDN").count    # Counts VMs per ESX Host
+$vm_on_esx2 = (get-vm -Location "FQDN").count
+$vm_on_esx3 = (get-vm -Location "FQDN").count
+$vm_on_esx4 = (get-vm -Location "FQDN").count
+$vm_on_esx5 = (get-vm -Location "FQDN").count
 
 #  +++++ ESXI Abfrage
 Write-Host ""
@@ -76,7 +85,7 @@ while ($i -le $vmamount){
     # Get-VM "WXL-$vmname" | Select-Object Name,Notes
 
     #  +++++ VM Creation
-    New-VM -Name "WXL-$vmname" -Template "WXL-LTSC-MUTTER-Template" -OSCustomizationSpec "Windows 10 LTSC Cloning" -VMHost "$vmhost.aab.vwz" -Datastore "$dstore" -RunAsync |
+    New-VM -Name "WXL-$vmname" -Template "WXL-LTSC-MUTTER-Template" -OSCustomizationSpec "Windows 10 LTSC Cloning" -VMHost "$vmhost.$domain" -Datastore "$dstore" -RunAsync |
     Out-Null
  
     #  +++++ Move to Pool + Assign User
@@ -85,7 +94,7 @@ while ($i -le $vmamount){
     New-HVEntitlement -User $username'@aab.vwz' -ResourceName  "Win-10-LTSC"
     start-sleep -s 5
     get-hvmachine -machinename "WXL-$vmname" | 
-    set-hvmachine -user "$username@aabvwz"
+    set-hvmachine -user "$username@domain"
     Move-VM -VM "WXL-$vmname" -InventoryLocation "ViewVW_WBK" | 
     Out-Null
 
@@ -95,5 +104,5 @@ while ($i -le $vmamount){
     Out-Null
     $i++
 }
-Disconnect-VIServer -Server 10.10.1.80 -Confirm:$false
-Disconnect-HVServer -Server 10.10.1.31 -Confirm:$false
+Disconnect-VIServer -Server $hvserver -Confirm:$false
+Disconnect-HVServer -Server $viserver -Confirm:$false
