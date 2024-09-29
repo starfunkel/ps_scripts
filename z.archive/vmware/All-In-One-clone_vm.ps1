@@ -56,6 +56,20 @@
 #  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+# +++++ Variablen
+
+$viserver = xxx.xxx.xxx.xxx
+$hvserver = xxx.xxx.xxx.xxx
+
+$domain = domain
+
+# +++++ ESXI Variablen
+
+$vm_on_esx1 = (get-vm -Location "FQDN").count    # Counts VMs per ESX Host
+$vm_on_esx2 = (get-vm -Location "FQDN").count
+$vm_on_esx3 = (get-vm -Location "FQDN").count
+$vm_on_esx4 = (get-vm -Location "FQDN").count
+$vm_on_esx5 = (get-vm -Location "FQDN").count
 
 #  +++++ Admin Elevation
 
@@ -187,18 +201,12 @@ $appdata = Test-path ([Environment]::GetFolderPath("ApplicationData"))
 if ($appdata = "True"){     # Checks for Credential Store in %Appdata% - connect-viserver creats a store with credentials
 
     Write-Host "#                                                                                     #"
-    Write-host "# Connecting to 10.10.1.80 (Vsphere Appliance)                                        #"
+    Write-host "# Connecting to $viserver (Vsphere Appliance)                                        #"
     Write-Host "#                                                                                     #"
-    connect-viserver -server 10.10.1.80 | Out-Null
+    connect-viserver -server $viserver | Out-Null
     Write-Host "#                                                                                     #"
     Write-host "# Connected!                                                                          #" -ForegroundColor Green
     Write-Host "#                                                                                     #"
-    # Write-host "# Connecting to 10.10.1.31 (View Administrator)                                       #"
-    # Write-Host "#                                                                                     #"
-    # connect-hvserver -server 10.10.1.31 | Out-Null
-    # Write-Host "#                                                                                     #"
-    # Write-host "# Connected!                                                                          #" -ForegroundColor Green
-    # Write-Host "#                                                                                     #"
     Write-Host "#                                                                                     #"
     Write-host "# Remeber, All Actions will be logged!!                                               #" -ForegroundColor Red
     Write-Host "#                                                                                     #"
@@ -208,13 +216,13 @@ if ($appdata = "True"){     # Checks for Credential Store in %Appdata% - connect
     Write-Host "# Creating new Credential Store                                                       #"
     Write-Host "#                                                                                     #"
     Write-Host "#                                                                                     #"
-    Write-host "# Please enter your Username  to Connect to the AAB VI-Server 10.10.1.80!             #" -ForegroundColor Green
+    Write-host "# Please enter your Username  to Connect to the VI-Server $viserver!             #" -ForegroundColor Green
 
     $username = Read-Host "# Username"
     $upwd = Read-Host "# Enter your Password" -AsSecureString
 
-    New-VICredentialStoreItem -Host 10.10.1.80 -User [$username]@aabvwz -password [$upwd]
-    connect-viserver -server 10.10.1.80
+    New-VICredentialStoreItem -Host $viserver -User [$username]@$domain -password [$upwd]
+    connect-viserver -server $viserver
     # connect-hvserver -server 10.10.1.31 -User [$username]@aabvwz -password [$upwd] | Out-Null
     Write-Host "#                                                                                     #"
     Write-host "# Connected!                                                                          #"
@@ -223,14 +231,6 @@ if ($appdata = "True"){     # Checks for Credential Store in %Appdata% - connect
     Write-Host "#######################################################################################"
 
 }
-
-# +++++ ESXI Variablen
-
-$vm_on_esx1 = (get-vm -Location "esx1.aab.vwz").count    # Counts VMs per ESX Host
-$vm_on_esx2 = (get-vm -Location "esx2.aab.vwz").count
-$vm_on_esx3 = (get-vm -Location "esx3.aab.vwz").count
-$vm_on_esx4 = (get-vm -Location "esx4.aab.vwz").count
-$vm_on_esx5 = (get-vm -Location "esx5.aab.vwz").count
 
 #  +++++ VM Creation
 
@@ -293,7 +293,7 @@ while ($i -le $vmamount){
 
     Write-Host "#                                                                                     #"
     Write-Host "# Creating VM...                                                                      #"
-    New-VM -Name "WXL-$vmname" -Template "WX-LTSC-MUTTER-Template" -OSCustomizationSpec "Windows 10 LTSC Cloning" -VMHost "$vmhost.aab.vwz" -Datastore "$dstore" -RunAsync
+    New-VM -Name "WXL-$vmname" -Template "WX-LTSC-MUTTER-Template" -OSCustomizationSpec "Windows 10 LTSC Cloning" -VMHost "$vmhost.$domain" -Datastore "$dstore" -RunAsync
     Move-VM -VM "WXL-$vmname" -InventoryLocation "ViewVW_WBK" | Out-Null
     Write-Host "#                                                                                     #"
    
@@ -315,15 +315,15 @@ while ($i -le $vmamount){
     Write-Host "#                                                                                     #"
     Write-Host "# Please log on to the View Administrator                                             #"
     Start-Sleep 2
-    connect-hvserver 10.10.1.31 | Out-Null
+    connect-hvserver $hvserver | Out-Null
     Write-Host "#                                                                                     #"
 
     # https://communities.vmware.com/t5/Horizon-Desktops-and-Apps/Assign-user-in-Dedicated-pool-with-Powershell/td-p/980880
     # Add-HVDesktop -poolname "Win-10-LTSC" -Machines "WXL-TEST-4" # 
     add-hvdesktop -poolname "Win-10-LTSC" -machines "WXL-$vmname"
     start-sleep -s 10
-    # Get-HVMachine -MachineName "wxl-test-4" | Set-HVMachine -User testcra@aabvwz
-    get-hvmachine -machinename "WXL-$vmname" | set-hvmachine -user "$username@aabvwz"
+    # Get-HVMachine -MachineName "wxl-test-4" | Set-HVMachine -User testcra@$domain
+    get-hvmachine -machinename "WXL-$vmname" | set-hvmachine -user "$username@$domain"
 
     #  +++++ Start VM
 
@@ -335,5 +335,5 @@ while ($i -le $vmamount){
     Write-Host "#######################################################################################"
     $i++
 }
-Disconnect-VIServer -Server 10.10.1.80 -Confirm:$false
+Disconnect-VIServer -Server $viserver -Confirm:$false
 # Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -scope LocalMachine
