@@ -38,14 +38,11 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardWord
     Set-PSReadLineKeyHandler -Chord 'Enter' -Function ValidateAndAcceptLine
 
-    # Hide duplicates entry in Powershells history
-    Set-PSReadlineOption -HistoryNoDuplicates
-
     # Set PSReadlineOptions (Color + history handling)
 
       $PSReadLineOptions = @{
         Colors = @{
-            Command            = 'Magenta'
+            Command            = 'White'
             Number             = 'DarkGray'
             Member             = 'DarkGray'
             Operator           = 'DarkGray'
@@ -55,9 +52,10 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
             ContinuationPrompt = 'DarkGray'
             Default            = 'DarkGray'
         }
+
+        # Hide duplicates entry in Powershells history
         HistoryNoDuplicates = $true
         HistorySearchCursorMovesToEnd = $true
-    
     }
     Set-PSReadLineOption @PSReadLineOptions
 
