@@ -72,12 +72,19 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
             . $_.FullName
         }
 
+   # Set envs
+
     # Set module dir
     $env:PSModulePath = (
         (
             @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
         ) -join ";"
     )
+
+    # Set PATH
+
+$env:Path += ";C:\Program Files\OpenSSL\bin"
+$env:OPENSSL_CONF = "C:\support\certs\openssl.cnf"
 
     # Set DefaultParameterDefinitions
 
@@ -88,9 +95,9 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     ### Display tips for knowledge
     tips
 
-    #Clear-Host
-
-    # Start at that:
+    # Set Prompt
+    
+    # Start at:
     Set-Location c:\support
 
     # Get the time
@@ -125,8 +132,3 @@ if (!(Test-Path HKCR:)) {
 
 #}
 #Write-Host "$PSCommandPath execution time: $executionTime"
-
-# Set envs
-
-$env:Path += ";C:\Program Files\OpenSSL\bin"
-$env:OPENSSL_CONF = "C:\support\certs\openssl.cnf"
