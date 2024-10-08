@@ -7,7 +7,7 @@
  
 .NOTES
 All additional scripts and functions which should be loaded by default wwhen a new ps session starts have to be placed in 
-C:\support\code\_git-repos\POSH\ps_functions
+C:\support\code\git-repos\starfunkel\powershell_stuff\ps_profile
 Test
 
 Set custom profile path
@@ -65,34 +65,44 @@ powershell -noprofile -noexit -command "invoke-expression '. ''$PATHprofile.ps1'
     # Set meaningful output
     Set-StrictMode -Version 2
 
-    # Import ps files
+    ########
+    ######## Import ps files
+    ########
+
     $FuncPath = "C:\support\code\git-repos\starfunkel\powershell_stuff\ps_functions"
     Get-ChildItem -Path $FuncPath  -Recurse -Filter *.ps1 |
         ForEach-Object {
             . $_.FullName
         }
 
-   # Set envs
+    ########
+    ######## Set module dir
+    ########
 
-    # Set module dir
     $env:PSModulePath = (
         (
             @("C:\support\code\git-repos\starfunkel\powershell_stuff\ps-modules") + ($env:PSModulePath -split ";")
         ) -join ";"
     )
 
-    # Set PATH
+    ########
+    ######## Add $envs
+    ########
 
 $env:Path += ";C:\Program Files\OpenSSL\bin"
 $env:OPENSSL_CONF = "C:\support\certs\openssl.cnf"
 
-    # Set DefaultParameterDefinitions
+    ########
+    ######## Set DefaultParameterDefinitions
+    ########
 
     . C:\support\code\git-repos\starfunkel\powershell_stuff\env\def_param_vals.ps1
     . C:\support\code\git-repos\starfunkel\powershell_stuff\env\def_chainsaw_dir.ps1
 
+    ########
+    ######## Display tips for knowledge
+    ########
 
-    ### Display tips for knowledge
     tips
 
     # Set Prompt
