@@ -36,21 +36,3 @@ function Get-Event {
             }
     }
 }
-
-
-
-# function Get-Log {
-
-#     param(
-#         ## The Log to examine
-#         [Parameter(ParameterSetName='Log',ValueFromPipeline=$true,mandatory=$true,position=0)]
-#         [string]$Logname,
-#         [string[]]$IDs
-#         )
-
-#         foreach ($i in $IDs)
-#         {
-#             Get-WinEvent -Logname $Logname | Where-object {$_.Id -in ($IDs)} |
-#             Select-Object -Property TimeCreated, Id, Message | Format-Table -AutoSize 
-#         }
-# }

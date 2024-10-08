@@ -5,7 +5,7 @@ function md5            { Get-FileHash -Algorithm MD5 $args }
 function sha1           { Get-FileHash -Algorithm SHA1 $args }
 function sha256         { Get-FileHash -Algorithm SHA256 $args }
 
-### Bash like commands
+### Unix like commands
 function pwd            { Get-Location }
 function ll             { Get-Childitem | Sort-Object -Property LastWriteTime }
 function help           { get-help $args[0] | out-host -paging }
@@ -16,6 +16,9 @@ function tail           { get-content $args[0] -Wait -tail 25}
 function find           { Get-Childitem -Filter $args[0] -Recurse -File | out-host -paging }
 function sudo           { Start-Process -verb RunAs $args[0] }
 function hist           { Get-Content (Get-PSReadlineOption).HistorySavePath | more }
+
+##### Search hist with params
+# function shist          { Get-History | Where-Object {$_.CommandLine -like "$args[0]"}}
 
 function fg              {Remove-Item -Path (Get-PSReadlineOption).HistorySavePath -Force
                             Clear-Host
