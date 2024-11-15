@@ -46,6 +46,7 @@ $PSDefaultParameterValues['Get-ADUser:Properties'] = @(
     'whenCreated'
 )
 
+# Default ad-group parameter values
 $PSDefaultParameterValues['Get-ADgroup:Properties'] = @(
     'SID',
     'DisplayName',
@@ -57,6 +58,7 @@ $PSDefaultParameterValues['Get-ADgroup:Properties'] = @(
     'whenCreated'
 )
 
+# Default ad-computer parameter values
 $PSDefaultParameterValues['Get-ADComputer:Properties'] = @(
     'SID',
     'Name',
