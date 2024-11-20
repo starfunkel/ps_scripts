@@ -29,7 +29,16 @@ dotnet tool install --global haveibeenpwned-downloader
 ##### Download HaveIBeenPwned Password NT hashes
 - In decembre 2024 the downloaded data exceeds 38 GB. So make sure there is enough space on disk.
 ```powershell
-haveibeenpwned-downloader.exe -n -s true -p 256 # if download failes redce parallelism (-p) 
+haveibeenpwned-downloader.exe -n -s true -p 256 # if download fails redce parallelism (-p) 
+```
+
+#### Install DSInternals
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+
+Install-Module -Name DSInternals -Force
+Import-Module -Name DSInternals -Force
 ```
 
 ### Audit
@@ -60,7 +69,7 @@ Format-Custom -View HashCatNT |
 Out-File $output\user_and_hashes.txt -Encoding ascii
 ```
 
-#### Compare the hashes and get usernames with pwned
+#### Compare the hashes and get usernames with pwned passwords
 ```powershell
 # Downloaded HIBP hashes are mandantory!
 $hashes = "user_and_hashes.txt"
@@ -74,7 +83,7 @@ $outputfile = "pw_audit.csv"
 Match-Adhashes.ps1 -ADNTHashes $hashes -HashDictionary $hibp_hashes | Out-File $outputfile 
 
 # Open another powershell instance and see he progress (set directory accordingly)
-Get-Content $outputfile -wai
+Get-Content $outputfile -wait
 ```
 
 
