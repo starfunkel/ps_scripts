@@ -1,17 +1,24 @@
+# The stdouts pwned User's in a given domain on a given DC
+#
+# Source 
 # https://4sysops.com/archives/find-compromised-passwords-in-active-directory-with-have-i-been-pwned/
 
 Import-Module DSInternals
 # Get users who have changed their password after a certain date
-$user = Get-ADUser -Properties PasswordLastSet -Filter "PasswordLastSet -gt '08/21/2023'"
+$user = Get-ADUser -Filter * #-Properties PasswordLastSet #-Filter "PasswordLastSet -gt '08/21/2023'"
 # Request the credentials of the user who will fetch the password hashes
-$cred = Get-Credential
+# $cred = Get-Credential
+#
+# Define domain and DC
+$domain = 
+$srv = 
 
-$user | foreach{
+$user | ForEach-Object{
     $hash=""
     "`nChecking password for: " + $_.SamAccountName
-    $r = Get-ADReplAccount -SamAccountName $_.SamAccountName -Domain contoso -Server dc1 -Credential $cred -Protocol TCP
+    $r = Get-ADReplAccount -SamAccountName $_.SamAccountName -Domain $domain -Server $srv -Protocol TCP # -Credential $cred
     #Turn byte array into a hex string
-    $r.NTHash |foreach{
+    $r.NTHash |ForEach-Object{
         $hash += ([Convert]::ToString($_,16)).padleft(2,"0")
     }
     #Calling Web API passing the first five chars of the hash
