@@ -20,7 +20,7 @@ winget install Microsoft.DotNet.SDK.9
 ```
 [Link](https://learn.microsoft.com/en-us/dotnet/core/install/windows?WT.mc_id=dotnet-35129-website#install-with-windows-package-manager-winget)
 
-#### Install Install PwnedPasswordsDownloader
+#### Install PwnedPasswordsDownloader
 ```powershell
 dotnet tool install --global haveibeenpwned-downloader
 ```
@@ -29,7 +29,7 @@ dotnet tool install --global haveibeenpwned-downloader
 ##### Download HaveIBeenPwned Password NT hashes
 - In decembre 2024 the downloaded data exceeds 38 GB. So make sure there is enough space on disk.
 ```powershell
-haveibeenpwned-downloader.exe -n -s true -p 256 # if download fails redce parallelism (-p) 
+haveibeenpwned-downloader.exe -n -s true -p 256 # if download fails reduce parallelism (-p) 
 ```
 
 #### Install DSInternals
