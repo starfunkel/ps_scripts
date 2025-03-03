@@ -1,4 +1,8 @@
-# export apw audit script
+<#
+.SYNOPSIS
+    Exports IUSR & IWAM IIS Users as csv
+#>
+
 $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop)
 $DirectoryName = "AD_AUDIT_$((Get-Date).ToString('yyyyMMdd'))"
 $AuditFolder = Join-Path $DesktopPath $DirectoryName
