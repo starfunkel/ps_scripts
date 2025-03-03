@@ -11,25 +11,25 @@
       Required?                    yes
 
 .EXAMPLE
-Get-OU-ACL -name <NAme>
+    Get-OU-ACL -name <NAme>
 
-IdentityReference                                 AccessControlType ActiveDirectoryRights
------------------                                 ----------------- ---------------------
-NT-AUTORITÄT\DOMÄNENCONTROLLER DER ORGANISATION               Allow           GenericRead
-NT-AUTORITÄT\Authentifizierte Benutzer                        Allow           GenericRead
-NT-AUTORITÄT\SYSTEM                                           Allow            GenericAll
-INTEGRATE-IT\Domänen-Admins                                   Allow            GenericAll
-INTEGRATE-IT\Organization Management                          Allow            GenericAll
-INTEGRATE-IT\Exchange Trusted Subsystem                       Allow            GenericAll
-INTEGRATE-IT\Exchange Enterprise Servers                      Allow           GenericRead
-INTEGRATE-IT\Exchange Enterprise Servers                      Allow           GenericRead
-INTEGRATE-IT\Exchange Trusted Subsystem                       Allow            GenericAll
-INTEGRATE-IT\Exchange Trusted Subsystem                       Allow            GenericAll
-VORDEFINIERT\Prä-Windows 2000 kompatibler Zugriff             Allow           GenericRead
-VORDEFINIERT\Prä-Windows 2000 kompatibler Zugriff             Allow           GenericRead
-INTEGRATE-IT\Organization Management                          Allow           GenericRead
-INTEGRATE-IT\Exchange Trusted Subsystem                       Allow           GenericRead
-INTEGRATE-IT\Organisations-Admins                             Allow            GenericAll
+    IdentityReference                                 AccessControlType ActiveDirectoryRights
+    -----------------                                 ----------------- ---------------------
+    NT-AUTORITÄT\DOMÄNENCONTROLLER DER ORGANISATION               Allow           GenericRead
+    NT-AUTORITÄT\Authentifizierte Benutzer                        Allow           GenericRead
+    NT-AUTORITÄT\SYSTEM                                           Allow            GenericAll
+    $DOMAIN\Domänen-Admins                                   Allow            GenericAll
+    $DOMAIN\Organization Management                          Allow            GenericAll
+    $DOMAIN\Exchange Trusted Subsystem                       Allow            GenericAll
+    $DOMAIN\Exchange Enterprise Servers                      Allow           GenericRead
+    $DOMAIN\Exchange Enterprise Servers                      Allow           GenericRead
+    $DOMAIN\Exchange Trusted Subsystem                       Allow            GenericAll
+    $DOMAIN\Exchange Trusted Subsystem                       Allow            GenericAll
+    VORDEFINIERT\Prä-Windows 2000 kompatibler Zugriff             Allow           GenericRead
+    VORDEFINIERT\Prä-Windows 2000 kompatibler Zugriff             Allow           GenericRead
+    $DOMAIN\Organization Management                          Allow           GenericRead
+    $DOMAIN\Exchange Trusted Subsystem                       Allow           GenericRead
+    $DOMAIN\Organisations-Admins                             Allow            GenericAll
 
 
 #>

@@ -16,22 +16,22 @@
 .EXAMPLE
     Get-RecurseACL <Folder>
 
-Current Folder test
+    Current Folder test
 
-Identity                                                     Right Access Inherited               Inheritance Flags Propagation Flags
---------                                                     ----- ------ ---------               ----------------- -----------------
-VORDEFINIERT\Administratoren                           FullControl  Allow      True ContainerInherit, ObjectInherit              None
-NT-AUTORITÄT\SYSTEM                                    FullControl  Allow      True ContainerInherit, ObjectInherit              None
-VORDEFINIERT\Benutzer                  ReadAndExecute, Synchronize  Allow      True ContainerInherit, ObjectInherit              None
-NT-AUTORITÄT\Authentifizierte Benutzer         Modify, Synchronize  Allow      True                            None              None
-NT-AUTORITÄT\Authentifizierte Benutzer                  -536805376  Allow      True ContainerInherit, ObjectInherit       InheritOnly
-VORDEFINIERT\Administratoren                           FullControl  Allow      True ContainerInherit, ObjectInherit              None
-NT-AUTORITÄT\SYSTEM                                    FullControl  Allow      True ContainerInherit, ObjectInherit              None
-VORDEFINIERT\Benutzer                  ReadAndExecute, Synchronize  Allow      True ContainerInherit, ObjectInherit              None
-NT-AUTORITÄT\Authentifizierte Benutzer         Modify, Synchronize  Allow      True                            None              None
-NT-AUTORITÄT\Authentifizierte Benutzer                  -536805376  Allow      True ContainerInherit, ObjectInherit       InheritOnly
-VORDEFINIERT\Administratoren                           FullControl  Allow      True ContainerInherit, ObjectInherit              None
-[...]
+    Identity                                                     Right Access Inherited               Inheritance Flags Propagation Flags
+    --------                                                     ----- ------ ---------               ----------------- -----------------
+    VORDEFINIERT\Administratoren                           FullControl  Allow      True ContainerInherit, ObjectInherit              None
+    NT-AUTORITÄT\SYSTEM                                    FullControl  Allow      True ContainerInherit, ObjectInherit              None
+    VORDEFINIERT\Benutzer                  ReadAndExecute, Synchronize  Allow      True ContainerInherit, ObjectInherit              None
+    NT-AUTORITÄT\Authentifizierte Benutzer         Modify, Synchronize  Allow      True                            None              None
+    NT-AUTORITÄT\Authentifizierte Benutzer                  -536805376  Allow      True ContainerInherit, ObjectInherit       InheritOnly
+    VORDEFINIERT\Administratoren                           FullControl  Allow      True ContainerInherit, ObjectInherit              None
+    NT-AUTORITÄT\SYSTEM                                    FullControl  Allow      True ContainerInherit, ObjectInherit              None
+    VORDEFINIERT\Benutzer                  ReadAndExecute, Synchronize  Allow      True ContainerInherit, ObjectInherit              None
+    NT-AUTORITÄT\Authentifizierte Benutzer         Modify, Synchronize  Allow      True                            None              None
+    NT-AUTORITÄT\Authentifizierte Benutzer                  -536805376  Allow      True ContainerInherit, ObjectInherit       InheritOnly
+    VORDEFINIERT\Administratoren                           FullControl  Allow      True ContainerInherit, ObjectInherit              None
+    [...]
 
 
 .NOTES
