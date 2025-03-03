@@ -8,7 +8,7 @@ $object=""
 get-adobject -filter 'name -like "Santa*"' -IncludeDeletedObjects |
  Restore-ADObject –TargetPath "OU,CN..." -passthru
 ```
-###### Get deleted obkects and sort by modificationdate (this )
+###### Get deleted objects and sort by modificationdate (this )
 ```powershell
  Get-ADObject -ldapFilter:"(msDS-LastKnownRDN=*)"  -IncludeDeletedObjects -Properties * | select msDS-LastKnownRDN,Deleted,modifyTimeStamp |sort modifyTimeStamp -Descending|  ft -AutoSize
 ```
