@@ -16,12 +16,12 @@
 .EXAMPLE
     Get-FolderACL 
 
-    Identity                                                     Right Access Inherited               Inheritance Flags Propagation Flags
---------                                                     ----- ------ ---------               ----------------- -----------------
-NT-AUTORITÄT\SYSTEM                                    FullControl  Allow      True ContainerInherit, ObjectInherit              None
-VORDEFINIERT\Benutzer                  ReadAndExecute, Synchronize  Allow      True ContainerInherit, ObjectInherit              None
-NT-AUTORITÄT\Authentifizierte Benutzer         Modify, Synchronize  Allow      True                            None              None
-NT-AUTORITÄT\Authentifizierte Benutzer                  -536805376  Allow      True ContainerInherit, ObjectInherit       InheritOnly
+        Identity                                                     Right Access Inherited               Inheritance Flags Propagation Flags
+    --------                                                     ----- ------ ---------               ----------------- -----------------
+    NT-AUTORITÄT\SYSTEM                                    FullControl  Allow      True ContainerInherit, ObjectInherit              None
+    VORDEFINIERT\Benutzer                  ReadAndExecute, Synchronize  Allow      True ContainerInherit, ObjectInherit              None
+    NT-AUTORITÄT\Authentifizierte Benutzer         Modify, Synchronize  Allow      True                            None              None
+    NT-AUTORITÄT\Authentifizierte Benutzer                  -536805376  Allow      True ContainerInherit, ObjectInherit       InheritOnly
 
 
 .NOTES
