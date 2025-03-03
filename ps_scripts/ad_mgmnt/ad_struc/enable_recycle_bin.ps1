@@ -1,7 +1,21 @@
-### BEARBEITEN
+# Check if running as admin
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
+    exit
+}
 
-$domain = (Get-ADDomainController).forest
+# Import Active Directory module
+Import-Module ActiveDirectory
 
-Get-ADOptionalFeature -Filter { Name -eq "Recycle Bin Feature" }
-
-Enable-ADOptionalFeature -Identity ‘CN=Recycle Bin Feature,CN=Optional Features,CN=Directory Service,CN=Windows NT,CN=Services,CN=Configuration,dc=one,dc=local’ -Scope ForestOrConfigurationSet -Target $domain
+# Check optional features
+$feature = Get-ADOptionalFeature -Filter {Name -eq "Recycle Bin Feature"}
+if ($feature.EnabledScopes -eq $null) {
+    # Enable Recycle Bin
+    Enable-ADOptionalFeature "Recycle Bin Feature" -Scope ForestOrConfigurationSet -Target (Get-ADForest).Name -Confirm:$false
+    
+    # Sync changes across domain controllers
+    repadmin /syncall /AdeP
+    
+    # Confirm feature enabled
+    Get-ADOptionalFeature -Filter {Name -eq "Recycle Bin Feature"}
+}
