@@ -4,8 +4,3 @@ Format-Table Richtlinienziel,Unterkategorie,Aufnahmeeinstellung,Ausschlusseinste
 
 auditpol.exe /get /category:*
 
-#### stale ad computers
-
-Get-ADComputer -filter * -Proper Name, DisplayName, SamAccountName, lastlogondate, PasswordLastSet, enabled |
-sort lastlogondate |
-ft Name, DisplayName, SamAccountName, lastlogondate, PasswordLastSet, enabled
