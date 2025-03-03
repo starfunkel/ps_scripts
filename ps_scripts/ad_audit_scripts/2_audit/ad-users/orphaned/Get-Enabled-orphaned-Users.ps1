@@ -1,3 +1,8 @@
+<#
+.SYNOPSIS
+    Gets enabled orphaned Users by adjustable time range.
+    Exports findings to csv.
+#>
 $time=Read-Host "How many days do you want to go back? (Press Q to escape )"
 Get-ADUser -Filter {enabled -eq $true} -Properties LastLogonDate,enabled |
 Where-Object {$_.lastlogondate -ne $null -and $_.lastlogondate -le ((get-date).adddays(-$time))} |
