@@ -1,6 +1,12 @@
-#
-# export pw audit script
-#
+<#
+.SYNOPSIS
+    AD-Audit Script to accompanying Purple Knight and Ping Castle Reports
+
+    The Script export severeal AD-User information.
+
+.DESCRIPTION
+    Please read teh code
+#>
 
 # define file path
 $DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop)
