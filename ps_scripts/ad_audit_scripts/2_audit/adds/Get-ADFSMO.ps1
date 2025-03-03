@@ -1,3 +1,8 @@
+<#
+.SYNOPSIS
+    Fully fledged Active Directoy Flexible single master operation information gathering script to learn Paramter sets
+#>
+
 Function Get-ADFSMO {
     [cmdletbinding()]
     [alias('fsmo')]
