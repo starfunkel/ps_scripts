@@ -186,7 +186,7 @@ Write-Host
 
 ## Get enabled user ho haven't logged on since the last $Date
 Write-Host "Targeting active users who haven't logged on in since ${Date}" -ForegroundColor yellow
-Get-ADUser -Filter {enabled -eq $true -and lastlogondate -ne "$null and $_.lastlogondate -le $Date"} -Properties  |
+Get-ADUser -Filter {enabled -eq $true -and lastlogondate -ne "$null and $_.lastlogondate -le $Date"} -Properties * |
 Export-Csv $AuditFolder\Old_Enabled_Users_Accounts.csv
 Write-Host "Old_Enabled_Users_Accounts.csv written" -ForegroundColor green
 Write-Host
