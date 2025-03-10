@@ -2,17 +2,7 @@
 .SYNOPSIS
 Helper Script to identify all active smb sessions and their type (dialect) of a given server
 arreay
-.DESCRIPTION 
 
-.EXAMPLE
-
-.LINK
-
-
-.NOTES
-Written by: Christian Rathnau
-
-Website:	https://www.integrate-it.net/
 #>
 
 $Server = "ii-lap-60"
