@@ -3,7 +3,7 @@
     This script gathers all AD-Computer accounts which are not Windows Server OS based
     in the current domain with OS, OS version, and IPv4 Address.
 #>
-function FunctionName {
+function Get-Win-Domain-Computers {
     Write-Host -ForegroundColor Green "Windows Computer Objects $env:userdnsdomain"
     $computers = Get-ADComputer -Filter {OperatingSystem -notlike "*server*" -and OperatingSystem -notlike "unknown"} `
         -Properties Name, OperatingSystem, OperatingSystemVersion, IPv4Address 
