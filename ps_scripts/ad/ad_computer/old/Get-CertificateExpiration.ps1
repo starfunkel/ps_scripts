@@ -1,3 +1,9 @@
+<#
+.SYNOPSIS
+    The script pulls certificate information from windows Servers in an AD.
+
+#>
+
 $cred = Get-Credential
 $c = 0
 $servers = Get-ADComputer -Filter "OperatingSystem -like 'Windows Server*'"
