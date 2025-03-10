@@ -1,4 +1,9 @@
-        [cmdletbinding(DefaultParameterSetName = "All")]
+<#
+.SYNOPSIS
+    The script lists linked GPOs.
+#>
+
+[cmdletbinding(DefaultParameterSetName = "All")]
         [outputtype("myGPOLink")]
         Param(
             [parameter(Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName, HelpMessage = "Enter a GPO name. Wildcards are allowed")]
