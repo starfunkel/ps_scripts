@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-ProAD backup retention powershell script
+File retention powershell script
 
 .DESCRIPTION
 This script search in $folderPath for files older than 3 month and deletes them.
@@ -13,7 +13,7 @@ Integrate 2024 Rathnau
 
 #>
 
-$folderPath = "E:\PROAD_BackUps"
+$folderPath = ""
 $retentiontime = (Get-Date).AddMonths(-3)
 
 # Path to the log file

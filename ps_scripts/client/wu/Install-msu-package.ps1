@@ -1,4 +1,4 @@
-$dir = (Get-Item -Path c:\admin\pdates -Verbose).FullName
+$dir = (Get-Item -Path  -Verbose).FullName
 Foreach($item in (ls $dir *.msu -Name))
 {
 echo $item
