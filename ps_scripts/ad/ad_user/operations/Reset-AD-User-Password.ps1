@@ -1,4 +1,4 @@
-﻿$user=Read-Host "Give me login: "
-$password=Read-Host "Give me password: "
+﻿$user=Read-Host "Gimme login: "
+$password=Read-Host "Gimme  new password: "
 Set-ADAccountPassword -Identity $user -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $password -Force) -Credential
-Read-Host "The password have been reset!!!"
+Read-Host "The password is set!"

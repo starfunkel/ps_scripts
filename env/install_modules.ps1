@@ -78,6 +78,15 @@ else{
     set-PowerCLIConfiguration -invalidcertificateaction  ignore
 }
 
+# DSInternals
+if (Get-Module -ListAvailable -Name ADReportingTools) { 
+    Write-Host "DSC is installed" @Green 
+}
+else{
+    Install-Module -name ADReportingTools -force
+    Set-PowerCLIConfiguration -invalidcertificateaction  ignore
+}
+
 
 # Misc
 Install-Module -Name PowerShellGet -Force -AllowClobber -Scope CurrentUser

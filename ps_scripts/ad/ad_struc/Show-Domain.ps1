@@ -1,3 +1,24 @@
+<#
+.SYNOPSIS
+    The script dosplays a 'tree like' structure of the current domain  
+
+.NOTES
+    make sure ADReportingTools are installed:
+    Install-Module -name ADReportingTools -force -AllowClobber
+
+
+#>
+
+if (-not (Test-Path -Path Variable:\ADReportingToolsOptions)) {
+  $Global:ADReportingToolsOptions = @{
+      Protected          = "$([char]0x1b)[38;5;199m"   # Magenta for protected OUs (e.g., Protected from deletion)&#8203;:contentReference[oaicite:1]{index=1}
+      Container          = "$([char]0x1b)[38;5;1456m"  # (Intended color code for generic containers)&#8203;:contentReference[oaicite:2]{index=2}
+      OrganizationalUnit = "$([char]0x1b)[38;5;191m"   # Cyan/blue for OUs&#8203;:contentReference[oaicite:3]{index=3}
+      Other              = "$([char]0x1b)[38;5;212m"   # Orange/peach for other object types&#8203;:contentReference[oaicite:4]{index=4}
+      DomainDNS          = "$([char]0x1b)[1;4;38;5;227m" # Bold, underline yellow for domain DN&#8203;:contentReference[oaicite:5]{index=5}
+  }
+}
+
 Function Show-DomainTree {
     [cmdletbinding()]
     [OutputType("String")]
@@ -215,7 +236,8 @@ Function Show-DomainTree {
   $($ADReportingToolsOptions.Protected)Protected from Deletion$([char]0x1b)[0m
   $($ADReportingToolsOptions.Container)Containers$([char]0x1b)[0m
   $($ADReportingToolsOptions.Other)Other$([char]0x1b)[0m
-  
+
+
   $date $tzname
 "@
   

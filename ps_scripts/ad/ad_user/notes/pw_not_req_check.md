@@ -10,10 +10,10 @@ Get-ADUser -property userAccountControl -LDAPfilter “(userAccountControl=66082
 ## Passwords req
 >Attribut userAccountControl=66050
 ```powershell
-# change that pls
+# change it
 Get-ADUser -Identity Guest | Set-ADUser -PasswordNotRequired $false
 ```
 ```powershell
 # check if successfull
-Get-ADUser -property userAccountControl -LDAPfilter “(userAccountControl=66050)” 
+Get-ADUser -property userAccountControl -LDAPfilter “(userAccountControl=66050)” | Select-Object SamAccountName,Name,FirstName,LastName,UPN | Format-Table
 ```
