@@ -1,18 +1,37 @@
-# If logpath is present in %SYSTEMROOT%\System32\winevt\logs
-function get-4625 {
-    $filter4625='<QueryList>
-    <Query Id="0" Path="file://C:\support\playground\log_audit\logs\BKG\BKG-WTS-01_Security.evtx">
-      <Select Path="file://C:\support\playground\log_audit\logs\........$$$$$$$$">*[System[(EventID=681)]]</Select>
-    </Query>
-  </QueryList>'
-    $LogonEvents = Get-WinEvent -FilterXml $filter4625 
-    $LogonEvents | Sort-Object -Property TimeCreated 
-}
+<#
+.SYNOPSIS
+    This script retrieves all 4625 events from a file or the default security log file.
+#>    
+function Get-Event-4625 {
+  [CmdletBinding()]
+  param ()
 
-$filter='<QueryList>
+  $logPath = Read-Host "Enter the full path to the .evtx log file (leave empty to use the live Security log)"
+
+  $filter4625 = @"
+<QueryList>
 <Query Id="0" Path="Security">
-<Select Path="Security">*[System[(EventID=4625) and TimeCreated[timediff(@SystemTime) &lt;= 86400000]]]</Select>
+  <Select Path="Security">*[System[(EventID=4625)]]</Select>
 </Query>
-</QueryList>'
-$LogonEvents = Get-WinEvent -FilterXml $filter
-$LogonEvents | Sort-Object -Property TimeCreated #| Select-Object -First 1
+</QueryList>
+"@
+
+  try {
+      if ([string]::IsNullOrWhiteSpace($logPath)) {
+          # Live Security log
+          $logonEvents = Get-WinEvent -FilterXml $filter4625 -LogName Security
+      }
+      else {
+          if (-not (Test-Path $logPath)) {
+              Write-Error "The file path '$logPath' does not exist. Get out!"
+              return
+          }
+          $logonEvents = Get-WinEvent -FilterXml $filter4625 -Path $logPath
+      }
+
+      $logonEvents | Sort-Object TimeCreated
+  }
+  catch {
+      Write-Error "Failed to retrieve events: $_"
+  }
+}

@@ -1,3 +1,9 @@
+<#
+.SYNOPSIS
+    This script srearches every OU for users whoich have the flag password never expoires set to true. It sets this attribute 
+    to false and exports the changed users to a cvs file
+#>
+
 # Specify the CSV export path
 $csvPath = "C:\Admin\touched_ad_accounts_export.csv"
 
