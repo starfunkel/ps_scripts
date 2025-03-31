@@ -1,5 +1,5 @@
 # Define base file path
-$basePath = "C:\admin\SPN"
+$basePath = "$PSScriptRoot\SPN"
 
 $userOutputFile = "$basePath`_User.csv"
 $computerOutputFile = "$basePath`_Computer.csv"

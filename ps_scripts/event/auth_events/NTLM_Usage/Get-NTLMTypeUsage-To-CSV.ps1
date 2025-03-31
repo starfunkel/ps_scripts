@@ -1,6 +1,6 @@
 # Audit NTLMv1 Logons
 
-$CSVPath = "C:\admin\NTLMv1LogonEvents.csv"
+$CSVPath = "$PSScriptRoot\NTLMv1LogonEvents.csv"
 $EventID = 4624
 $NTLMv1Logons = @()
 

@@ -2,7 +2,7 @@
 
 # OU defintion
 $ou = "OU=Mobile Clients,OU=Win,OU=integrate-it Workstations,DC=integrate-it,DC=de"
-$csvExportPath = "C:\admin\"
+$csvExportPath = $PSScriptRoot
 
 # Search
 $computers = Get-ADComputer -Filter * -SearchBase $ou

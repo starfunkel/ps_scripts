@@ -5,7 +5,7 @@
 #>
 
 # Specify the CSV export path
-$csvPath = "C:\Admin\touched_ad_accounts_export.csv"
+$csvPath = "$PSScriptRoot\touched_ad_accounts_export.csv"
 
 # Create an empty array to store the changed user accounts
 $changedUsers = @()

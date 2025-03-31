@@ -16,7 +16,7 @@
 
 #>
 
-$importFile = "C:\admin\fsrm_anti_ransomware.txt"
+$importFile = "$PSScriptRoot\fsrm_anti_ransomware.txt"
 $fsrmGroupName = "Anti Ransomware Group"
 
 $extensions = Get-Content $importFile | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne "" }
