@@ -1,1 +1,0 @@
-Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet

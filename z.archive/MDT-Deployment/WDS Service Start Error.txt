@@ -1,8 +1,0 @@
-Wenn man an den Shares rumspielt kann es sein, dass der WDS Service seinen Dienst verweigert und mit dem Fehler 3 abraucht und nicht gestartet werden kann.
-
-in der cmd
-wdsutil /Uninitialize-Server
-
-in der mmc
-
-den Server löschen und neu anlegen
